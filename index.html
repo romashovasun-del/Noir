@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOIR — Fine Dining Restaurant, Kyiv</title>
+<meta name="description" content="NOIR — author's cuisine in Kyiv. One tasting menu of 12 courses that changes every evening, one seating per night. Reserve your table.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0A0A09">
+<!-- TODO: домен. Замінити «https://noir.kyiv/» на реальний — зустрічається 6 разів (canonical, og:url, og:image, twitter:image, JSON-LD url, і сам цей коментар). Find & Replace по файлу -->
+<link rel="canonical" href="https://noir.kyiv/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NOIR">
+<meta property="og:title" content="NOIR — Fine Dining Restaurant, Kyiv">
+<meta property="og:description" content="Author's cuisine in Kyiv. One tasting menu of 12 courses that changes every evening, one seating per night. Reserve your table.">
+<meta property="og:url" content="https://noir.kyiv/">
+<!-- og:image: файл og-image.jpg (1200×630) лежить поряд з index.html; URL має бути абсолютним, тому домен нижче — замінити -->
+<meta property="og:image" content="https://noir.kyiv/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="NOIR — fine dining restaurant, Kyiv">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="uk_UA">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NOIR — Fine Dining Restaurant, Kyiv">
+<meta name="twitter:description" content="Author's cuisine in Kyiv. One tasting menu of 12 courses that changes every evening, one seating per night.">
+<meta name="twitter:image" content="https://noir.kyiv/og-image.jpg">
+
+<!-- Favicons: файли лежать у папці /favicon поряд з index.html -->
+<link rel="icon" href="favicon/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" href="favicon/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon/apple-touch-icon.png">
+<link rel="icon" href="favicon/favicon-192.png" type="image/png" sizes="192x192">
+
+<!-- Performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://res.cloudinary.com">
+<link rel="preload" as="image" href="https://res.cloudinary.com/dcwwjvlcv/video/upload/so_0,f_auto,q_auto,w_1920/hailuo-2_3_Camera_slowly_pulls_back_from_extreme_close-up_of_golden_olive_oil_being_poured_-0_opggjs.jpg" imagesrcset="https://res.cloudinary.com/dcwwjvlcv/video/upload/so_0,f_auto,q_auto,w_1280/hailuo-2_3_Camera_slowly_pulls_back_from_extreme_close-up_of_golden_olive_oil_being_poured_-0_opggjs.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/video/upload/so_0,f_auto,q_auto,w_1920/hailuo-2_3_Camera_slowly_pulls_back_from_extreme_close-up_of_golden_olive_oil_being_poured_-0_opggjs.jpg 1920w" imagesizes="100vw" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<!-- GA4: вставити тег тут -->
+<!-- Meta Pixel: вставити тут -->
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --noir:#0A0A09;--carbon:#131312;--graphite:#1E1E1C;--smoke:#333330;
+  --cream:#EDE7D4;--cream-dim:#8C8575;--gold:#C4975A;--white:#F8F6F0;
+}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--cream);font-family:'Inter',sans-serif;font-weight:300;overflow-x:hidden}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:24px 48px;transition:background 0.4s,padding 0.4s;background:transparent}
+nav.scrolled{background:rgba(10,10,9,0.96);padding:16px 48px;backdrop-filter:blur(8px)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;letter-spacing:0.28em;color:var(--cream);text-decoration:none;cursor:pointer}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;transition:color 0.3s;cursor:pointer}
+.nav-links a:hover{color:var(--cream)}
+.nav-right{display:flex;align-items:center;gap:24px}
+.lang{font-size:10px;letter-spacing:0.12em;color:var(--cream-dim);cursor:pointer;user-select:none}
+.lang .on{color:var(--cream)}
+.lang .sep{margin:0 5px;color:var(--smoke)}
+.mm-lang{font-size:13px;letter-spacing:0.2em;color:var(--cream-dim);cursor:pointer;user-select:none;margin-top:8px}
+.mm-lang .on{color:var(--gold)}
+.mm-lang .sep{margin:0 10px;color:var(--smoke)}
+.btn-res{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--noir);background:var(--gold);border:none;padding:11px 22px;cursor:pointer;transition:background 0.3s;white-space:nowrap}
+.btn-res:hover{background:var(--cream)}
+
+.burger{display:none;background:none;border:0;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.burger span{display:block;width:22px;height:0.5px;background:var(--cream);transition:all 0.3s}
+.burger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+
+.mobile-menu{display:none;position:fixed;inset:0;z-index:190;background:rgba(10,10,9,0.97);flex-direction:column;align-items:center;justify-content:center;gap:40px;opacity:0;pointer-events:none;transition:opacity 0.4s}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;letter-spacing:0.1em;color:var(--cream);text-decoration:none;cursor:pointer}
+
+/* ─── SCROLL ANIMATIONS ─── */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-50px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1),transform 0.9s cubic-bezier(0.16,1,0.3,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(50px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1),transform 0.9s cubic-bezier(0.16,1,0.3,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(0.92);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1),transform 0.9s cubic-bezier(0.16,1,0.3,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+.delay-1{transition-delay:0.1s}.delay-2{transition-delay:0.2s}.delay-3{transition-delay:0.3s}.delay-4{transition-delay:0.4s}
+
+/* ─── PAGES ─── */
+.page{display:none}
+.page.active{display:block}
+
+/* ─── COMMON ─── */
+.eyebrow{font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.sec-title{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.12;color:var(--white)}
+.sec-body{font-size:13px;line-height:1.95;color:var(--cream-dim)}
+.gold-line{width:36px;height:0.5px;background:var(--gold);margin:24px 0}
+.btn-primary{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--noir);background:var(--gold);border:none;padding:15px 38px;cursor:pointer;transition:background 0.3s}
+.btn-primary:hover{background:var(--cream)}
+.btn-ghost{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--cream-dim);background:transparent;border:0.5px solid var(--smoke);padding:15px 38px;cursor:pointer;transition:border-color 0.3s,color 0.3s}
+.btn-ghost:hover{border-color:var(--cream-dim);color:var(--cream)}
+
+/* ─── HOME ─── */
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(0.38)}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(0.35) saturate(0.8);background:#0A0A09}
+.hero-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(0.35) saturate(0.8);z-index:1;transition:opacity 0.8s ease;pointer-events:none}
+.hero-poster.is-hidden{opacity:0}
+.hero-grad{position:absolute;inset:0;z-index:2;background:linear-gradient(to bottom,rgba(10,10,9,0.25) 0%,rgba(10,10,9,0.55) 50%,rgba(10,10,9,0.85) 100%)}
+.hero-content{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(80px,14vw,160px);font-weight:300;letter-spacing:0.1em;line-height:0.88;color:var(--white);margin-bottom:28px}
+.hero-sub{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:48px;line-height:2}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.scroll-ind{position:absolute;z-index:3;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-ind span{font-size:8px;letter-spacing:0.28em;text-transform:uppercase;color:var(--cream-dim)}
+.scroll-line{width:0.5px;height:36px;background:var(--gold);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:0.2}50%{opacity:1}}
+
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);border-top:0.5px solid var(--graphite);border-bottom:0.5px solid var(--graphite)}
+.stat{padding:44px 32px;text-align:center;border-right:0.5px solid var(--graphite)}
+.stat:last-child{border-right:none}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:8px}
+.stat-l{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream-dim)}
+
+.concept{display:grid;grid-template-columns:1fr 1fr;min-height:560px}
+.concept-img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.65);transition:transform 0.9s ease,filter 0.9s ease}
+.concept-img-wrap{overflow:hidden}
+.concept-img-wrap:hover .concept-img{transform:scale(1.04);filter:brightness(0.8)}
+.concept-text{background:var(--carbon);padding:72px 60px;display:flex;flex-direction:column;justify-content:center}
+.concept-text .sec-title em{font-style:normal;color:var(--gold)}
+
+.menu-prev{padding:88px 48px;background:var(--noir)}
+.menu-prev-hd{text-align:center;margin-bottom:56px}
+.menu-prev-hd .sec-title em{font-style:normal;color:var(--gold)}
+.acts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--graphite)}
+.act{background:var(--carbon);padding:44px 28px;position:relative;overflow:hidden;cursor:default;transition:background 0.3s}
+.act:hover{background:var(--graphite)}
+.act-n{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:300;color:var(--graphite);line-height:1;margin-bottom:20px;transition:color 0.3s}
+.act:hover .act-n{color:var(--smoke)}
+.act-t{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--cream);margin-bottom:12px}
+.act-b{font-size:11px;line-height:1.8;color:var(--cream-dim)}
+.act-bar{position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width 0.45s ease}
+.act:hover .act-bar{width:100%}
+.price-blk{text-align:center;margin-top:52px;padding-top:44px;border-top:0.5px solid var(--graphite)}
+.price-main{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:var(--cream);margin-bottom:6px}
+.price-sub{font-size:10px;letter-spacing:0.14em;color:var(--cream-dim);margin-bottom:36px}
+
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:280px 280px;gap:2px}
+.gi{overflow:hidden;position:relative}
+.gi:first-child{grid-row:span 2}
+.gi img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.6);transition:transform 0.7s ease,filter 0.7s ease}
+.gi:hover img{transform:scale(1.06);filter:brightness(0.82)}
+
+.chef-home{display:grid;grid-template-columns:1fr 1fr;min-height:600px;background:var(--carbon)}
+.chef-home-text{padding:72px 60px;display:flex;flex-direction:column;justify-content:center}
+.chef-home-img{overflow:hidden}
+.chef-home-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.9);transition:filter 0.8s}
+.chef-home-img:hover img{filter:brightness(1)}
+blockquote{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;font-weight:300;color:var(--cream);line-height:1.55;border-left:1px solid var(--gold);padding-left:24px;margin:28px 0 16px}
+cite{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-style:normal}
+
+.cta-band{text-align:center;padding:100px 48px;background:var(--graphite);position:relative;overflow:hidden}
+.cta-band::before{content:'NOIR';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Cormorant Garamond',serif;font-size:240px;font-weight:300;color:rgba(255,255,255,0.025);white-space:nowrap;pointer-events:none;letter-spacing:0.12em}
+.cta-band .sec-body{max-width:420px;margin:0 auto 44px}
+
+footer{padding:64px 48px 32px;border-top:0.5px solid var(--graphite);background:var(--noir)}
+.f-top{display:grid;grid-template-columns:1.6fr repeat(4,1fr);gap:40px;padding-bottom:40px;border-bottom:0.5px solid var(--graphite)}
+.f-tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--smoke);line-height:1.6;margin-top:14px}
+.f-head{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.f-txt{font-size:11px;letter-spacing:0.08em;color:var(--cream-dim);line-height:2}
+.f-txt a{color:var(--cream-dim);text-decoration:none;transition:color 0.3s}
+.f-txt a:hover{color:var(--gold)}
+.f-bottom{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-top:28px}
+.f-copy{font-size:9px;letter-spacing:0.15em;color:var(--smoke)}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:0.28em;color:var(--cream-dim)}
+.f-links{display:flex;gap:20px}
+.f-links a{font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;transition:color 0.3s;cursor:pointer}
+.f-links a:hover{color:var(--gold)}
+
+/* ─── MENU PAGE ─── */
+.mp-hero{height:55vh;min-height:400px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:60px 64px}
+.mp-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.3)}
+.mp-hero-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,9,0.95) 0%,transparent 60%)}
+.mp-hero-content{position:relative;z-index:1}
+.mp-hero .sec-title em{font-style:normal;color:var(--gold)}
+
+.mp-intro{padding:72px 64px;background:var(--carbon);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+
+.mp-acts{padding:0 48px 88px}
+.mp-act{display:grid;grid-template-columns:120px 1fr;gap:48px;padding:64px 0;border-bottom:0.5px solid var(--graphite);align-items:start}
+.mp-act:last-child{border-bottom:none}
+.mp-act-left{text-align:right;padding-top:6px}
+.mp-act-num{font-family:'Cormorant Garamond',serif;font-size:88px;font-weight:300;line-height:0.85;color:var(--graphite)}
+.mp-act-label{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-top:12px}
+.mp-act-right .act-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;color:var(--cream);margin-bottom:16px}
+.mp-act-right .act-body{font-size:13px;line-height:1.9;color:var(--cream-dim);margin-bottom:24px}
+.mp-act-hint{font-size:10px;letter-spacing:0.12em;color:var(--smoke);font-style:italic}
+
+.mp-price{background:var(--carbon);padding:72px 64px;display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap}
+.mp-price-left .price-big{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:300;color:var(--gold);line-height:1}
+.mp-price-left .price-label{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream-dim);margin-top:8px}
+.mp-price-right{display:flex;flex-direction:column;gap:16px;align-items:flex-end}
+.mp-price-right .btn-primary,.mp-price-right .btn-ghost{width:240px;padding:15px 0;text-align:center;box-sizing:border-box;line-height:1.4}
+.mp-price-right .btn-primary{border:0.5px solid var(--gold)}
+
+.mp-gallery{display:grid;grid-template-columns:repeat(3,1fr);height:320px;gap:2px}
+.mp-gi{overflow:hidden}
+.mp-gi img{width:100%;height:100%;object-fit:cover;filter:brightness(0.6);transition:transform 0.7s,filter 0.7s}
+.mp-gi:hover img{transform:scale(1.05);filter:brightness(0.82)}
+
+/* ─── CHEF PAGE ─── */
+.cp-hero{display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+.cp-hero-img{position:relative;overflow:hidden}
+.cp-hero-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.9)}
+.cp-hero-content{background:var(--carbon);padding:100px 64px;display:flex;flex-direction:column;justify-content:center}
+.cp-hero-content .sec-title em{font-style:normal;color:var(--gold)}
+
+.cp-timeline{padding:80px 64px;background:var(--noir)}
+.cp-timeline-hd{text-align:center;margin-bottom:64px}
+.cp-events{display:flex;flex-direction:column}
+.cp-event{display:grid;grid-template-columns:200px 1px 1fr;gap:0 48px;align-items:start;padding:44px 0}
+.cp-event-date{text-align:right;padding-top:4px}
+.cp-event-date span{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--gold)}
+.cp-event-date p{font-size:10px;letter-spacing:0.12em;color:var(--cream-dim);margin-top:4px}
+.cp-line-wrap{display:flex;flex-direction:column;align-items:center;position:relative}
+.cp-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:6px}
+.cp-event-line{flex:1;width:0.5px;background:var(--graphite);min-height:60px;margin-top:8px}
+.cp-event-text h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;color:var(--cream);margin-bottom:10px}
+.cp-event-text p{font-size:12px;line-height:1.85;color:var(--cream-dim)}
+
+.cp-philosophy{display:grid;grid-template-columns:1fr 1fr;background:var(--carbon)}
+.cp-phil-img{overflow:hidden;min-height:480px}
+.cp-phil-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.5)}
+.cp-phil-text{padding:72px 64px;display:flex;flex-direction:column;justify-content:center}
+
+.cp-quote-band{padding:88px 64px;background:var(--noir);text-align:center}
+.cp-big-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,48px);font-style:italic;font-weight:300;color:var(--cream);line-height:1.4;max-width:760px;margin:0 auto 28px}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  nav{padding:20px 24px}
+  nav.scrolled{padding:14px 24px}
+  .nav-links,.nav-right .lang,.nav-right .btn-res{display:none}
+  .burger{display:flex}
+  .mobile-menu{display:flex}
+
+  .concept{grid-template-columns:1fr}
+  footer{padding:48px 24px 24px}
+  .f-top{grid-template-columns:1fr 1fr;gap:32px}
+  .f-top .f-col:first-child{grid-column:1/-1}
+  .f-bottom{flex-direction:column;align-items:flex-start}
+  .concept-img-wrap{height:300px}
+  .concept-text{padding:48px 28px}
+
+  .acts{grid-template-columns:1fr 1fr}
+  .menu-prev{padding:64px 24px}
+
+  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:220px 220px 220px}
+  .gi:first-child{grid-row:span 1}
+
+  .chef-home{grid-template-columns:1fr}
+  .chef-home-img{height:320px}
+  .chef-home-text{padding:48px 28px}
+
+  .stats-row{grid-template-columns:1fr}
+  .stat{border-right:none;border-bottom:0.5px solid var(--graphite);padding:32px 24px}
+  .stat:last-child{border-bottom:none}
+
+  .cta-band{padding:72px 24px}
+  footer{padding:32px 24px;justify-content:center;text-align:center}
+  .f-logo,.f-links{display:none}
+
+  .mp-hero{padding:40px 28px}
+  .mp-intro{grid-template-columns:1fr;padding:48px 28px;gap:32px}
+  .mp-act{grid-template-columns:80px 1fr;gap:24px}
+  .mp-acts{padding:0 28px 64px}
+  .mp-price{padding:48px 28px}
+  .mp-price-right{align-items:flex-start}
+  .mp-gallery{grid-template-columns:1fr 1fr;height:auto}
+  .mp-gi{height:180px}
+
+  .cp-hero{grid-template-columns:1fr}
+  .cp-hero-img{height:50vh}
+  .cp-hero-content{padding:48px 28px}
+  .cp-timeline{padding:56px 28px}
+  .cp-event{grid-template-columns:100px 1px 1fr;gap:0 24px}
+  .cp-philosophy{grid-template-columns:1fr}
+  .cp-phil-img{height:280px}
+  .cp-phil-text{padding:48px 28px}
+  .cp-quote-band{padding:64px 28px}
+}
+
+@media(max-width:600px){
+  .acts{grid-template-columns:1fr}
+  .hero-title{font-size:clamp(64px,18vw,110px)}
+  .mp-act{grid-template-columns:1fr}
+  .mp-act-left{text-align:left}
+  .cp-event{grid-template-columns:1fr}
+  .cp-event-date{text-align:left}
+  .cp-line-wrap{display:none}
+}
+
+/* ─── RESERVATIONS PAGE ─── */
+.rp-hero{padding:120px 64px 56px;background:var(--noir);text-align:center;position:relative;overflow:hidden}
+.rp-hero::before{content:'NOIR';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Cormorant Garamond',serif;font-size:220px;font-weight:300;color:rgba(255,255,255,0.02);white-space:nowrap;pointer-events:none;letter-spacing:0.12em}
+.rp-hero .sec-title{font-size:clamp(44px,6vw,80px);margin-bottom:16px}
+.rp-hero .sec-body{max-width:480px;margin:0 auto}
+
+.rp-main{display:grid;grid-template-columns:1fr 400px;gap:0;background:var(--carbon);align-items:stretch}
+
+/* Floor plan */
+.rp-plan{padding:40px 36px 32px;border-right:0.5px solid var(--graphite);display:flex;flex-direction:column;gap:16px}
+.rp-plan-title{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0}
+.floor-plan{position:relative;width:100%;aspect-ratio:4/3;background:var(--graphite);border:0.5px solid var(--smoke);border-radius:4px;overflow:hidden}
+
+/* Room elements */
+.room-label{position:absolute;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--smoke)}
+.room-window{position:absolute;background:rgba(196,151,90,0.06);border:0.5px solid rgba(196,151,90,0.2)}
+.room-bar{position:absolute;background:var(--graphite);border:0.5px solid var(--smoke);display:flex;align-items:center;justify-content:center;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--cream-dim)}
+.room-entrance{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60px;height:10px;background:var(--graphite);border-top:2px solid var(--gold);display:flex;align-items:center;justify-content:center}
+.room-entrance span{font-size:7px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);white-space:nowrap;margin-top:2px}
+
+/* Tables */
+.table-item{position:absolute;cursor:pointer;transition:all 0.25s ease;user-select:none}
+.table-shape{border:1px solid var(--smoke);display:flex;align-items:center;justify-content:center;transition:all 0.25s ease;position:relative}
+.table-shape.round{border-radius:50%}
+.table-shape.rect{}
+.table-num{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:400;color:var(--cream-dim);transition:color 0.25s;line-height:1}
+.table-seats{font-size:7px;letter-spacing:0.1em;color:var(--smoke);position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);white-space:nowrap;transition:color 0.25s}
+
+/* Table states */
+.table-item.available .table-shape{background:rgba(30,30,28,0.8);border-color:var(--smoke)}
+.table-item.available:hover .table-shape{background:rgba(196,151,90,0.12);border-color:var(--gold);box-shadow:0 0 20px rgba(196,151,90,0.15)}
+.table-item.available:hover .table-num{color:var(--gold)}
+.table-item.available:hover .table-seats{color:var(--cream-dim)}
+.table-item.selected .table-shape{background:rgba(196,151,90,0.18);border-color:var(--gold);box-shadow:0 0 24px rgba(196,151,90,0.25)}
+.table-item.selected .table-num{color:var(--gold)}
+.table-item.selected .table-seats{color:var(--gold)}
+.table-item.occupied .table-shape{background:rgba(20,20,18,0.5);border-color:rgba(51,51,48,0.4);cursor:not-allowed}
+.table-item.occupied .table-num{color:var(--smoke)}
+
+/* Legend */
+.plan-legend{display:flex;gap:24px;margin-top:24px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:0.1em;color:var(--cream-dim)}
+.legend-dot{width:10px;height:10px;border-radius:50%;border:1px solid}
+.legend-dot.avail{background:rgba(30,30,28,0.8);border-color:var(--smoke)}
+.legend-dot.sel{background:rgba(196,151,90,0.18);border-color:var(--gold)}
+.legend-dot.occ{background:rgba(20,20,18,0.5);border-color:rgba(51,51,48,0.4)}
+
+/* Booking panel */
+.rp-form-panel{padding:40px 36px;display:flex;flex-direction:column;background:var(--carbon);position:sticky;top:0;max-height:100vh;overflow-y:auto}
+.rp-form-panel .sec-title{font-size:28px;margin-bottom:6px}
+
+.table-selected-info{background:var(--graphite);border:0.5px solid var(--smoke);padding:16px 20px;margin:20px 0;min-height:64px;display:flex;align-items:center;gap:16px;transition:border-color 0.3s}
+.table-selected-info.has-table{border-color:var(--gold)}
+.tsi-icon{width:32px;height:32px;border:0.5px solid var(--smoke);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--cream-dim);transition:all 0.3s}
+.table-selected-info.has-table .tsi-icon{border-color:var(--gold);color:var(--gold)}
+.tsi-text{font-size:12px;color:var(--cream-dim);line-height:1.6}
+.tsi-text strong{display:block;font-size:13px;color:var(--cream);font-weight:400;margin-bottom:2px}
+
+/* Form */
+.rp-form{display:flex;flex-direction:column;gap:16px;flex:1}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-label{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream-dim)}
+.form-input{background:var(--graphite);border:0.5px solid var(--smoke);color:var(--cream);font-family:'Inter',sans-serif;font-size:13px;font-weight:300;padding:12px 14px;outline:none;transition:border-color 0.3s;width:100%;appearance:none;-webkit-appearance:none}
+.form-input:focus{border-color:var(--gold)}
+.form-input::placeholder{color:var(--smoke)}
+.form-label .req{color:var(--gold);margin-left:2px}
+.form-input.is-invalid{border-color:#B5533C;box-shadow:0 0 0 1px rgba(181,83,60,0.35)}
+.form-input.is-valid{border-color:var(--gold)}
+.form-error{font-size:10px;letter-spacing:0.06em;color:#C86A52;line-height:1.5;display:none;margin-top:-2px}
+.form-group.has-error .form-error{display:block}
+.date-wrap{position:relative}
+.date-wrap .form-input{padding-right:44px;color-scheme:dark;cursor:pointer;min-height:44px}
+.date-wrap .form-input::-webkit-calendar-picker-indicator{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.date-wrap .form-input:not(.has-value)::-webkit-datetime-edit{color:var(--smoke)}
+.date-wrap .date-ico{position:absolute;right:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;pointer-events:none;color:var(--cream-dim);transition:color 0.3s}
+.date-wrap .form-input:focus ~ .date-ico,.date-wrap:hover .date-ico{color:var(--gold)}
+.form-input option{background:var(--graphite)}
+select.form-input{cursor:pointer}
+.form-note{font-size:11px;color:var(--smoke);line-height:1.7;margin-top:4px}
+.rp-submit{margin-top:8px}
+.rp-submit .btn-primary{width:100%;padding:16px;font-size:10px;letter-spacing:0.22em;text-align:center;border:none;cursor:pointer}
+.rp-submit .btn-primary:disabled{background:var(--smoke);color:var(--graphite);cursor:not-allowed}
+
+/* Success state */
+.rp-success{display:none;text-align:center;padding:40px 20px;flex:1;flex-direction:column;align-items:center;justify-content:center}
+.rp-success.show{display:flex}
+.success-icon{width:56px;height:56px;border:0.5px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:20px;color:var(--gold)}
+.rp-success .sec-title{font-size:28px;margin-bottom:12px}
+.rp-success .sec-body{font-size:13px;max-width:280px;margin:0 auto 32px}
+
+/* Info strip */
+.rp-info-strip{display:grid;grid-template-columns:repeat(3,1fr);border-top:0.5px solid var(--graphite)}
+.rp-info-item{padding:40px 32px;border-right:0.5px solid var(--graphite);text-align:center}
+.rp-info-item:last-child{border-right:none}
+.rp-info-item .eyebrow{margin-bottom:10px}
+.rp-info-val{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--cream);line-height:1.4}
+
+@media(max-width:900px){
+  .rp-hero{padding:120px 28px 60px}
+  .rp-main{grid-template-columns:1fr}
+  .rp-plan{padding:40px 24px;border-right:none;border-bottom:0.5px solid var(--graphite)}
+  .rp-form-panel{padding:40px 24px}
+  .rp-info-strip{grid-template-columns:1fr}
+  .rp-info-item{border-right:none;border-bottom:0.5px solid var(--graphite);padding:28px 24px}
+  .rp-info-item:last-child{border-bottom:none}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "NOIR",
+  "description": "Author's cuisine in Kyiv. One tasting menu of 12 courses that changes every evening, one seating per night.",
+  "url": "https://noir.kyiv/",
+  "telephone": "+380440000000",
+  "email": "hello@noir.kyiv",
+  "servesCuisine": "Author's cuisine",
+  "priceRange": "€€€",
+  "address": {"@type": "PostalAddress", "streetAddress": "32 Saksahanskoho St", "addressLocality": "Kyiv", "postalCode": "01033", "addressCountry": "UA"},
+  "openingHoursSpecification": [
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"], "opens": "19:00", "closes": "23:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "18:00", "closes": "23:00"}
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a onclick="navigate('home');toggleMenu()">Home</a>
+  <a onclick="navigate('menu');toggleMenu()">Menu</a>
+  <a onclick="navigate('chef');toggleMenu()">Chef</a>
+  <a onclick="navigate('reservations');toggleMenu()">Reservations</a>
+  <a onclick="navigate('reservations','contact');toggleMenu()">Contact</a>
+  <div class="mm-lang" role="group" aria-label="Language"><span class="on" data-lang="en" role="button" tabindex="0" onclick="setLang('en')">EN</span><span class="sep" aria-hidden="true">|</span><span data-lang="uk" role="button" tabindex="0" onclick="setLang('uk')">UA</span></div>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <span class="nav-logo" onclick="navigate('home')">NOIR</span>
+  <ul class="nav-links">
+    <li><a onclick="navigate('home','concept')">Concept</a></li>
+    <li><a onclick="navigate('menu')">Menu</a></li>
+    <li><a onclick="navigate('chef')">Chef</a></li>
+    <li><a onclick="navigate('reservations')">Reservations</a></li>
+    <li><a onclick="navigate('reservations','contact')">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang" role="group" aria-label="Language"><span class="on" data-lang="en" role="button" tabindex="0" onclick="setLang('en')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setLang('en')}">EN</span><span class="sep" aria-hidden="true">|</span><span data-lang="uk" role="button" tabindex="0" onclick="setLang('uk')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setLang('uk')}">UA</span></div>
+    <button class="btn-res" onclick="navigate('reservations')">Reserve</button>
+    <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false" type="button">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════ HOME PAGE ══════════════ -->
+<div class="page active" id="page-home">
+
+  <section class="hero">
+    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1" data-src-desktop="https://res.cloudinary.com/dcwwjvlcv/video/upload/q_auto,w_1920/v1782671238/hailuo-2_3_Camera_slowly_pulls_back_from_extreme_close-up_of_golden_olive_oil_being_poured_-0_opggjs.mp4" data-src-mobile="https://res.cloudinary.com/dcwwjvlcv/video/upload/q_auto,w_1280/v1782671238/hailuo-2_3_Camera_slowly_pulls_back_from_extreme_close-up_of_golden_olive_oil_being_poured_-0_opggjs.mp4"></video>
+    <img class="hero-poster" id="heroPoster" fetchpriority="high" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/video/upload/so_0,f_auto,q_auto,w_1920/hailuo-2_3_Camera_slowly_pulls_back_from_extreme_close-up_of_golden_olive_oil_being_poured_-0_opggjs.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/video/upload/so_0,f_auto,q_auto,w_1280/hailuo-2_3_Camera_slowly_pulls_back_from_extreme_close-up_of_golden_olive_oil_being_poured_-0_opggjs.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/video/upload/so_0,f_auto,q_auto,w_1920/hailuo-2_3_Camera_slowly_pulls_back_from_extreme_close-up_of_golden_olive_oil_being_poured_-0_opggjs.jpg 1920w" sizes="100vw" alt="" aria-hidden="true">
+    <div class="hero-grad"></div>
+    <div class="hero-content">
+      <p class="eyebrow" style="margin-bottom:24px">Author's cuisine · Kyiv</p>
+      <h1 class="hero-title">NOIR</h1>
+      <p class="hero-sub">One menu. One evening.<br>No boundaries.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="navigate('reservations')">Reserve a table</button>
+        <button class="btn-ghost" onclick="navigate('menu')">Explore menu</button>
+      </div>
+    </div>
+    <div class="scroll-ind">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <div class="stats-row">
+    <div class="stat reveal"><div class="stat-n">12</div><div class="stat-l">Courses per evening</div></div>
+    <div class="stat reveal delay-1"><div class="stat-n">1</div><div class="stat-l">Seating per night</div></div>
+    <div class="stat reveal delay-2"><div class="stat-n">100%</div><div class="stat-l">Seasonal ingredients</div></div>
+  </div>
+
+  <section class="concept" id="concept">
+    <div class="concept-img-wrap reveal-left">
+      <img loading="lazy" decoding="async" class="concept-img" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395191/magnific_interior-of-a-luxury-fine_PiL6cJL42C_iqaeuu.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395191/magnific_interior-of-a-luxury-fine_PiL6cJL42C_iqaeuu.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395191/magnific_interior-of-a-luxury-fine_PiL6cJL42C_iqaeuu.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395191/magnific_interior-of-a-luxury-fine_PiL6cJL42C_iqaeuu.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395191/magnific_interior-of-a-luxury-fine_PiL6cJL42C_iqaeuu.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395191/magnific_interior-of-a-luxury-fine_PiL6cJL42C_iqaeuu.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="NOIR dining room — dark interior with warm light">
+    </div>
+    <div class="concept-text reveal-right">
+      <p class="eyebrow">Our philosophy</p>
+      <h2 class="sec-title" style="font-size:clamp(30px,3.2vw,46px)">We don't serve food.<br>We tell <em>stories.</em></h2>
+      <div class="gold-line"></div>
+      <p class="sec-body" style="margin-bottom:36px">Noir was born from a single conviction: the most powerful experience is the one you cannot predict. There is no fixed menu — only the chef, the season, and the moment of inspiration.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn-ghost" onclick="navigate('menu')">Explore menu</button>
+        <button class="btn-ghost" onclick="navigate('chef')">Meet the chef</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-prev">
+    <div class="menu-prev-hd reveal">
+      <p class="eyebrow">Tasting experience</p>
+      <h2 class="sec-title" style="font-size:clamp(36px,4.5vw,58px)">The menu changes<br><em>every evening</em></h2>
+    </div>
+    <div class="acts">
+      <div class="act reveal delay-1"><div class="act-n">I</div><div class="act-t">Cold Opening</div><div class="act-b">Lightness, acidity, first contact. The conversation begins.</div><div class="act-bar"></div></div>
+      <div class="act reveal delay-2"><div class="act-n">II</div><div class="act-t">Between Two Seasons</div><div class="act-b">Contrast and tension. The moment before something changes.</div><div class="act-bar"></div></div>
+      <div class="act reveal delay-3"><div class="act-n">III</div><div class="act-t">The Main Thought</div><div class="act-b">The heart of the evening. Depth, warmth, the chef's signature.</div><div class="act-bar"></div></div>
+      <div class="act reveal delay-4"><div class="act-n">IV</div><div class="act-t">The Ending</div><div class="act-b">Sweet, quiet, final. Something to carry home.</div><div class="act-bar"></div></div>
+    </div>
+    <div class="price-blk reveal">
+      <p class="price-main">Tasting menu — €85 / person</p>
+      <p class="price-sub">Wine pairing available · +€50</p>
+      <button class="btn-primary" onclick="navigate('reservations')">Reserve your seat</button>
+    </div>
+  </section>
+
+  <div class="gallery">
+    <div class="gi reveal-scale"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Fine dining dish from the NOIR tasting menu"></div>
+    <div class="gi reveal-scale delay-1"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Glass of red wine on a dark table"></div>
+    <div class="gi reveal-scale delay-2"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395189/magnific_closeup-of-chef-hands-usi_62SZIb9iJO_sureec.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395189/magnific_closeup-of-chef-hands-usi_62SZIb9iJO_sureec.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395189/magnific_closeup-of-chef-hands-usi_62SZIb9iJO_sureec.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395189/magnific_closeup-of-chef-hands-usi_62SZIb9iJO_sureec.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395189/magnific_closeup-of-chef-hands-usi_62SZIb9iJO_sureec.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395189/magnific_closeup-of-chef-hands-usi_62SZIb9iJO_sureec.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Chef's hands plating a dish"></div>
+    <div class="gi reveal-scale delay-3"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Dark restaurant interior at NOIR"></div>
+    <div class="gi reveal-scale delay-4"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Overhead view of a plated course"></div>
+  </div>
+
+  <section class="chef-home">
+    <div class="chef-home-text reveal-left">
+      <p class="eyebrow">The chef</p>
+      <h2 class="sec-title" style="font-size:clamp(34px,4vw,50px)">Maxim<br>Koval</h2>
+      <div class="gold-line"></div>
+      <p class="sec-body" style="margin-bottom:0">Once studied physics. Then understood that food is a more precise science. Internship in Copenhagen. Two years in Tokyo. Returned home with a different perspective.</p>
+      <blockquote>"I don't cook dishes. I capture a moment — this season, this ingredient, this state of mind."</blockquote>
+      <cite>— Chef, Noir</cite>
+      <div style="margin-top:36px"><button class="btn-ghost" onclick="navigate('chef')">About the chef</button></div>
+    </div>
+    <div class="chef-home-img reveal-right">
+      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395190/magnific_img1-img2_vQjKmfFa47_tprbi0.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395190/magnific_img1-img2_vQjKmfFa47_tprbi0.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395190/magnific_img1-img2_vQjKmfFa47_tprbi0.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395190/magnific_img1-img2_vQjKmfFa47_tprbi0.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395190/magnific_img1-img2_vQjKmfFa47_tprbi0.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395190/magnific_img1-img2_vQjKmfFa47_tprbi0.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Portrait of chef Maxim Koval">
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <p class="eyebrow reveal">Limited seats</p>
+    <h2 class="sec-title reveal" style="font-size:clamp(36px,5vw,60px)">Reserve your evening.</h2>
+    <p class="sec-body reveal" style="max-width:400px;margin:0 auto 44px">Open Tue–Sun from 7 PM. Seats are limited. Confirmation within 2 hours.</p>
+    <button class="btn-primary reveal" style="padding:18px 56px" onclick="navigate('reservations')">Reserve a table</button>
+  </section>
+
+  <footer>
+    <div class="f-top">
+      <div class="f-col">
+        <div class="f-logo">NOIR</div>
+        <p class="f-tag">One menu. One evening.<br>No boundaries.</p>
+      </div>
+      <div class="f-col">
+        <p class="f-head">Visit</p>
+        <p class="f-txt">32 Saksahanskoho St<br>Kyiv, 01033</p>
+      </div>
+      <div class="f-col">
+        <p class="f-head">Hours</p>
+        <p class="f-txt">Tue – Fri · 7 PM – 11 PM<br>Sat – Sun · 6 PM – 11 PM</p>
+      </div>
+      <div class="f-col">
+        <p class="f-head">Contact</p>
+        <p class="f-txt"><a href="tel:+380440000000">+380 44 000 0000</a><br><a href="mailto:hello@noir.kyiv">hello@noir.kyiv</a></p>
+      </div>
+      <div class="f-col">
+        <p class="f-head">Follow</p>
+        <p class="f-txt"><!-- TODO: підставити реальні посилання на соцмережі -->
+        <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a><br><a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a></p>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <div class="f-links">
+        <a onclick="navigate('home')">Home</a>
+        <a onclick="navigate('home','concept')">Concept</a>
+        <a onclick="navigate('menu')">Menu</a>
+        <a onclick="navigate('chef')">Chef</a>
+        <a onclick="navigate('reservations')">Reservations</a>
+      </div>
+      <p class="f-copy">© 2026 NOIR · Kyiv</p>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════ MENU PAGE ══════════════ -->
+<div class="page" id="page-menu">
+
+  <div class="mp-hero">
+    <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676485/magnific_side-angle-fine-dining-di_UyKOe0Vwny_qdqc4h.png" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1782676485/magnific_side-angle-fine-dining-di_UyKOe0Vwny_qdqc4h.png 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1782676485/magnific_side-angle-fine-dining-di_UyKOe0Vwny_qdqc4h.png 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1782676485/magnific_side-angle-fine-dining-di_UyKOe0Vwny_qdqc4h.png 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676485/magnific_side-angle-fine-dining-di_UyKOe0Vwny_qdqc4h.png 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1782676485/magnific_side-angle-fine-dining-di_UyKOe0Vwny_qdqc4h.png 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Fine dining dish — NOIR tasting menu">
+    <div class="mp-hero-grad"></div>
+    <div class="mp-hero-content">
+      <p class="eyebrow">Tasting menu</p>
+      <h2 class="sec-title" style="font-size:clamp(48px,7vw,88px)">The menu<br>changes <em>nightly.</em></h2>
+    </div>
+  </div>
+
+  <div class="mp-intro">
+    <div class="reveal-left">
+      <p class="eyebrow">Our approach</p>
+      <h2 class="sec-title" style="font-size:clamp(28px,3vw,40px)">Below — the feelings<br>that stay.</h2>
+    </div>
+    <div class="reveal-right">
+      <p class="sec-body">There is no fixed menu at Noir. Each evening, the chef composes a new sequence of twelve courses built entirely around what the season offers and what the moment demands. No two evenings are the same.</p>
+    </div>
+  </div>
+
+  <section style="background:var(--noir)">
+    <div class="mp-acts">
+      <div class="mp-act reveal">
+        <div class="mp-act-left">
+          <div class="mp-act-num">I</div>
+          <div class="mp-act-label">Act one</div>
+        </div>
+        <div class="mp-act-right">
+          <div class="act-title">Cold Opening</div>
+          <div class="act-body">Lightness, acidity, first contact. Three or four small forms arrive in quick succession — the palate waking up, the evening beginning. No introductions. Just presence.</div>
+          <div class="mp-act-hint">3–4 courses · cold preparations</div>
+        </div>
+      </div>
+      <div class="mp-act reveal">
+        <div class="mp-act-left">
+          <div class="mp-act-num">II</div>
+          <div class="mp-act-label">Act two</div>
+        </div>
+        <div class="mp-act-right">
+          <div class="act-title">Between Two Seasons</div>
+          <div class="act-body">Contrast and tension. This is the most unpredictable part of the evening — where the kitchen plays with temperature, texture, and expectation. Something familiar arriving in an unfamiliar form.</div>
+          <div class="mp-act-hint">2–3 courses · warm and cold</div>
+        </div>
+      </div>
+      <div class="mp-act reveal">
+        <div class="mp-act-left">
+          <div class="mp-act-num">III</div>
+          <div class="mp-act-label">Act three</div>
+        </div>
+        <div class="mp-act-right">
+          <div class="act-title">The Main Thought</div>
+          <div class="act-body">The heart of the evening. Depth, warmth, the chef's signature. This is where a single ingredient — a root, a fish, a cut of meat — is given its full say. Nothing ornamental. Only essence.</div>
+          <div class="mp-act-hint">2–3 courses · main compositions</div>
+        </div>
+      </div>
+      <div class="mp-act reveal">
+        <div class="mp-act-left">
+          <div class="mp-act-num">IV</div>
+          <div class="mp-act-label">Act four</div>
+        </div>
+        <div class="mp-act-right">
+          <div class="act-title">The Ending</div>
+          <div class="act-body">Sweet, quiet, final. Not a sugar rush — a resolution. Two or three moments of sweetness that echo something from earlier in the evening. The conversation closes on its own terms.</div>
+          <div class="mp-act-hint">2–3 courses · desserts &amp; mignardises</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="mp-gallery">
+    <div class="mp-gi reveal-scale"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676481/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_mzalm1.png" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1782676481/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_mzalm1.png 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1782676481/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_mzalm1.png 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1782676481/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_mzalm1.png 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676481/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_mzalm1.png 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1782676481/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_mzalm1.png 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Glass of red wine — wine pairing at NOIR"></div>
+    <div class="mp-gi reveal-scale delay-1"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Overhead view of a plated dessert course"></div>
+    <div class="mp-gi reveal-scale delay-2"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676475/magnific_dark-restaurant-interior-_ONx9ddSynm_xp3v1c.png" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1782676475/magnific_dark-restaurant-interior-_ONx9ddSynm_xp3v1c.png 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1782676475/magnific_dark-restaurant-interior-_ONx9ddSynm_xp3v1c.png 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1782676475/magnific_dark-restaurant-interior-_ONx9ddSynm_xp3v1c.png 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676475/magnific_dark-restaurant-interior-_ONx9ddSynm_xp3v1c.png 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1782676475/magnific_dark-restaurant-interior-_ONx9ddSynm_xp3v1c.png 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Dark dining room interior at NOIR"></div>
+  </div>
+
+  <div class="mp-price reveal">
+    <div class="mp-price-left">
+      <div class="price-big">€85</div>
+      <div class="price-label">Per person · 12 courses</div>
+    </div>
+    <div class="mp-price-right">
+      <div style="text-align:right">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);font-weight:300">Wine pairing</p>
+        <p style="font-size:10px;letter-spacing:0.14em;color:var(--cream-dim);margin:4px 0 16px">Curated by our sommelier · +€50</p>
+      </div>
+      <button class="btn-primary" onclick="navigate('reservations')">Reserve your seat</button>
+      <button class="btn-ghost" onclick="navigate('chef')">Meet the chef</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="f-top">
+      <div class="f-col">
+        <div class="f-logo">NOIR</div>
+        <p class="f-tag">One menu. One evening.<br>No boundaries.</p>
+      </div>
+      <div class="f-col">
+        <p class="f-head">Visit</p>
+        <p class="f-txt">32 Saksahanskoho St<br>Kyiv, 01033</p>
+      </div>
+      <div class="f-col">
+        <p class="f-head">Hours</p>
+        <p class="f-txt">Tue – Fri · 7 PM – 11 PM<br>Sat – Sun · 6 PM – 11 PM</p>
+      </div>
+      <div class="f-col">
+        <p class="f-head">Contact</p>
+        <p class="f-txt"><a href="tel:+380440000000">+380 44 000 0000</a><br><a href="mailto:hello@noir.kyiv">hello@noir.kyiv</a></p>
+      </div>
+      <div class="f-col">
+        <p class="f-head">Follow</p>
+        <p class="f-txt"><!-- TODO: підставити реальні посилання на соцмережі -->
+        <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a><br><a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a></p>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <div class="f-links">
+        <a onclick="navigate('home')">Home</a>
+        <a onclick="navigate('home','concept')">Concept</a>
+        <a onclick="navigate('menu')">Menu</a>
+        <a onclick="navigate('chef')">Chef</a>
+        <a onclick="navigate('reservations')">Reservations</a>
+      </div>
+      <p class="f-copy">© 2026 NOIR · Kyiv</p>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════ CHEF PAGE ══════════════ -->
+<div class="page" id="page-chef">
+
+  <div class="cp-hero">
+    <div class="cp-hero-img">
+      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676509/magnific_portrait-of-a-male-chef-i_43s3Ebf9Aa_q6lrly.png" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1782676509/magnific_portrait-of-a-male-chef-i_43s3Ebf9Aa_q6lrly.png 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1782676509/magnific_portrait-of-a-male-chef-i_43s3Ebf9Aa_q6lrly.png 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1782676509/magnific_portrait-of-a-male-chef-i_43s3Ebf9Aa_q6lrly.png 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676509/magnific_portrait-of-a-male-chef-i_43s3Ebf9Aa_q6lrly.png 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1782676509/magnific_portrait-of-a-male-chef-i_43s3Ebf9Aa_q6lrly.png 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Chef Maxim Koval in the NOIR kitchen">
+    </div>
+    <div class="cp-hero-content">
+      <p class="eyebrow">The chef</p>
+      <h2 class="sec-title" style="font-size:clamp(44px,5vw,72px)">Maxim<br><em>Koval</em></h2>
+      <div class="gold-line"></div>
+      <p class="sec-body">Once studied physics. Then understood that food is a more precise science — where every variable matters, and every result is unrepeatable.</p>
+    </div>
+  </div>
+
+  <section class="cp-timeline">
+    <div class="cp-timeline-hd reveal">
+      <p class="eyebrow">A path without a fixed destination</p>
+      <h2 class="sec-title" style="font-size:clamp(32px,4vw,50px)">The journey</h2>
+    </div>
+    <div class="cp-events">
+      <div class="cp-event reveal">
+        <div class="cp-event-date"><span>Kyiv</span><p>The beginning</p></div>
+        <div class="cp-line-wrap"><div class="cp-dot"></div><div class="cp-event-line"></div></div>
+        <div class="cp-event-text"><h3>Physics, then kitchens</h3><p>A degree started, then abandoned. The first kitchen job taken not for passion but for money — and the discovery that precision meant something entirely different here.</p></div>
+      </div>
+      <div class="cp-event reveal delay-1">
+        <div class="cp-event-date"><span>Copenhagen</span><p>Stage</p></div>
+        <div class="cp-line-wrap"><div class="cp-dot"></div><div class="cp-event-line"></div></div>
+        <div class="cp-event-text"><h3>Learning restraint</h3><p>An internship in one of the north's most precise kitchens. Where he learned that subtraction is a technique — that removing something is as deliberate as adding it.</p></div>
+      </div>
+      <div class="cp-event reveal delay-2">
+        <div class="cp-event-date"><span>Tokyo</span><p>Two years</p></div>
+        <div class="cp-line-wrap"><div class="cp-dot"></div><div class="cp-event-line"></div></div>
+        <div class="cp-event-text"><h3>A different relationship with ingredients</h3><p>Japan changed everything about how he saw a product. Not as raw material to transform, but as something with its own voice — worth listening to before deciding anything.</p></div>
+      </div>
+      <div class="cp-event reveal delay-3">
+        <div class="cp-event-date"><span>Kyiv</span><p>Now</p></div>
+        <div class="cp-line-wrap"><div class="cp-dot"></div></div>
+        <div class="cp-event-text"><h3>Noir</h3><p>Returned with no interest in a fixed menu or a national cuisine. Built Noir around a single question: what can this ingredient say, today, in this season?</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cp-philosophy">
+    <div class="cp-phil-img reveal-left">
+      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Plated course from the NOIR tasting menu">
+    </div>
+    <div class="cp-phil-text reveal-right">
+      <p class="eyebrow">Philosophy</p>
+      <h2 class="sec-title" style="font-size:clamp(28px,3vw,40px)">Building menus<br>around questions.</h2>
+      <div class="gold-line"></div>
+      <p class="sec-body" style="margin-bottom:28px">I don't build menus around a country or an era. I build them around a question: what can this ingredient say today? The answer changes with the season, the market, the mood — and that's the point.</p>
+      <p class="sec-body">No two evenings at Noir are the same. That's not a limitation. That's the entire idea.</p>
+    </div>
+  </section>
+
+  <section class="cp-quote-band">
+    <p class="eyebrow reveal" style="margin-bottom:36px">In his own words</p>
+    <p class="cp-big-quote reveal">"I don't cook dishes. I capture a moment — this season, this ingredient, this state of mind."</p>
+    <cite class="reveal">— Maxim Koval, Chef and founder, Noir</cite>
+    <div style="margin-top:52px" class="reveal">
+      <button class="btn-primary" style="padding:16px 48px" onclick="navigate('reservations')">Experience Noir</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="f-top">
+      <div class="f-col">
+        <div class="f-logo">NOIR</div>
+        <p class="f-tag">One menu. One evening.<br>No boundaries.</p>
+      </div>
+      <div class="f-col">
+        <p class="f-head">Visit</p>
+        <p class="f-txt">32 Saksahanskoho St<br>Kyiv, 01033</p>
+      </div>
+      <div class="f-col">
+        <p class="f-head">Hours</p>
+        <p class="f-txt">Tue – Fri · 7 PM – 11 PM<br>Sat – Sun · 6 PM – 11 PM</p>
+      </div>
+      <div class="f-col">
+        <p class="f-head">Contact</p>
+        <p class="f-txt"><a href="tel:+380440000000">+380 44 000 0000</a><br><a href="mailto:hello@noir.kyiv">hello@noir.kyiv</a></p>
+      </div>
+      <div class="f-col">
+        <p class="f-head">Follow</p>
+        <p class="f-txt"><!-- TODO: підставити реальні посилання на соцмережі -->
+        <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a><br><a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a></p>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <div class="f-links">
+        <a onclick="navigate('home')">Home</a>
+        <a onclick="navigate('home','concept')">Concept</a>
+        <a onclick="navigate('menu')">Menu</a>
+        <a onclick="navigate('chef')">Chef</a>
+        <a onclick="navigate('reservations')">Reservations</a>
+      </div>
+      <p class="f-copy">© 2026 NOIR · Kyiv</p>
+    </div>
+  </footer>
+</div>
+
+<script>
+function navigate(page, section){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  window.scrollTo({top:0,behavior:'instant'});
+  setTimeout(initReveal,100);
+  if (page === 'reservations') {
+    setTimeout(initTables, 50);
+    initFormValidation();
+  }
+  if (section) {
+    setTimeout(()=>{
+      const el=document.getElementById(section);
+      if(!el) return;
+      const navH=document.getElementById('mainNav').offsetHeight||0;
+      const top=el.getBoundingClientRect().top+window.scrollY-navH;
+      window.scrollTo({top:top,behavior:'smooth'});
+    },150);
+  }
+}
+
+function toggleMenu(){
+  const b=document.getElementById('burger');
+  const m=document.getElementById('mobileMenu');
+  b.classList.toggle('open');
+  m.classList.toggle('open');
+  b.setAttribute('aria-expanded', m.classList.contains('open') ? 'true' : 'false');
+}
+
+window.addEventListener('scroll',()=>{
+  document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>60);
+});
+
+function initReveal(){
+  const els=document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale');
+  if(!window.revealObserver){
+    window.revealObserver=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+    },{threshold:0.12});
+  }
+  els.forEach(el=>{
+    el.classList.remove('visible');
+    window.revealObserver.unobserve(el);
+    window.revealObserver.observe(el);
+  });
+  setTimeout(()=>{
+    els.forEach(el=>{
+      const r=el.getBoundingClientRect();
+      if(r.top<window.innerHeight&&r.bottom>0)el.classList.add('visible');
+    });
+  },50);
+}
+
+initReveal();
+
+// ── RESERVATIONS ──
+var selectedTable = null;
+var tablesInited = false;
+
+var C = {
+  tableFill:'#1E1E1C', tableStroke:'#333330',
+  chairFill:'#242422', chairStroke:'#333330',
+  selFill:'rgba(196,151,90,0.18)', selStroke:'#C4975A',
+  occFill:'#161614', occStroke:'#242422',
+  numAvail:'#8C8575', numSel:'#C4975A', numOcc:'#333330', subOcc:'#2a2a28'
+};
+
+function getTableBody(g) {
+  var shapes = Array.from(g.querySelectorAll('circle, rect'));
+  return shapes.reduce(function(a,b){
+    var aA = (a.tagName==='circle') ? Math.PI*Math.pow(parseFloat(a.getAttribute('r')||0),2) : parseFloat(a.getAttribute('width')||0)*parseFloat(a.getAttribute('height')||0);
+    var bA = (b.tagName==='circle') ? Math.PI*Math.pow(parseFloat(b.getAttribute('r')||0),2) : parseFloat(b.getAttribute('width')||0)*parseFloat(b.getAttribute('height')||0);
+    return bA > aA ? b : a;
+  });
+}
+
+function getChairs(g, body) {
+  return Array.from(g.querySelectorAll('circle, rect')).filter(function(s){ return s !== body; });
+}
+
+function styleTable(g, state) {
+  var body   = getTableBody(g);
+  var chairs = getChairs(g, body);
+  var texts  = g.querySelectorAll('text');
+  var numEl  = texts[0];
+  var subEl  = texts[1];
+
+  if (state === 'available') {
+    body.setAttribute('fill', C.tableFill);
+    body.setAttribute('stroke', C.tableStroke);
+    body.setAttribute('stroke-width', '1');
+    chairs.forEach(function(c){ c.setAttribute('fill',C.chairFill); c.setAttribute('stroke',C.chairStroke); c.setAttribute('stroke-width','0.5'); });
+    if(numEl) numEl.setAttribute('fill', C.numAvail);
+    if(subEl) subEl.setAttribute('fill', '#333330');
+    g.setAttribute('style','cursor:pointer;transition:filter 0.2s');
+    g.removeAttribute('filter');
+
+  } else if (state === 'hover') {
+    body.setAttribute('fill','rgba(196,151,90,0.1)');
+    body.setAttribute('stroke','#C4975A');
+    body.setAttribute('stroke-width','1.5');
+    chairs.forEach(function(c){ c.setAttribute('fill','rgba(196,151,90,0.12)'); c.setAttribute('stroke','rgba(196,151,90,0.5)'); });
+    if(numEl) numEl.setAttribute('fill','#C4975A');
+    if(subEl) subEl.setAttribute('fill','rgba(196,151,90,0.7)');
+    g.setAttribute('style','cursor:pointer;filter:drop-shadow(0 0 8px rgba(196,151,90,0.3))');
+
+  } else if (state === 'selected') {
+    body.setAttribute('fill', C.selFill);
+    body.setAttribute('stroke', C.selStroke);
+    body.setAttribute('stroke-width','2');
+    chairs.forEach(function(c){ c.setAttribute('fill','rgba(196,151,90,0.2)'); c.setAttribute('stroke','#C4975A'); c.setAttribute('stroke-width','0.5'); });
+    if(numEl) numEl.setAttribute('fill', C.numSel);
+    if(subEl) subEl.setAttribute('fill', C.numSel);
+    g.setAttribute('style','cursor:pointer;filter:drop-shadow(0 0 12px rgba(196,151,90,0.4))');
+
+  } else if (state === 'occupied') {
+    body.setAttribute('fill', C.occFill);
+    body.setAttribute('stroke', C.occStroke);
+    body.setAttribute('stroke-width','0.5');
+    chairs.forEach(function(c){ c.setAttribute('fill','#1A1A18'); c.setAttribute('stroke',C.occStroke); c.setAttribute('stroke-width','0.5'); });
+    if(numEl) numEl.setAttribute('fill', C.numOcc);
+    if(subEl) subEl.setAttribute('fill', C.subOcc);
+    g.setAttribute('style','cursor:not-allowed;opacity:0.6');
+  }
+}
+
+function initTables() {
+  if (tablesInited) return;
+  var nodes = document.querySelectorAll('.t-node');
+  if (!nodes.length) return;
+  tablesInited = true;
+
+  nodes.forEach(function(g) {
+    var status = g.dataset.status;
+    styleTable(g, status);
+    if (status === 'occupied') return;
+
+    g.addEventListener('mouseenter', function() {
+      if (g.dataset.status !== 'selected') styleTable(g, 'hover');
+    });
+    g.addEventListener('mouseleave', function() {
+      if (g.dataset.status !== 'selected') styleTable(g, 'available');
+    });
+    g.addEventListener('click', function() {
+      // deselect previous
+      document.querySelectorAll('.t-node').forEach(function(t) {
+        if (t.dataset.status === 'selected') {
+          t.dataset.status = 'available';
+          styleTable(t, 'available');
+        }
+      });
+      // select this
+      g.dataset.status = 'selected';
+      styleTable(g, 'selected');
+      selectedTable = { id: g.dataset.id, seats: g.dataset.seats, zone: g.dataset.zone };
+      updateTableInfo();
+      if(document.getElementById('fieldGuests').value) validateField('fieldGuests');
+      // scroll to form on mobile
+      if (window.innerWidth < 900) {
+        setTimeout(function(){
+          var panel = document.querySelector('.rp-form-panel');
+          if(panel) panel.scrollIntoView({behavior:'smooth', block:'start'});
+        }, 100);
+      }
+    });
+  });
+}
+
+function updateTableInfo(){
+  if(!selectedTable) return;
+  var info = document.getElementById('tableInfo');
+  var icon = document.getElementById('tsiIcon');
+  var text = document.getElementById('tsiText');
+  var btn  = document.getElementById('submitBtn');
+  info.classList.add('has-table');
+  icon.textContent = selectedTable.id;
+  text.innerHTML = '<strong>' + t('Table') + ' ' + selectedTable.id + ' — ' + t(selectedTable.zone) + '</strong>' + t('Up to {n} guests', {n: selectedTable.seats});
+  btn.disabled = false;
+  btn.textContent = t('Request reservation');
+}
+
+/* ─── Form validation ─── */
+var REQUIRED_FIELDS = ['fieldName','fieldLastname','fieldPhone','fieldEmail','fieldDate','fieldGuests'];
+var touched = {};
+
+function todayISO(){
+  var d = new Date(); d.setHours(0,0,0,0);
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+
+function validateField(id){
+  var el = document.getElementById(id);
+  var v = (el.value || '').trim();
+  var err = '';
+  switch(id){
+    case 'fieldName':
+    case 'fieldLastname':
+      if(!v) err = t('Required');
+      else if(v.length < 2) err = t('At least 2 characters');
+      else if(!/^[\p{L}][\p{L}\s'’-]*$/u.test(v)) err = t('Letters only');
+      break;
+    case 'fieldPhone':
+      if(!v) err = t('Required');
+      else {
+        var digits = v.replace(/[\s().-]/g,'');
+        if(!/^\+?\d{10,15}$/.test(digits)) err = t('Enter a valid phone, e.g. +380 44 000 0000');
+      }
+      break;
+    case 'fieldEmail':
+      if(!v) err = t('Required');
+      else if(!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v)) err = t('Enter a valid email');
+      break;
+    case 'fieldDate':
+      if(!v) err = t('Choose a date');
+      else if(v < todayISO()) err = t("Date can't be in the past");
+      else if(new Date(v+'T12:00:00').getDay() === 1) err = t('We are closed on Mondays');
+      el.classList.toggle('has-value', !!v);
+      break;
+    case 'fieldGuests':
+      if(!v) err = t('Select number of guests');
+      else if(selectedTable && +v > +selectedTable.seats) err = t('Table {id} seats up to {n}', {id: selectedTable.id, n: selectedTable.seats});
+      break;
+  }
+  setFieldState(el, err);
+  return !err;
+}
+
+function setFieldState(el, err){
+  var group = el.closest('.form-group');
+  var msg = group ? group.querySelector('.form-error') : null;
+  el.classList.toggle('is-invalid', !!err);
+  el.classList.toggle('is-valid', !err && !!(el.value||'').trim());
+  if(group) group.classList.toggle('has-error', !!err);
+  if(msg) msg.textContent = err;
+}
+
+function clearFieldState(el){
+  el.classList.remove('is-invalid','is-valid','has-value');
+  var group = el.closest('.form-group');
+  if(group){ group.classList.remove('has-error'); var m = group.querySelector('.form-error'); if(m) m.textContent=''; }
+}
+
+function validateForm(){
+  var ok = true, first = null;
+  REQUIRED_FIELDS.forEach(function(id){
+    touched[id] = true;
+    if(!validateField(id)){ ok = false; if(!first) first = document.getElementById(id); }
+  });
+  if(first){ first.focus(); first.scrollIntoView({behavior:'smooth', block:'center'}); }
+  return ok;
+}
+
+function initFormValidation(){
+  var dateEl = document.getElementById('fieldDate');
+  if(!dateEl || dateEl.dataset.ready) return;
+  dateEl.min = todayISO();
+  dateEl.dataset.ready = '1';
+  REQUIRED_FIELDS.forEach(function(id){
+    var el = document.getElementById(id);
+    el.addEventListener('blur', function(){ touched[id] = true; validateField(id); });
+    el.addEventListener('input', function(){
+      if(touched[id] || el.classList.contains('is-invalid')) validateField(id);
+      else if(id==='fieldDate') el.classList.toggle('has-value', !!el.value);
+    });
+    el.addEventListener('change', function(){ touched[id] = true; validateField(id); });
+  });
+  // Open the native picker from anywhere on the date field (Chrome/Edge/Safari 16+)
+  dateEl.addEventListener('click', function(){
+    if(typeof dateEl.showPicker === 'function'){ try{ dateEl.showPicker(); }catch(e){} }
+  });
+}
+document.addEventListener('DOMContentLoaded', initFormValidation);
+
+/* ─── Reservation backend ───
+   Вставити endpoint у RESERVATION_ENDPOINT — і форма почне реально надсилати заявки.
+   • Formspree:  'https://formspree.io/f/XXXXXXXX'  (створити форму на formspree.io, скопіювати ID)
+   • Web3Forms:  'https://api.web3forms.com/submit' + ключ у RESERVATION_ACCESS_KEY (безкоштовно, без реєстрації: web3forms.com)
+   Поки endpoint порожній — прототип-режим: показуємо екран успіху без відправки. */
+var RESERVATION_ENDPOINT = '';
+var RESERVATION_ACCESS_KEY = '';
+
+function collectReservation(){
+  var g = function(id){ return (document.getElementById(id).value || '').trim(); };
+  return {
+    subject: 'NOIR — table reservation request',
+    table: selectedTable ? ('Table ' + selectedTable.id + ' (' + selectedTable.zone + ', up to ' + selectedTable.seats + ')') : '',
+    first_name: g('fieldName'), last_name: g('fieldLastname'),
+    phone: g('fieldPhone'), email: g('fieldEmail'),
+    date: g('fieldDate'), guests: g('fieldGuests'), comment: g('fieldComment'),
+    language: LANG
+  };
+}
+
+function submitReservation(){
+  if(!validateForm()) return;
+  var btn = document.getElementById('submitBtn');
+  if(!RESERVATION_ENDPOINT){ showReservationSuccess(); return; }   // prototype mode
+  var payload = collectReservation();
+  if(RESERVATION_ACCESS_KEY) payload.access_key = RESERVATION_ACCESS_KEY;
+  btn.disabled = true; btn.textContent = LANG === 'uk' ? 'Надсилаємо…' : 'Sending…';
+  fetch(RESERVATION_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).then(function(r){
+    if(!r.ok) throw new Error('HTTP ' + r.status);
+    showReservationSuccess();
+  }).catch(function(){
+    btn.disabled = false; btn.textContent = t('Request reservation');
+    var note = document.querySelector('#rpForm .form-note');
+    if(note){ note.style.color = '#C86A52'; note.textContent = LANG === 'uk'
+      ? 'Не вдалося надіслати запит. Спробуйте ще раз або зателефонуйте нам.'
+      : 'Could not send the request. Please try again or call us.'; }
+  });
+}
+
+function showReservationSuccess(){
+  document.getElementById('rpForm').style.display = 'none';
+  document.getElementById('tableInfo').style.display = 'none';
+  document.getElementById('rpSuccess').classList.add('show');
+}
+
+function resetReservation(){
+  var note = document.querySelector('#rpForm .form-note'); if(note) note.style.color = '';
+  var sb = document.getElementById('submitBtn'); if(sb) sb.disabled = false;
+  selectedTable = null;
+  document.querySelectorAll('.table-item.selected').forEach(function(t){
+    t.classList.remove('selected');
+    t.classList.add('available');
+  });
+  var info = document.getElementById('tableInfo');
+  info.classList.remove('has-table');
+  document.getElementById('tsiIcon').textContent = '—';
+  document.getElementById('tsiText').innerHTML = t('<strong>No table selected</strong> Choose a table on the floor plan');
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = t('Select a table first');
+  ['fieldName','fieldLastname','fieldPhone','fieldEmail','fieldDate','fieldGuests','fieldComment'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el){ el.value = ''; clearFieldState(el); }
+  });
+  touched = {};
+  if(I18N_NODES) setLang(LANG);
+  document.getElementById('rpForm').style.display = '';
+  document.getElementById('tableInfo').style.display = '';
+  document.getElementById('rpSuccess').classList.remove('show');
+}
+
+/* ─── Hero video: autoplay + poster until the first frame is actually rendered ─── */
+(function(){
+  var v = document.getElementById('heroVideo');
+  var poster = document.getElementById('heroPoster');
+  if(!v) return;
+  // Lighter encode for phones (<768px), full 1920 for desktop
+  var isMobile = window.matchMedia ? window.matchMedia('(max-width: 768px)').matches : (window.innerWidth <= 768);
+  v.src = isMobile ? v.dataset.srcMobile : v.dataset.srcDesktop;
+  v.muted = true; v.defaultMuted = true; v.autoplay = true; v.loop = true; v.playsInline = true;
+  v.setAttribute('muted',''); v.setAttribute('playsinline','');
+
+  var shown = false;
+  function hidePoster(){ if(shown) return; shown = true; if(poster) poster.classList.add('is-hidden'); }
+  v.addEventListener('playing', hidePoster);
+  v.addEventListener('error', function(){ v.style.display = 'none'; });
+
+  var attempts = 0;
+  function tryPlay(){
+    if(!v.paused || attempts > 20) return;
+    attempts++;
+    var p = v.play();
+    if(p && p.catch) p.catch(function(){ /* blocked for now – retry on next event */ });
+  }
+  // Ask repeatedly: right away, once media is ready, when the tab is visible, when in viewport
+  tryPlay();
+  ['loadedmetadata','loadeddata','canplay','canplaythrough'].forEach(function(ev){ v.addEventListener(ev, tryPlay); });
+  document.addEventListener('visibilitychange', function(){ if(!document.hidden) tryPlay(); });
+  window.addEventListener('pageshow', tryPlay);
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){ if(entries[0].isIntersecting) tryPlay(); }, {threshold:0.1}).observe(v);
+  }
+  // Last resort (iOS Low Power Mode, strict autoplay policies): first user interaction of any kind
+  ['touchstart','touchend','pointerdown','click','keydown','scroll','wheel','mousemove'].forEach(function(ev){
+    document.addEventListener(ev, function h(){ if(v.paused){ attempts = 0; tryPlay(); } if(!v.paused) document.removeEventListener(ev, h); }, {passive:true});
+  });
+})();
+
+/* ─── i18n ─── */
+var LANG = 'en';
+var I18N = {
+  "Home":"Головна","Menu":"Меню","Chef":"Шеф","Reservations":"Бронювання","Contact":"Контакти","Concept":"Концепція","Reserve":"Забронювати",
+  "Author's cuisine · Kyiv":"Авторська кухня · Київ",
+  "One menu. One evening.<br>No boundaries.":"Одне меню. Один вечір.<br>Без меж.",
+  "Reserve a table":"Забронювати столик","Explore menu":"Переглянути меню","Scroll":"Гортайте",
+  "Courses per evening":"страв за вечір","Seating per night":"посадка за вечір","Seasonal ingredients":"сезонних інгредієнтів",
+  "Our philosophy":"Наша філософія",
+  "We don't serve food.<br>We tell <em>stories.</em>":"Ми не подаємо їжу.<br>Ми розповідаємо <em>історії.</em>",
+  "Noir was born from a single conviction: the most powerful experience is the one you cannot predict. There is no fixed menu — only the chef, the season, and the moment of inspiration.":"Noir народився з одного переконання: найсильніше враження — те, яке неможливо передбачити. Тут немає сталого меню — лише шеф, сезон і мить натхнення.",
+  "Meet the chef":"Познайомитися з шефом","Tasting experience":"Дегустаційний досвід",
+  "The menu changes<br><em>every evening</em>":"Меню змінюється<br><em>щовечора</em>",
+  "Cold Opening":"Холодний початок","Lightness, acidity, first contact. The conversation begins.":"Легкість, кислинка, перший дотик. Розмова починається.",
+  "Between Two Seasons":"Між двома сезонами","Contrast and tension. The moment before something changes.":"Контраст і напруга. Мить перед тим, як щось зміниться.",
+  "The Main Thought":"Головна думка","The heart of the evening. Depth, warmth, the chef's signature.":"Серце вечора. Глибина, тепло, почерк шефа.",
+  "The Ending":"Завершення","Sweet, quiet, final. Something to carry home.":"Солодко, тихо, остаточно. Те, що заберете з собою.",
+  "Tasting menu — €85 / person":"Дегустаційне меню — €85 / особа","Wine pairing available · +€50":"Винний супровід · +€50",
+  "Reserve your seat":"Забронювати місце","The chef":"Шеф","Maxim<br>Koval":"Максим<br>Коваль",
+  "Once studied physics. Then understood that food is a more precise science. Internship in Copenhagen. Two years in Tokyo. Returned home with a different perspective.":"Колись вивчав фізику. Потім зрозумів, що їжа — точніша наука. Стажування в Копенгагені. Два роки в Токіо. Повернувся додому з іншим поглядом.",
+  "\"I don't cook dishes. I capture a moment — this season, this ingredient, this state of mind.\"":"«Я не готую страви. Я ловлю мить — цей сезон, цей інгредієнт, цей стан.»",
+  "— Chef, Noir":"— Шеф, Noir","About the chef":"Про шефа","Limited seats":"Обмежена кількість місць",
+  "Reserve your evening.":"Забронюйте свій вечір.",
+  "Open Tue–Sun from 7 PM. Seats are limited. Confirmation within 2 hours.":"Працюємо вт–нд з 19:00. Кількість місць обмежена. Підтвердження протягом 2 годин.",
+  "Visit":"Адреса","32 Saksahanskoho St<br>Kyiv, 01033":"вул. Саксаганського, 32<br>Київ, 01033",
+  "Hours":"Години роботи","Tue – Fri · 7 PM – 11 PM<br>Sat – Sun · 6 PM – 11 PM":"Вт – Пт · 19:00 – 23:00<br>Сб – Нд · 18:00 – 23:00",
+  "Follow":"Соцмережі","© 2026 NOIR · Kyiv":"© 2026 NOIR · Київ",
+  "Tasting menu":"Дегустаційне меню","The menu<br>changes <em>nightly.</em>":"Меню<br>змінюється <em>щовечора.</em>",
+  "Our approach":"Наш підхід","Below — the feelings<br>that stay.":"Нижче — відчуття,<br>які залишаються.",
+  "There is no fixed menu at Noir. Each evening, the chef composes a new sequence of twelve courses built entirely around what the season offers and what the moment demands. No two evenings are the same.":"У Noir немає сталого меню. Щовечора шеф складає нову послідовність із дванадцяти страв — навколо того, що дає сезон і чого вимагає момент. Двох однакових вечорів не буває.",
+  "Act one":"Дія перша","Act two":"Дія друга","Act three":"Дія третя","Act four":"Дія четверта",
+  "Lightness, acidity, first contact. Three or four small forms arrive in quick succession — the palate waking up, the evening beginning. No introductions. Just presence.":"Легкість, кислинка, перший дотик. Три-чотири невеликі форми з'являються одна за одною — смак прокидається, вечір починається. Без передмов. Лише присутність.",
+  "3–4 courses · cold preparations":"3–4 страви · холодні",
+  "Contrast and tension. This is the most unpredictable part of the evening — where the kitchen plays with temperature, texture, and expectation. Something familiar arriving in an unfamiliar form.":"Контраст і напруга. Найнепередбачуваніша частина вечора — кухня грає з температурою, текстурою та очікуванням. Щось знайоме у незнайомій формі.",
+  "2–3 courses · warm and cold":"2–3 страви · теплі й холодні",
+  "The heart of the evening. Depth, warmth, the chef's signature. This is where a single ingredient — a root, a fish, a cut of meat — is given its full say. Nothing ornamental. Only essence.":"Серце вечора. Глибина, тепло, почерк шефа. Тут один інгредієнт — корінь, риба, відруб м'яса — отримує право голосу сповна. Нічого декоративного. Лише суть.",
+  "2–3 courses · main compositions":"2–3 страви · основні композиції",
+  "Sweet, quiet, final. Not a sugar rush — a resolution. Two or three moments of sweetness that echo something from earlier in the evening. The conversation closes on its own terms.":"Солодко, тихо, остаточно. Не цукровий сплеск — а розв'язка. Два-три солодкі моменти, що відлунюють чимось із початку вечора. Розмова завершується на своїх умовах.",
+  "2–3 courses · desserts &amp; mignardises":"2–3 страви · десерти та міньярдізи",
+  "Per person · 12 courses":"За особу · 12 страв","Wine pairing":"Винний супровід","Curated by our sommelier · +€50":"Добірка нашого сомельє · +€50",
+  "Maxim<br><em>Koval</em>":"Максим<br><em>Коваль</em>",
+  "Once studied physics. Then understood that food is a more precise science — where every variable matters, and every result is unrepeatable.":"Колись вивчав фізику. Потім зрозумів, що їжа — точніша наука: тут важлива кожна змінна, а кожен результат неповторний.",
+  "A path without a fixed destination":"Шлях без визначеного пункту призначення","The journey":"Шлях",
+  "Kyiv":"Київ","The beginning":"Початок","Physics, then kitchens":"Фізика, потім кухні",
+  "A degree started, then abandoned. The first kitchen job taken not for passion but for money — and the discovery that precision meant something entirely different here.":"Розпочатий і покинутий диплом. Перша робота на кухні — не з пристрасті, а заради грошей — і відкриття, що точність тут означає щось зовсім інше.",
+  "Copenhagen":"Копенгаген","Stage":"Стажування","Learning restraint":"Навчитися стриманості",
+  "An internship in one of the north's most precise kitchens. Where he learned that subtraction is a technique — that removing something is as deliberate as adding it.":"Стажування в одній із найточніших кухонь Півночі. Там він зрозумів, що віднімання — це техніка: прибрати щось так само свідомо, як і додати.",
+  "Tokyo":"Токіо","Two years":"Два роки","A different relationship with ingredients":"Інші стосунки з інгредієнтами",
+  "Japan changed everything about how he saw a product. Not as raw material to transform, but as something with its own voice — worth listening to before deciding anything.":"Японія змінила все в тому, як він бачив продукт. Не як сировину для перетворення, а як щось із власним голосом — який варто почути, перш ніж щось вирішувати.",
+  "Now":"Сьогодні",
+  "Returned with no interest in a fixed menu or a national cuisine. Built Noir around a single question: what can this ingredient say, today, in this season?":"Повернувся без інтересу до сталого меню чи національної кухні. Побудував Noir навколо одного питання: що цей інгредієнт може сказати сьогодні, у цей сезон?",
+  "Philosophy":"Філософія","Building menus<br>around questions.":"Меню, побудоване<br>навколо питань.",
+  "I don't build menus around a country or an era. I build them around a question: what can this ingredient say today? The answer changes with the season, the market, the mood — and that's the point.":"Я не будую меню навколо країни чи епохи. Я будую його навколо питання: що цей інгредієнт може сказати сьогодні? Відповідь змінюється разом із сезоном, ринком, настроєм — і в цьому суть.",
+  "No two evenings at Noir are the same. That's not a limitation. That's the entire idea.":"Двох однакових вечорів у Noir не буває. Це не обмеження. Це і є вся ідея.",
+  "In his own words":"Його словами","— Maxim Koval, Chef and founder, Noir":"— Максим Коваль, шеф і засновник Noir","Experience Noir":"Відчути Noir",
+  "Table reservations":"Бронювання столиків",
+  "Select a table on the floor plan, fill in your details, and we'll confirm within 2 hours.":"Оберіть столик на плані залу, заповніть дані — і ми підтвердимо бронювання протягом 2 годин.",
+  "Select a table — floor plan":"Оберіть столик — план залу","Available":"Доступний","Selected":"Обрано","Reserved":"Зайнято",
+  "Booking details":"Деталі бронювання","Your table":"Ваш столик",
+  "<strong>No table selected</strong> Choose a table on the floor plan":"<strong>Столик не обрано</strong> Оберіть столик на плані залу",
+  "First name<span class=\"req\">*</span>":"Ім'я<span class=\"req\">*</span>","Last name<span class=\"req\">*</span>":"Прізвище<span class=\"req\">*</span>",
+  "Phone<span class=\"req\">*</span>":"Телефон<span class=\"req\">*</span>","Email<span class=\"req\">*</span>":"Email<span class=\"req\">*</span>",
+  "Date<span class=\"req\">*</span>":"Дата<span class=\"req\">*</span>","Guests<span class=\"req\">*</span>":"Гостей<span class=\"req\">*</span>",
+  "Comment (optional)":"Коментар (необов'язково)",
+  "<span class=\"req\" style=\"color:var(--gold)\">*</span> Required fields. Confirmation within 2 hours. For groups of 6+ please contact us directly.":"<span class=\"req\" style=\"color:var(--gold)\">*</span> Обов'язкові поля. Підтвердження протягом 2 годин. Для груп від 6 осіб, будь ласка, зв'яжіться з нами напряму.",
+  "Select a table first":"Спочатку оберіть столик","Request sent.":"Запит надіслано.",
+  "We'll confirm your reservation within 2 hours by phone or email.":"Ми підтвердимо бронювання протягом 2 годин телефоном або email.",
+  "Make another reservation":"Забронювати ще","Opening hours":"Години роботи","Tue – Fri<br>7 PM – 11 PM":"Вт – Пт<br>19:00 – 23:00",
+  "Weekend":"Вихідні","Sat – Sun<br>6 PM – 11 PM":"Сб – Нд<br>18:00 – 23:00",
+  "WINDOW":"ВІКНО","CENTRE":"ЦЕНТР","BAR":"БАР","ENTRANCE":"ВХІД",
+  "— select —":"— оберіть —",
+  /* dynamic / JS strings */
+  "Table":"Столик","Window":"Біля вікна","Centre":"Центр","Up to {n} guests":"До {n} гостей","Request reservation":"Надіслати запит",
+  "Required":"Обов'язкове поле","At least 2 characters":"Щонайменше 2 символи","Letters only":"Лише літери",
+  "Enter a valid phone, e.g. +380 44 000 0000":"Введіть коректний номер, напр. +380 44 000 0000","Enter a valid email":"Введіть коректний email",
+  "Choose a date":"Оберіть дату","Date can't be in the past":"Дата не може бути в минулому","We are closed on Mondays":"У понеділок ми не працюємо",
+  "Select number of guests":"Оберіть кількість гостей","Table {id} seats up to {n}":"Столик {id} — до {n} гостей",
+  /* placeholders */
+  "Maxim":"Максим","Koval":"Коваль","Allergies, special occasion...":"Алергії, особлива нагода..."
+};
+function t(key, vars){
+  var s = (LANG === 'uk' && I18N[key] !== undefined) ? I18N[key] : key;
+  if(vars) Object.keys(vars).forEach(function(k){ s = s.replace('{'+k+'}', vars[k]); });
+  return s;
+}
+var I18N_NODES = null;
+function collectI18nNodes(){
+  var INLINE = {BR:1,EM:1,STRONG:1,SPAN:1,I:1,B:1,A:1};
+  var nodes = [];
+  document.querySelectorAll('body *').forEach(function(el){
+    if(el.closest('script,style,select,.lang,.mm-lang')) return;
+    var isSvgText = el.tagName.toLowerCase() === 'text';
+    if(el.closest('svg') && !isSvgText) return;
+    var own = '', ok = true;
+    el.childNodes.forEach(function(c){
+      if(c.nodeType === 3) own += c.nodeValue;
+      else if(c.nodeType === 1 && !INLINE[c.tagName] && c.textContent.trim() !== '') ok = false;
+    });
+    if(!ok || !own.trim()) return;
+    var html = el.innerHTML.replace(/\s+/g,' ').trim();
+    if(I18N[html] !== undefined){ el.dataset.i18nEn = html; nodes.push(el); return; }
+    // fallback: translate bare text nodes (e.g. legend items with an empty dot element before the text)
+    el.childNodes.forEach(function(c){
+      if(c.nodeType === 3){
+        var tx = c.nodeValue.trim();
+        if(tx && I18N[tx] !== undefined) nodes.push({ node: c, en: c.nodeValue });
+      }
+    });
+  });
+  return nodes;
+}
+function setLang(lang){
+  LANG = lang;
+  document.documentElement.lang = lang;
+  if(!I18N_NODES) I18N_NODES = collectI18nNodes();
+  I18N_NODES.forEach(function(el){
+    if(el.node){ el.node.nodeValue = (lang === 'uk') ? el.en.replace(el.en.trim(), I18N[el.en.trim()]) : el.en; return; }
+    var en = el.dataset.i18nEn;
+    el.innerHTML = (lang === 'uk') ? I18N[en] : en;
+  });
+  document.querySelectorAll('[placeholder]').forEach(function(el){
+    if(!el.dataset.phEn) el.dataset.phEn = el.getAttribute('placeholder');
+    el.setAttribute('placeholder', t(el.dataset.phEn));
+  });
+  var opt = document.querySelector('#fieldGuests option[value=""]');
+  if(opt) opt.textContent = t('— select —');
+  document.querySelectorAll('.lang span[data-lang], .mm-lang span[data-lang]').forEach(function(sp){
+    sp.classList.toggle('on', sp.dataset.lang === lang);
+  });
+  // refresh dynamic texts
+  var btn = document.getElementById('submitBtn');
+  if(btn) btn.textContent = selectedTable ? t('Request reservation') : t('Select a table first');
+  if(selectedTable) updateTableInfo();
+  REQUIRED_FIELDS.forEach(function(id){ var el = document.getElementById(id); if(el && el.classList.contains('is-invalid')) validateField(id); });
+  try{ localStorage.setItem('noir-lang', lang); }catch(e){}
+}
+document.addEventListener('DOMContentLoaded', function(){
+  var saved = null; try{ saved = localStorage.getItem('noir-lang'); }catch(e){}
+  if(saved === 'uk') setLang('uk');
+});
+
+</script>
+
+<!-- ══════════════ RESERVATIONS PAGE ══════════════ -->
+<div class="page" id="page-reservations">
+
+  <div class="rp-hero">
+    <p class="eyebrow reveal">Table reservations</p>
+    <h2 class="sec-title reveal">Reserve your evening.</h2>
+    <p class="sec-body reveal">Select a table on the floor plan, fill in your details, and we'll confirm within 2 hours.</p>
+  </div>
+
+  <div class="rp-main">
+
+    <!-- FLOOR PLAN -->
+    <div class="rp-plan">
+      <div class="rp-plan-title">Select a table — floor plan</div>
+
+      <!-- SVG Floor Plan -->
+      <div style="width:100%;flex:1">
+      <svg id="floorPlan" viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;min-height:480px;display:block;cursor:default">
+        <defs>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- Room background -->
+        <rect x="0" y="0" width="680" height="520" fill="#1E1E1C" rx="3"/>
+
+        <!-- Window strips -->
+        <rect x="0" y="0" width="680" height="5" fill="rgba(196,151,90,0.25)"/>
+        <rect x="0" y="0" width="5" height="520" fill="rgba(196,151,90,0.12)"/>
+        <rect x="675" y="0" width="5" height="520" fill="rgba(196,151,90,0.12)"/>
+
+        <!-- Window tick marks — top -->
+        <line x1="80"  y1="0" x2="80"  y2="14" stroke="rgba(196,151,90,0.3)" stroke-width="0.5"/>
+        <line x1="180" y1="0" x2="180" y2="14" stroke="rgba(196,151,90,0.3)" stroke-width="0.5"/>
+        <line x1="280" y1="0" x2="280" y2="14" stroke="rgba(196,151,90,0.3)" stroke-width="0.5"/>
+        <line x1="400" y1="0" x2="400" y2="14" stroke="rgba(196,151,90,0.3)" stroke-width="0.5"/>
+        <line x1="500" y1="0" x2="500" y2="14" stroke="rgba(196,151,90,0.3)" stroke-width="0.5"/>
+        <line x1="600" y1="0" x2="600" y2="14" stroke="rgba(196,151,90,0.3)" stroke-width="0.5"/>
+
+        <!-- Zone labels -->
+        <text x="50"  y="30" font-family="Inter,sans-serif" font-size="8" fill="#333330" letter-spacing="2" text-anchor="middle">WINDOW</text>
+        <text x="340" y="30" font-family="Inter,sans-serif" font-size="8" fill="#333330" letter-spacing="2" text-anchor="middle">CENTRE</text>
+        <text x="630" y="30" font-family="Inter,sans-serif" font-size="8" fill="#333330" letter-spacing="2" text-anchor="middle">WINDOW</text>
+
+        <!-- Subtle divider lines -->
+        <line x1="130" y1="20" x2="130" y2="500" stroke="#242422" stroke-width="0.5" stroke-dasharray="4,6"/>
+        <line x1="550" y1="20" x2="550" y2="500" stroke="#242422" stroke-width="0.5" stroke-dasharray="4,6"/>
+
+        <!-- Bar -->
+        <rect x="250" y="10" width="180" height="38" rx="2" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+        <text x="340" y="33" font-family="Inter,sans-serif" font-size="9" fill="#8C8575" letter-spacing="3" text-anchor="middle">BAR</text>
+
+        <!-- Entrance -->
+        <rect x="290" y="495" width="100" height="6" rx="1" fill="#242422"/>
+        <line x1="290" y1="495" x2="390" y2="495" stroke="#C4975A" stroke-width="1.5"/>
+        <text x="340" y="513" font-family="Inter,sans-serif" font-size="8" fill="#C4975A" letter-spacing="2" text-anchor="middle">ENTRANCE</text>
+
+        <!-- ═══ TABLES ═══ -->
+        <!-- Each table: group with class, data attrs set via JS -->
+
+        <!-- T1: round 2p, window left, top -->
+        <g class="t-node" data-id="1" data-seats="2" data-zone="Window" data-status="available">
+          <circle cx="62" cy="90" r="28" fill="#1E1E1C" stroke="#333330" stroke-width="1"/>
+          <!-- chairs -->
+          <circle cx="62" cy="57"  r="7" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <circle cx="62" cy="123" r="7" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <text x="62" y="87"  font-family="Cormorant Garamond,serif" font-size="14" fill="#8C8575" text-anchor="middle">1</text>
+          <text x="62" y="102" font-family="Inter,sans-serif" font-size="7"  fill="#333330" letter-spacing="1" text-anchor="middle">2p</text>
+        </g>
+
+        <!-- T2: round 2p, window left, mid -->
+        <g class="t-node" data-id="2" data-seats="2" data-zone="Window" data-status="available">
+          <circle cx="62" cy="240" r="28" fill="#1E1E1C" stroke="#333330" stroke-width="1"/>
+          <circle cx="62" cy="207" r="7" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <circle cx="62" cy="273" r="7" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <text x="62" y="237" font-family="Cormorant Garamond,serif" font-size="14" fill="#8C8575" text-anchor="middle">2</text>
+          <text x="62" y="252" font-family="Inter,sans-serif" font-size="7"  fill="#333330" letter-spacing="1" text-anchor="middle">2p</text>
+        </g>
+
+        <!-- T3: round 4p, window left, bottom -->
+        <g class="t-node" data-id="3" data-seats="4" data-zone="Window" data-status="available">
+          <circle cx="66" cy="400" r="34" fill="#1E1E1C" stroke="#333330" stroke-width="1"/>
+          <circle cx="66" cy="360" r="8" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <circle cx="66" cy="440" r="8" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <circle cx="26" cy="400" r="8" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <circle cx="106" cy="400" r="8" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <text x="66" y="397" font-family="Cormorant Garamond,serif" font-size="14" fill="#8C8575" text-anchor="middle">3</text>
+          <text x="66" y="412" font-family="Inter,sans-serif" font-size="7"  fill="#333330" letter-spacing="1" text-anchor="middle">4p</text>
+        </g>
+
+        <!-- T4: rect 4p, centre-left, top — OCCUPIED -->
+        <g class="t-node" data-id="4" data-seats="4" data-zone="Centre" data-status="occupied">
+          <rect x="186" y="68" width="90" height="56" rx="2" fill="#161614" stroke="#242422" stroke-width="0.5"/>
+          <!-- chairs top/bottom -->
+          <rect x="200" y="55"  width="20" height="10" rx="2" fill="#1A1A18" stroke="#242422" stroke-width="0.5"/>
+          <rect x="254" y="55"  width="20" height="10" rx="2" fill="#1A1A18" stroke="#242422" stroke-width="0.5"/>
+          <rect x="200" y="127" width="20" height="10" rx="2" fill="#1A1A18" stroke="#242422" stroke-width="0.5"/>
+          <rect x="254" y="127" width="20" height="10" rx="2" fill="#1A1A18" stroke="#242422" stroke-width="0.5"/>
+          <text x="231" y="93"  font-family="Cormorant Garamond,serif" font-size="14" fill="#333330" text-anchor="middle">4</text>
+          <text x="231" y="108" font-family="Inter,sans-serif" font-size="7"  fill="#2a2a28" letter-spacing="1" text-anchor="middle">4p</text>
+        </g>
+
+        <!-- T5: rect 6p, centre, mid -->
+        <g class="t-node" data-id="5" data-seats="6" data-zone="Centre" data-status="available">
+          <rect x="176" y="218" width="110" height="64" rx="2" fill="#1E1E1C" stroke="#333330" stroke-width="1"/>
+          <!-- chairs -->
+          <rect x="186" y="204" width="22" height="11" rx="2" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <rect x="220" y="204" width="22" height="11" rx="2" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <rect x="254" y="204" width="22" height="11" rx="2" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <rect x="186" y="285" width="22" height="11" rx="2" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <rect x="220" y="285" width="22" height="11" rx="2" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <rect x="254" y="285" width="22" height="11" rx="2" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <text x="231" y="247" font-family="Cormorant Garamond,serif" font-size="14" fill="#8C8575" text-anchor="middle">5</text>
+          <text x="231" y="262" font-family="Inter,sans-serif" font-size="7"  fill="#333330" letter-spacing="1" text-anchor="middle">6p</text>
+        </g>
+
+        <!-- T6: round 4p, centre, bottom -->
+        <g class="t-node" data-id="6" data-seats="4" data-zone="Centre" data-status="available">
+          <circle cx="231" cy="410" r="34" fill="#1E1E1C" stroke="#333330" stroke-width="1"/>
+          <circle cx="231" cy="370" r="8" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <circle cx="231" cy="450" r="8" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <circle cx="191" cy="410" r="8" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <circle cx="271" cy="410" r="8" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <text x="231" y="407" font-family="Cormorant Garamond,serif" font-size="14" fill="#8C8575" text-anchor="middle">6</text>
+          <text x="231" y="422" font-family="Inter,sans-serif" font-size="7"  fill="#333330" letter-spacing="1" text-anchor="middle">4p</text>
+        </g>
+
+        <!-- T7: round 2p, centre-right, top — OCCUPIED -->
+        <g class="t-node" data-id="7" data-seats="2" data-zone="Centre" data-status="occupied">
+          <circle cx="390" cy="90" r="28" fill="#161614" stroke="#242422" stroke-width="0.5"/>
+          <circle cx="390" cy="57"  r="7" fill="#1A1A18" stroke="#242422" stroke-width="0.5"/>
+          <circle cx="390" cy="123" r="7" fill="#1A1A18" stroke="#242422" stroke-width="0.5"/>
+          <text x="390" y="87"  font-family="Cormorant Garamond,serif" font-size="14" fill="#333330" text-anchor="middle">7</text>
+          <text x="390" y="102" font-family="Inter,sans-serif" font-size="7"  fill="#2a2a28" letter-spacing="1" text-anchor="middle">2p</text>
+        </g>
+
+        <!-- T8: rect 4p, centre-right, mid -->
+        <g class="t-node" data-id="8" data-seats="4" data-zone="Centre" data-status="available">
+          <rect x="334" y="210" width="110" height="60" rx="2" fill="#1E1E1C" stroke="#333330" stroke-width="1"/>
+          <rect x="348" y="196" width="22" height="11" rx="2" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <rect x="400" y="196" width="22" height="11" rx="2" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <rect x="348" y="271" width="22" height="11" rx="2" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <rect x="400" y="271" width="22" height="11" rx="2" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <text x="389" y="238" font-family="Cormorant Garamond,serif" font-size="14" fill="#8C8575" text-anchor="middle">8</text>
+          <text x="389" y="253" font-family="Inter,sans-serif" font-size="7"  fill="#333330" letter-spacing="1" text-anchor="middle">4p</text>
+        </g>
+
+        <!-- T9: round 2p, centre-right, bottom -->
+        <g class="t-node" data-id="9" data-seats="2" data-zone="Centre" data-status="available">
+          <circle cx="390" cy="405" r="28" fill="#1E1E1C" stroke="#333330" stroke-width="1"/>
+          <circle cx="390" cy="372" r="7" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <circle cx="390" cy="438" r="7" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <text x="390" y="402" font-family="Cormorant Garamond,serif" font-size="14" fill="#8C8575" text-anchor="middle">9</text>
+          <text x="390" y="417" font-family="Inter,sans-serif" font-size="7"  fill="#333330" letter-spacing="1" text-anchor="middle">2p</text>
+        </g>
+
+        <!-- T10: rect 8p, window right -->
+        <g class="t-node" data-id="10" data-seats="8" data-zone="Window" data-status="available">
+          <rect x="568" y="160" width="60" height="190" rx="2" fill="#1E1E1C" stroke="#333330" stroke-width="1"/>
+          <!-- chairs left side -->
+          <rect x="554" y="172" width="11" height="18" rx="2" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <rect x="554" y="202" width="11" height="18" rx="2" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <rect x="554" y="232" width="11" height="18" rx="2" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <rect x="554" y="262" width="11" height="18" rx="2" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <!-- chairs right side -->
+          <rect x="631" y="172" width="11" height="18" rx="2" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <rect x="631" y="202" width="11" height="18" rx="2" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <rect x="631" y="232" width="11" height="18" rx="2" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <rect x="631" y="262" width="11" height="18" rx="2" fill="#242422" stroke="#333330" stroke-width="0.5"/>
+          <text x="598" y="252" font-family="Cormorant Garamond,serif" font-size="14" fill="#8C8575" text-anchor="middle">10</text>
+          <text x="598" y="267" font-family="Inter,sans-serif" font-size="7"  fill="#333330" letter-spacing="1" text-anchor="middle">8p</text>
+        </g>
+
+      </svg>
+      </div>
+
+      <div class="plan-legend">
+        <div class="legend-item"><div class="legend-dot avail"></div>Available</div>
+        <div class="legend-item"><div class="legend-dot sel"></div>Selected</div>
+        <div class="legend-item"><div class="legend-dot occ"></div>Reserved</div>
+      </div>
+    </div><!-- /rp-plan -->
+
+    <!-- BOOKING FORM -->
+    <div class="rp-form-panel">
+      <p class="eyebrow">Booking details</p>
+      <h2 class="sec-title">Your table</h2>
+
+      <div class="table-selected-info" id="tableInfo">
+        <div class="tsi-icon" id="tsiIcon">—</div>
+        <div class="tsi-text" id="tsiText">
+          <strong>No table selected</strong>
+          Choose a table on the floor plan
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="rp-form" id="rpForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="fieldName">First name<span class="req">*</span></label>
+            <input class="form-input" type="text" placeholder="Maxim" id="fieldName" autocomplete="given-name">
+            <p class="form-error"></p>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="fieldLastname">Last name<span class="req">*</span></label>
+            <input class="form-input" type="text" placeholder="Koval" id="fieldLastname" autocomplete="family-name">
+            <p class="form-error"></p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="fieldPhone">Phone<span class="req">*</span></label>
+          <input class="form-input" type="tel" placeholder="+380 XX XXX XX XX" id="fieldPhone" autocomplete="tel" inputmode="tel">
+          <p class="form-error"></p>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="fieldEmail">Email<span class="req">*</span></label>
+          <input class="form-input" type="email" placeholder="your@email.com" id="fieldEmail" autocomplete="email" inputmode="email">
+          <p class="form-error"></p>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="fieldDate">Date<span class="req">*</span></label>
+            <div class="date-wrap">
+              <input class="form-input" type="date" id="fieldDate">
+              <svg class="date-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="12" rx="1"/><path d="M1.5 6h13M5 1v3M11 1v3"/></svg>
+            </div>
+            <p class="form-error"></p>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="fieldGuests">Guests<span class="req">*</span></label>
+            <select class="form-input" id="fieldGuests">
+              <option value="">— select —</option>
+              <option>1</option><option>2</option><option>3</option>
+              <option>4</option><option>5</option><option>6</option>
+              <option>7</option><option>8</option>
+            </select>
+            <p class="form-error"></p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Comment (optional)</label>
+          <input class="form-input" type="text" placeholder="Allergies, special occasion..." id="fieldComment">
+        </div>
+        <p class="form-note"><span class="req" style="color:var(--gold)">*</span> Required fields. Confirmation within 2 hours. For groups of 6+ please contact us directly.</p>
+        <div class="rp-submit">
+          <button class="btn-primary" id="submitBtn" disabled onclick="submitReservation()">Select a table first</button>
+        </div>
+      </div>
+
+      <!-- Success -->
+      <div class="rp-success" id="rpSuccess">
+        <div class="success-icon">✓</div>
+        <h2 class="sec-title">Request sent.</h2>
+        <p class="sec-body">We'll confirm your reservation within 2 hours by phone or email.</p>
+        <button class="btn-ghost" onclick="resetReservation()">Make another reservation</button>
+      </div>
+
+    </div><!-- /rp-form-panel -->
+  </div><!-- /rp-main -->
+
+  <div class="rp-info-strip" id="contact">
+    <div class="rp-info-item">
+      <p class="eyebrow">Opening hours</p>
+      <p class="rp-info-val">Tue – Fri<br>7 PM – 11 PM</p>
+    </div>
+    <div class="rp-info-item">
+      <p class="eyebrow">Weekend</p>
+      <p class="rp-info-val">Sat – Sun<br>6 PM – 11 PM</p>
+    </div>
+    <div class="rp-info-item">
+      <p class="eyebrow">Contact</p>
+      <p class="rp-info-val">+380 44 000 0000</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="f-top">
+      <div class="f-col">
+        <div class="f-logo">NOIR</div>
+        <p class="f-tag">One menu. One evening.<br>No boundaries.</p>
+      </div>
+      <div class="f-col">
+        <p class="f-head">Visit</p>
+        <p class="f-txt">32 Saksahanskoho St<br>Kyiv, 01033</p>
+      </div>
+      <div class="f-col">
+        <p class="f-head">Hours</p>
+        <p class="f-txt">Tue – Fri · 7 PM – 11 PM<br>Sat – Sun · 6 PM – 11 PM</p>
+      </div>
+      <div class="f-col">
+        <p class="f-head">Contact</p>
+        <p class="f-txt"><a href="tel:+380440000000">+380 44 000 0000</a><br><a href="mailto:hello@noir.kyiv">hello@noir.kyiv</a></p>
+      </div>
+      <div class="f-col">
+        <p class="f-head">Follow</p>
+        <p class="f-txt"><!-- TODO: підставити реальні посилання на соцмережі -->
+        <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a><br><a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a></p>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <div class="f-links">
+        <a onclick="navigate('home')">Home</a>
+        <a onclick="navigate('home','concept')">Concept</a>
+        <a onclick="navigate('menu')">Menu</a>
+        <a onclick="navigate('chef')">Chef</a>
+        <a onclick="navigate('reservations')">Reservations</a>
+      </div>
+      <p class="f-copy">© 2026 NOIR · Kyiv</p>
+    </div>
+  </footer>
+
+</div><!-- /page-reservations -->
+
+</body>
+</html>
