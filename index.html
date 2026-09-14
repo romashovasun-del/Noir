@@ -111,6 +111,8 @@ nav.scrolled{background:rgba(10,10,9,0.96);padding:16px 48px;backdrop-filter:blu
 .btn-primary:hover{background:var(--cream)}
 .btn-ghost{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--cream-dim);background:transparent;border:0.5px solid var(--smoke);padding:15px 38px;cursor:pointer;transition:border-color 0.3s,color 0.3s}
 .btn-ghost:hover{border-color:var(--cream-dim);color:var(--cream)}
+.btn-lg{padding:18px 56px}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap}
 
 /* ─── HOME ─── */
 .hero{position:relative;height:100vh;min-height:600px;overflow:hidden}
@@ -256,6 +258,16 @@ footer{padding:64px 48px 32px;border-top:0.5px solid var(--graphite);background:
   .nav-links,.nav-right .lang,.nav-right .btn-res{display:none}
   .burger{display:flex}
   .mobile-menu{display:flex}
+
+  /* Buttons: one consistent full-width block on phones */
+  .btn-primary,.btn-ghost{width:100%;max-width:340px;padding:16px 20px;text-align:center;box-sizing:border-box;line-height:1.4;display:block}
+  .btn-lg{padding:16px 20px}
+  .nav .btn-res,.burger{width:auto;max-width:none;padding:9px 20px;display:inline-block}
+  .burger{padding:4px;display:flex}
+  .hero-btns,.btn-row{flex-direction:column;align-items:center;width:100%;gap:12px}
+  .price-blk .btn-primary,.cta-final .btn-primary,.cp-final .btn-primary{margin-left:auto;margin-right:auto}
+  .btn-primary,.btn-ghost{margin-left:auto;margin-right:auto}
+  .rp-submit .btn-primary,.rp-success .btn-ghost{max-width:none}
 
   .reveal-left,.reveal-right{transform:translateY(30px)}
   .reveal-left.visible,.reveal-right.visible{transform:translateY(0)}
@@ -413,20 +425,12 @@ select.form-input{cursor:pointer}
 .rp-success .sec-body{font-size:13px;max-width:280px;margin:0 auto 32px}
 
 /* Info strip */
-.rp-info-strip{display:grid;grid-template-columns:repeat(3,1fr);border-top:0.5px solid var(--graphite)}
-.rp-info-item{padding:40px 32px;border-right:0.5px solid var(--graphite);text-align:center}
-.rp-info-item:last-child{border-right:none}
-.rp-info-item .eyebrow{margin-bottom:10px}
-.rp-info-val{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:20px;font-weight:300;color:var(--cream);line-height:1.4}
 
 @media(max-width:900px){
   .rp-hero{padding:120px 28px 60px}
   .rp-main{grid-template-columns:1fr}
   .rp-plan{padding:40px 24px;border-right:none;border-bottom:0.5px solid var(--graphite)}
   .rp-form-panel{padding:40px 24px}
-  .rp-info-strip{grid-template-columns:1fr}
-  .rp-info-item{border-right:none;border-bottom:0.5px solid var(--graphite);padding:28px 24px}
-  .rp-info-item:last-child{border-bottom:none}
   .form-row{grid-template-columns:1fr}
 }
 </style>
@@ -457,7 +461,7 @@ select.form-input{cursor:pointer}
   <a onclick="navigate('menu');toggleMenu()">Menu</a>
   <a onclick="navigate('chef');toggleMenu()">Chef</a>
   <a onclick="navigate('reservations');toggleMenu()">Reservations</a>
-  <a onclick="navigate('reservations','contact');toggleMenu()">Contact</a>
+  <a onclick="scrollToContact();toggleMenu()">Contact</a>
   <div class="mm-lang" role="group" aria-label="Language"><span class="on" data-lang="en" role="button" tabindex="0" onclick="setLang('en')">EN</span><span class="sep" aria-hidden="true">|</span><span data-lang="uk" role="button" tabindex="0" onclick="setLang('uk')">UA</span></div>
 </div>
 
@@ -469,7 +473,7 @@ select.form-input{cursor:pointer}
     <li><a onclick="navigate('menu')">Menu</a></li>
     <li><a onclick="navigate('chef')">Chef</a></li>
     <li><a onclick="navigate('reservations')">Reservations</a></li>
-    <li><a onclick="navigate('reservations','contact')">Contact</a></li>
+    <li><a onclick="scrollToContact()">Contact</a></li>
   </ul>
   <div class="nav-right">
     <div class="lang" role="group" aria-label="Language"><span class="on" data-lang="en" role="button" tabindex="0" onclick="setLang('en')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setLang('en')}">EN</span><span class="sep" aria-hidden="true">|</span><span data-lang="uk" role="button" tabindex="0" onclick="setLang('uk')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();setLang('uk')}">UA</span></div>
@@ -517,7 +521,7 @@ select.form-input{cursor:pointer}
       <h2 class="sec-title" style="font-size:clamp(30px,3.2vw,46px)">We don't serve food.<br>We tell <em>stories.</em></h2>
       <div class="gold-line"></div>
       <p class="sec-body" style="margin-bottom:36px">Noir was born from a single conviction: the most powerful experience is the one you cannot predict. There is no fixed menu — only the chef, the season, and the moment of inspiration.</p>
-      <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <div class="btn-row">
         <button class="btn-ghost" onclick="navigate('menu')">Explore menu</button>
         <button class="btn-ghost" onclick="navigate('chef')">Meet the chef</button>
       </div>
@@ -558,7 +562,7 @@ select.form-input{cursor:pointer}
       <p class="sec-body" style="margin-bottom:0">Once studied physics. Then understood that food is a more precise science. Internship in Copenhagen. Two years in Tokyo. Returned home with a different perspective.</p>
       <blockquote>"I don't cook dishes. I capture a moment — this season, this ingredient, this state of mind."</blockquote>
       <cite>— Chef, Noir</cite>
-      <div style="margin-top:36px"><button class="btn-ghost" onclick="navigate('chef')">About the chef</button></div>
+      <div class="btn-row" style="margin-top:36px"><button class="btn-ghost" onclick="navigate('chef')">About the chef</button></div>
     </div>
     <div class="chef-home-img reveal-right">
       <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Portrait of chef Maxim Koval">
@@ -569,7 +573,7 @@ select.form-input{cursor:pointer}
     <p class="eyebrow reveal">Limited seats</p>
     <h2 class="sec-title reveal" style="font-size:clamp(36px,5vw,60px)">Reserve your evening.</h2>
     <p class="sec-body reveal" style="max-width:400px;margin:0 auto 44px">Open Tue–Sun from 7 PM. Seats are limited. Confirmation within 2 hours.</p>
-    <button class="btn-primary reveal" style="padding:18px 56px" onclick="navigate('reservations')">Reserve a table</button>
+    <button class="btn-primary btn-lg reveal" onclick="navigate('reservations')">Reserve a table</button>
   </section>
 
   <footer>
@@ -800,7 +804,7 @@ select.form-input{cursor:pointer}
     <p class="cp-big-quote reveal">"I don't cook dishes. I capture a moment — this season, this ingredient, this state of mind."</p>
     <cite class="reveal">— Maxim Koval, Chef and founder, Noir</cite>
     <div style="margin-top:52px" class="reveal">
-      <button class="btn-primary" style="padding:16px 48px" onclick="navigate('reservations')">Experience Noir</button>
+      <button class="btn-primary btn-lg" onclick="navigate('reservations')">Experience Noir</button>
     </div>
   </section>
 
@@ -842,6 +846,13 @@ select.form-input{cursor:pointer}
 </div>
 
 <script>
+function scrollToContact(){
+  var f = document.querySelector('.page.active footer');
+  if(!f) return;
+  var navH = document.getElementById('mainNav').offsetHeight || 0;
+  window.scrollTo({ top: f.getBoundingClientRect().top + window.scrollY - navH, behavior: 'smooth' });
+}
+
 function navigate(page, section){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+page).classList.add('active');
@@ -1632,21 +1643,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
     </div><!-- /rp-form-panel -->
   </div><!-- /rp-main -->
-
-  <div class="rp-info-strip" id="contact">
-    <div class="rp-info-item">
-      <p class="eyebrow">Opening hours</p>
-      <p class="rp-info-val">Tue – Fri<br>7 PM – 11 PM</p>
-    </div>
-    <div class="rp-info-item">
-      <p class="eyebrow">Weekend</p>
-      <p class="rp-info-val">Sat – Sun<br>6 PM – 11 PM</p>
-    </div>
-    <div class="rp-info-item">
-      <p class="eyebrow">Contact</p>
-      <p class="rp-info-val">+380 44 000 0000</p>
-    </div>
-  </div>
 
   <footer>
     <div class="f-top">
