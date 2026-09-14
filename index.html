@@ -51,8 +51,8 @@
   --noir:#0A0A09;--carbon:#131312;--graphite:#1E1E1C;--smoke:#333330;
   --cream:#EDE7D4;--cream-dim:#8C8575;--gold:#C4975A;--white:#F8F6F0;
 }
-html{scroll-behavior:smooth}
-body{background:var(--noir);color:var(--cream);font-family:'Inter',sans-serif;font-weight:300;overflow-x:hidden}
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%}
+body{background:var(--noir);color:var(--cream);font-family:'Inter',sans-serif;font-weight:300;overflow-x:hidden;max-width:100%;position:relative}
 
 /* ─── NAV ─── */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:24px 48px;transition:background 0.4s,padding 0.4s;background:transparent}
@@ -206,6 +206,7 @@ footer{padding:64px 48px 32px;border-top:0.5px solid var(--graphite);background:
 .mp-price-left .price-big{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:300;color:var(--gold);line-height:1}
 .mp-price-left .price-label{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream-dim);margin-top:8px}
 .mp-price-right{display:flex;flex-direction:column;gap:16px;align-items:flex-end}
+.mp-wine{text-align:right}
 .mp-price-right .btn-primary,.mp-price-right .btn-ghost{width:240px;padding:15px 0;text-align:center;box-sizing:border-box;line-height:1.4}
 .mp-price-right .btn-primary{border:0.5px solid var(--gold)}
 
@@ -250,6 +251,9 @@ footer{padding:64px 48px 32px;border-top:0.5px solid var(--graphite);background:
   .burger{display:flex}
   .mobile-menu{display:flex}
 
+  .reveal-left,.reveal-right{transform:translateY(30px)}
+  .reveal-left.visible,.reveal-right.visible{transform:translateY(0)}
+
   .concept{grid-template-columns:1fr}
   footer{padding:48px 24px 24px}
   .f-top{grid-template-columns:1fr 1fr;gap:32px}
@@ -261,8 +265,9 @@ footer{padding:64px 48px 32px;border-top:0.5px solid var(--graphite);background:
   .acts{grid-template-columns:1fr 1fr}
   .menu-prev{padding:64px 24px}
 
-  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:220px 220px 220px}
+  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:220px 220px 260px}
   .gi:first-child{grid-row:span 1}
+  .gi:last-child{grid-column:1 / -1}
 
   .chef-home{grid-template-columns:1fr}
   .chef-home-img{height:320px}
@@ -280,10 +285,14 @@ footer{padding:64px 48px 32px;border-top:0.5px solid var(--graphite);background:
   .mp-intro{grid-template-columns:1fr;padding:48px 28px;gap:32px}
   .mp-act{grid-template-columns:80px 1fr;gap:24px}
   .mp-acts{padding:0 28px 64px}
-  .mp-price{padding:48px 28px}
-  .mp-price-right{align-items:flex-start}
+  .mp-price{padding:48px 28px;flex-direction:column;align-items:center;text-align:center;gap:36px}
+  .mp-price-left{text-align:center}
+  .mp-price-right{align-items:center;width:100%}
+  .mp-wine{text-align:center}
+  .mp-price-right .btn-primary,.mp-price-right .btn-ghost{width:100%;max-width:340px}
   .mp-gallery{grid-template-columns:1fr 1fr;height:auto}
   .mp-gi{height:180px}
+  .mp-gi:last-child{grid-column:1 / -1;height:220px}
 
   .cp-hero{grid-template-columns:1fr}
   .cp-hero-img{height:50vh}
@@ -546,7 +555,7 @@ select.form-input{cursor:pointer}
       <div style="margin-top:36px"><button class="btn-ghost" onclick="navigate('chef')">About the chef</button></div>
     </div>
     <div class="chef-home-img reveal-right">
-      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395190/magnific_img1-img2_vQjKmfFa47_tprbi0.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395190/magnific_img1-img2_vQjKmfFa47_tprbi0.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395190/magnific_img1-img2_vQjKmfFa47_tprbi0.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395190/magnific_img1-img2_vQjKmfFa47_tprbi0.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395190/magnific_img1-img2_vQjKmfFa47_tprbi0.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395190/magnific_img1-img2_vQjKmfFa47_tprbi0.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Portrait of chef Maxim Koval">
+      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Portrait of chef Maxim Koval">
     </div>
   </section>
 
@@ -598,7 +607,7 @@ select.form-input{cursor:pointer}
 <div class="page" id="page-menu">
 
   <div class="mp-hero">
-    <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676485/magnific_side-angle-fine-dining-di_UyKOe0Vwny_qdqc4h.png" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1782676485/magnific_side-angle-fine-dining-di_UyKOe0Vwny_qdqc4h.png 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1782676485/magnific_side-angle-fine-dining-di_UyKOe0Vwny_qdqc4h.png 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1782676485/magnific_side-angle-fine-dining-di_UyKOe0Vwny_qdqc4h.png 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676485/magnific_side-angle-fine-dining-di_UyKOe0Vwny_qdqc4h.png 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1782676485/magnific_side-angle-fine-dining-di_UyKOe0Vwny_qdqc4h.png 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Fine dining dish — NOIR tasting menu">
+    <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Fine dining dish — NOIR tasting menu">
     <div class="mp-hero-grad"></div>
     <div class="mp-hero-content">
       <p class="eyebrow">Tasting menu</p>
@@ -666,9 +675,9 @@ select.form-input{cursor:pointer}
   </section>
 
   <div class="mp-gallery">
-    <div class="mp-gi reveal-scale"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676481/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_mzalm1.png" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1782676481/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_mzalm1.png 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1782676481/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_mzalm1.png 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1782676481/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_mzalm1.png 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676481/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_mzalm1.png 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1782676481/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_mzalm1.png 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Glass of red wine — wine pairing at NOIR"></div>
-    <div class="mp-gi reveal-scale delay-1"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Overhead view of a plated dessert course"></div>
-    <div class="mp-gi reveal-scale delay-2"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676475/magnific_dark-restaurant-interior-_ONx9ddSynm_xp3v1c.png" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1782676475/magnific_dark-restaurant-interior-_ONx9ddSynm_xp3v1c.png 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1782676475/magnific_dark-restaurant-interior-_ONx9ddSynm_xp3v1c.png 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1782676475/magnific_dark-restaurant-interior-_ONx9ddSynm_xp3v1c.png 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676475/magnific_dark-restaurant-interior-_ONx9ddSynm_xp3v1c.png 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1782676475/magnific_dark-restaurant-interior-_ONx9ddSynm_xp3v1c.png 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Dark dining room interior at NOIR"></div>
+    <div class="mp-gi reveal-scale"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Glass of red wine — wine pairing at NOIR"></div>
+    <div class="mp-gi reveal-scale delay-1"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Overhead view of a plated dessert course"></div>
+    <div class="mp-gi reveal-scale delay-2"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Dark dining room interior at NOIR"></div>
   </div>
 
   <div class="mp-price reveal">
@@ -677,7 +686,7 @@ select.form-input{cursor:pointer}
       <div class="price-label">Per person · 12 courses</div>
     </div>
     <div class="mp-price-right">
-      <div style="text-align:right">
+      <div class="mp-wine">
         <p style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);font-weight:300">Wine pairing</p>
         <p style="font-size:10px;letter-spacing:0.14em;color:var(--cream-dim);margin:4px 0 16px">Curated by our sommelier · +€50</p>
       </div>
@@ -728,7 +737,7 @@ select.form-input{cursor:pointer}
 
   <div class="cp-hero">
     <div class="cp-hero-img">
-      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676509/magnific_portrait-of-a-male-chef-i_43s3Ebf9Aa_q6lrly.png" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1782676509/magnific_portrait-of-a-male-chef-i_43s3Ebf9Aa_q6lrly.png 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1782676509/magnific_portrait-of-a-male-chef-i_43s3Ebf9Aa_q6lrly.png 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1782676509/magnific_portrait-of-a-male-chef-i_43s3Ebf9Aa_q6lrly.png 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676509/magnific_portrait-of-a-male-chef-i_43s3Ebf9Aa_q6lrly.png 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1782676509/magnific_portrait-of-a-male-chef-i_43s3Ebf9Aa_q6lrly.png 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Chef Maxim Koval in the NOIR kitchen">
+      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Chef Maxim Koval in the NOIR kitchen">
     </div>
     <div class="cp-hero-content">
       <p class="eyebrow">The chef</p>
@@ -769,7 +778,7 @@ select.form-input{cursor:pointer}
 
   <section class="cp-philosophy">
     <div class="cp-phil-img reveal-left">
-      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1782676466/magnific_topdown-overhead-shot-of-_xgul26YjfW_hfifxc.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Plated course from the NOIR tasting menu">
+      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Plated course from the NOIR tasting menu">
     </div>
     <div class="cp-phil-text reveal-right">
       <p class="eyebrow">Philosophy</p>
@@ -830,7 +839,8 @@ select.form-input{cursor:pointer}
 function navigate(page, section){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+page).classList.add('active');
-  window.scrollTo({top:0,behavior:'instant'});
+  window.scrollTo({top:0,left:0,behavior:'instant'});
+  document.documentElement.scrollLeft = 0; document.body.scrollLeft = 0;
   setTimeout(initReveal,100);
   if (page === 'reservations') {
     setTimeout(initTables, 50);
