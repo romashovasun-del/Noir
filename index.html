@@ -41,7 +41,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://res.cloudinary.com">
 <link rel="preload" as="image" href="https://res.cloudinary.com/dcwwjvlcv/video/upload/so_0,f_auto,q_auto,w_1920/hailuo-2_3_Camera_slowly_pulls_back_from_extreme_close-up_of_golden_olive_oil_being_poured_-0_opggjs.jpg" imagesrcset="https://res.cloudinary.com/dcwwjvlcv/video/upload/so_0,f_auto,q_auto,w_1280/hailuo-2_3_Camera_slowly_pulls_back_from_extreme_close-up_of_golden_olive_oil_being_poured_-0_opggjs.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/video/upload/so_0,f_auto,q_auto,w_1920/hailuo-2_3_Camera_slowly_pulls_back_from_extreme_close-up_of_golden_olive_oil_being_poured_-0_opggjs.jpg 1920w" imagesizes="100vw" fetchpriority="high">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<!-- Fonts: завантажуються асинхронно, щоб не блокувати перший рендер.
+     media="print" → браузер вважає стиль неважливим і не чекає на нього;
+     onload перемикає на "all", і шрифти застосовуються, щойно прийдуть.
+     font-display:swap у самому URL показує текст системним шрифтом, поки вантажиться Cormorant/Inter. -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400&display=swap" fetchpriority="high">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400&display=swap" media="print" onload="this.media='all';this.onload=null">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400&display=swap"></noscript>
 
 <!-- GA4: вставити тег тут -->
 <!-- Meta Pixel: вставити тут -->
@@ -52,12 +58,12 @@
   --cream:#EDE7D4;--cream-dim:#8C8575;--gold:#C4975A;--white:#F8F6F0;
 }
 html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%}
-body{background:var(--noir);color:var(--cream);font-family:'Inter',sans-serif;font-weight:300;overflow-x:hidden;max-width:100%;position:relative}
+body{background:var(--noir);color:var(--cream);font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-weight:300;overflow-x:hidden;max-width:100%;position:relative}
 
 /* ─── NAV ─── */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:24px 48px;transition:background 0.4s,padding 0.4s;background:transparent}
 nav.scrolled{background:rgba(10,10,9,0.96);padding:16px 48px;backdrop-filter:blur(8px)}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;letter-spacing:0.28em;color:var(--cream);text-decoration:none;cursor:pointer}
+.nav-logo{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:20px;font-weight:400;letter-spacing:0.28em;color:var(--cream);text-decoration:none;cursor:pointer}
 .nav-links{display:flex;gap:36px;list-style:none}
 .nav-links a{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;transition:color 0.3s;cursor:pointer}
 .nav-links a:hover{color:var(--cream)}
@@ -79,7 +85,7 @@ nav.scrolled{background:rgba(10,10,9,0.96);padding:16px 48px;backdrop-filter:blu
 
 .mobile-menu{display:none;position:fixed;inset:0;z-index:190;background:rgba(10,10,9,0.97);flex-direction:column;align-items:center;justify-content:center;gap:40px;opacity:0;pointer-events:none;transition:opacity 0.4s}
 .mobile-menu.open{opacity:1;pointer-events:all}
-.mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;letter-spacing:0.1em;color:var(--cream);text-decoration:none;cursor:pointer}
+.mobile-menu a{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:36px;font-weight:300;letter-spacing:0.1em;color:var(--cream);text-decoration:none;cursor:pointer}
 
 /* ─── SCROLL ANIMATIONS ─── */
 .reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1),transform 0.8s cubic-bezier(0.16,1,0.3,1)}
@@ -98,7 +104,7 @@ nav.scrolled{background:rgba(10,10,9,0.96);padding:16px 48px;backdrop-filter:blu
 
 /* ─── COMMON ─── */
 .eyebrow{font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
-.sec-title{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.12;color:var(--white)}
+.sec-title{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-weight:300;line-height:1.12;color:var(--white)}
 .sec-body{font-size:13px;line-height:1.95;color:var(--cream-dim)}
 .gold-line{width:36px;height:0.5px;background:var(--gold);margin:24px 0}
 .btn-primary{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--noir);background:var(--gold);border:none;padding:15px 38px;cursor:pointer;transition:background 0.3s}
@@ -114,7 +120,7 @@ nav.scrolled{background:rgba(10,10,9,0.96);padding:16px 48px;backdrop-filter:blu
 .hero-poster.is-hidden{opacity:0}
 .hero-grad{position:absolute;inset:0;z-index:2;background:linear-gradient(to bottom,rgba(10,10,9,0.25) 0%,rgba(10,10,9,0.55) 50%,rgba(10,10,9,0.85) 100%)}
 .hero-content{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(80px,14vw,160px);font-weight:300;letter-spacing:0.1em;line-height:0.88;color:var(--white);margin-bottom:28px}
+.hero-title{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:clamp(80px,14vw,160px);font-weight:300;letter-spacing:0.1em;line-height:0.88;color:var(--white);margin-bottom:28px}
 .hero-sub{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:48px;line-height:2}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
 .scroll-ind{position:absolute;z-index:3;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px}
@@ -125,7 +131,7 @@ nav.scrolled{background:rgba(10,10,9,0.96);padding:16px 48px;backdrop-filter:blu
 .stats-row{display:grid;grid-template-columns:repeat(3,1fr);border-top:0.5px solid var(--graphite);border-bottom:0.5px solid var(--graphite)}
 .stat{padding:44px 32px;text-align:center;border-right:0.5px solid var(--graphite)}
 .stat:last-child{border-right:none}
-.stat-n{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:8px}
+.stat-n{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:52px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:8px}
 .stat-l{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream-dim)}
 
 .concept{display:grid;grid-template-columns:1fr 1fr;min-height:560px}
@@ -141,14 +147,14 @@ nav.scrolled{background:rgba(10,10,9,0.96);padding:16px 48px;backdrop-filter:blu
 .acts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--graphite)}
 .act{background:var(--carbon);padding:44px 28px;position:relative;overflow:hidden;cursor:default;transition:background 0.3s}
 .act:hover{background:var(--graphite)}
-.act-n{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:300;color:var(--graphite);line-height:1;margin-bottom:20px;transition:color 0.3s}
+.act-n{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:72px;font-weight:300;color:var(--graphite);line-height:1;margin-bottom:20px;transition:color 0.3s}
 .act:hover .act-n{color:var(--smoke)}
-.act-t{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--cream);margin-bottom:12px}
+.act-t{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:20px;font-weight:400;color:var(--cream);margin-bottom:12px}
 .act-b{font-size:11px;line-height:1.8;color:var(--cream-dim)}
 .act-bar{position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width 0.45s ease}
 .act:hover .act-bar{width:100%}
 .price-blk{text-align:center;margin-top:52px;padding-top:44px;border-top:0.5px solid var(--graphite)}
-.price-main{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:var(--cream);margin-bottom:6px}
+.price-main{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:30px;font-weight:300;color:var(--cream);margin-bottom:6px}
 .price-sub{font-size:10px;letter-spacing:0.14em;color:var(--cream-dim);margin-bottom:36px}
 
 .gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:280px 280px;gap:2px}
@@ -162,23 +168,23 @@ nav.scrolled{background:rgba(10,10,9,0.96);padding:16px 48px;backdrop-filter:blu
 .chef-home-img{overflow:hidden}
 .chef-home-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.9);transition:filter 0.8s}
 .chef-home-img:hover img{filter:brightness(1)}
-blockquote{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;font-weight:300;color:var(--cream);line-height:1.55;border-left:1px solid var(--gold);padding-left:24px;margin:28px 0 16px}
+blockquote{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:20px;font-style:italic;font-weight:300;color:var(--cream);line-height:1.55;border-left:1px solid var(--gold);padding-left:24px;margin:28px 0 16px}
 cite{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-style:normal}
 
 .cta-band{text-align:center;padding:100px 48px;background:var(--graphite);position:relative;overflow:hidden}
-.cta-band::before{content:'NOIR';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Cormorant Garamond',serif;font-size:240px;font-weight:300;color:rgba(255,255,255,0.025);white-space:nowrap;pointer-events:none;letter-spacing:0.12em}
+.cta-band::before{content:'NOIR';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:240px;font-weight:300;color:rgba(255,255,255,0.025);white-space:nowrap;pointer-events:none;letter-spacing:0.12em}
 .cta-band .sec-body{max-width:420px;margin:0 auto 44px}
 
 footer{padding:64px 48px 32px;border-top:0.5px solid var(--graphite);background:var(--noir)}
 .f-top{display:grid;grid-template-columns:1.6fr repeat(4,1fr);gap:40px;padding-bottom:40px;border-bottom:0.5px solid var(--graphite)}
-.f-tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:var(--smoke);line-height:1.6;margin-top:14px}
+.f-tag{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-style:italic;font-size:15px;color:var(--smoke);line-height:1.6;margin-top:14px}
 .f-head{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
 .f-txt{font-size:11px;letter-spacing:0.08em;color:var(--cream-dim);line-height:2}
 .f-txt a{color:var(--cream-dim);text-decoration:none;transition:color 0.3s}
 .f-txt a:hover{color:var(--gold)}
 .f-bottom{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-top:28px}
 .f-copy{font-size:9px;letter-spacing:0.15em;color:var(--smoke)}
-.f-logo{font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:0.28em;color:var(--cream-dim)}
+.f-logo{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:16px;letter-spacing:0.28em;color:var(--cream-dim)}
 .f-links{display:flex;gap:20px}
 .f-links a{font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;transition:color 0.3s;cursor:pointer}
 .f-links a:hover{color:var(--gold)}
@@ -196,14 +202,14 @@ footer{padding:64px 48px 32px;border-top:0.5px solid var(--graphite);background:
 .mp-act{display:grid;grid-template-columns:120px 1fr;gap:48px;padding:64px 0;border-bottom:0.5px solid var(--graphite);align-items:start}
 .mp-act:last-child{border-bottom:none}
 .mp-act-left{text-align:right;padding-top:6px}
-.mp-act-num{font-family:'Cormorant Garamond',serif;font-size:88px;font-weight:300;line-height:0.85;color:var(--graphite)}
+.mp-act-num{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:88px;font-weight:300;line-height:0.85;color:var(--graphite)}
 .mp-act-label{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-top:12px}
-.mp-act-right .act-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;color:var(--cream);margin-bottom:16px}
+.mp-act-right .act-title{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:32px;font-weight:400;color:var(--cream);margin-bottom:16px}
 .mp-act-right .act-body{font-size:13px;line-height:1.9;color:var(--cream-dim);margin-bottom:24px}
 .mp-act-hint{font-size:10px;letter-spacing:0.12em;color:var(--smoke);font-style:italic}
 
 .mp-price{background:var(--carbon);padding:72px 64px;display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap}
-.mp-price-left .price-big{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:300;color:var(--gold);line-height:1}
+.mp-price-left .price-big{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:56px;font-weight:300;color:var(--gold);line-height:1}
 .mp-price-left .price-label{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream-dim);margin-top:8px}
 .mp-price-right{display:flex;flex-direction:column;gap:16px;align-items:flex-end}
 .mp-wine{text-align:right}
@@ -227,12 +233,12 @@ footer{padding:64px 48px 32px;border-top:0.5px solid var(--graphite);background:
 .cp-events{display:flex;flex-direction:column}
 .cp-event{display:grid;grid-template-columns:200px 1px 1fr;gap:0 48px;align-items:start;padding:44px 0}
 .cp-event-date{text-align:right;padding-top:4px}
-.cp-event-date span{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--gold)}
+.cp-event-date span{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:20px;font-weight:300;color:var(--gold)}
 .cp-event-date p{font-size:10px;letter-spacing:0.12em;color:var(--cream-dim);margin-top:4px}
 .cp-line-wrap{display:flex;flex-direction:column;align-items:center;position:relative}
 .cp-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:6px}
 .cp-event-line{flex:1;width:0.5px;background:var(--graphite);min-height:60px;margin-top:8px}
-.cp-event-text h3{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;color:var(--cream);margin-bottom:10px}
+.cp-event-text h3{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:24px;font-weight:400;color:var(--cream);margin-bottom:10px}
 .cp-event-text p{font-size:12px;line-height:1.85;color:var(--cream-dim)}
 
 .cp-philosophy{display:grid;grid-template-columns:1fr 1fr;background:var(--carbon)}
@@ -241,7 +247,7 @@ footer{padding:64px 48px 32px;border-top:0.5px solid var(--graphite);background:
 .cp-phil-text{padding:72px 64px;display:flex;flex-direction:column;justify-content:center}
 
 .cp-quote-band{padding:88px 64px;background:var(--noir);text-align:center}
-.cp-big-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,48px);font-style:italic;font-weight:300;color:var(--cream);line-height:1.4;max-width:760px;margin:0 auto 28px}
+.cp-big-quote{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:clamp(28px,4vw,48px);font-style:italic;font-weight:300;color:var(--cream);line-height:1.4;max-width:760px;margin:0 auto 28px}
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:900px){
@@ -317,7 +323,7 @@ footer{padding:64px 48px 32px;border-top:0.5px solid var(--graphite);background:
 
 /* ─── RESERVATIONS PAGE ─── */
 .rp-hero{padding:120px 64px 56px;background:var(--noir);text-align:center;position:relative;overflow:hidden}
-.rp-hero::before{content:'NOIR';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Cormorant Garamond',serif;font-size:220px;font-weight:300;color:rgba(255,255,255,0.02);white-space:nowrap;pointer-events:none;letter-spacing:0.12em}
+.rp-hero::before{content:'NOIR';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:220px;font-weight:300;color:rgba(255,255,255,0.02);white-space:nowrap;pointer-events:none;letter-spacing:0.12em}
 .rp-hero .sec-title{font-size:clamp(44px,6vw,80px);margin-bottom:16px}
 .rp-hero .sec-body{max-width:480px;margin:0 auto}
 
@@ -340,7 +346,7 @@ footer{padding:64px 48px 32px;border-top:0.5px solid var(--graphite);background:
 .table-shape{border:1px solid var(--smoke);display:flex;align-items:center;justify-content:center;transition:all 0.25s ease;position:relative}
 .table-shape.round{border-radius:50%}
 .table-shape.rect{}
-.table-num{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:400;color:var(--cream-dim);transition:color 0.25s;line-height:1}
+.table-num{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:13px;font-weight:400;color:var(--cream-dim);transition:color 0.25s;line-height:1}
 .table-seats{font-size:7px;letter-spacing:0.1em;color:var(--smoke);position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);white-space:nowrap;transition:color 0.25s}
 
 /* Table states */
@@ -368,7 +374,7 @@ footer{padding:64px 48px 32px;border-top:0.5px solid var(--graphite);background:
 
 .table-selected-info{background:var(--graphite);border:0.5px solid var(--smoke);padding:16px 20px;margin:20px 0;min-height:64px;display:flex;align-items:center;gap:16px;transition:border-color 0.3s}
 .table-selected-info.has-table{border-color:var(--gold)}
-.tsi-icon{width:32px;height:32px;border:0.5px solid var(--smoke);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--cream-dim);transition:all 0.3s}
+.tsi-icon{width:32px;height:32px;border:0.5px solid var(--smoke);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:14px;color:var(--cream-dim);transition:all 0.3s}
 .table-selected-info.has-table .tsi-icon{border-color:var(--gold);color:var(--gold)}
 .tsi-text{font-size:12px;color:var(--cream-dim);line-height:1.6}
 .tsi-text strong{display:block;font-size:13px;color:var(--cream);font-weight:400;margin-bottom:2px}
@@ -378,7 +384,7 @@ footer{padding:64px 48px 32px;border-top:0.5px solid var(--graphite);background:
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .form-group{display:flex;flex-direction:column;gap:6px}
 .form-label{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream-dim)}
-.form-input{background:var(--graphite);border:0.5px solid var(--smoke);color:var(--cream);font-family:'Inter',sans-serif;font-size:13px;font-weight:300;padding:12px 14px;outline:none;transition:border-color 0.3s;width:100%;appearance:none;-webkit-appearance:none}
+.form-input{background:var(--graphite);border:0.5px solid var(--smoke);color:var(--cream);font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;font-weight:300;padding:12px 14px;outline:none;transition:border-color 0.3s;width:100%;appearance:none;-webkit-appearance:none}
 .form-input:focus{border-color:var(--gold)}
 .form-input::placeholder{color:var(--smoke)}
 .form-label .req{color:var(--gold);margin-left:2px}
@@ -411,7 +417,7 @@ select.form-input{cursor:pointer}
 .rp-info-item{padding:40px 32px;border-right:0.5px solid var(--graphite);text-align:center}
 .rp-info-item:last-child{border-right:none}
 .rp-info-item .eyebrow{margin-bottom:10px}
-.rp-info-val{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--cream);line-height:1.4}
+.rp-info-val{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:20px;font-weight:300;color:var(--cream);line-height:1.4}
 
 @media(max-width:900px){
   .rp-hero{padding:120px 28px 60px}
@@ -687,7 +693,7 @@ select.form-input{cursor:pointer}
     </div>
     <div class="mp-price-right">
       <div class="mp-wine">
-        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--cream);font-weight:300">Wine pairing</p>
+        <p style="font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:22px;color:var(--cream);font-weight:300">Wine pairing</p>
         <p style="font-size:10px;letter-spacing:0.14em;color:var(--cream-dim);margin:4px 0 16px">Curated by our sommelier · +€50</p>
       </div>
       <button class="btn-primary" onclick="navigate('reservations')">Reserve your seat</button>
