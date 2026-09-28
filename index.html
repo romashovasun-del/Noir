@@ -258,8 +258,9 @@ footer{padding:64px 48px 32px;border-top:0.5px solid var(--graphite);background:
 .table-item.available:hover .table-shape{background:rgba(196,151,90,0.12);border-color:var(--gold);box-shadow:0 0 20px rgba(196,151,90,0.15)}
 .table-item.available:hover .table-num{color:var(--gold)}
 .table-item.available:hover .table-seats{color:var(--cream-dim)}
-.date-wrap .form-input:focus ~ .date-ico,.date-wrap:hover .date-ico{color:var(--gold)}
+.date-wrap:hover .date-ico{color:var(--gold)}
 }
+.date-wrap .form-input:focus ~ .date-ico{color:var(--gold)}
 
 /* Faster, more predictable taps on touch devices */
 button,a,.table-item,.lang span,.mm-lang span{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
@@ -550,8 +551,8 @@ select.form-input{cursor:pointer}
       <div class="act reveal delay-4"><div class="act-n">IV</div><div class="act-t">The Ending</div><div class="act-b">Sweet, quiet, final. Something to carry home.</div><div class="act-bar"></div></div>
     </div>
     <div class="price-blk reveal">
-      <p class="price-main">Tasting menu — €85 / person</p>
-      <p class="price-sub">Wine pairing available · +€50</p>
+      <p class="price-main">Tasting menu — €200 / person</p>
+      <p class="price-sub">Wine pairing available · +€100</p>
       <button class="btn-primary" onclick="navigate('reservations')">Reserve your seat</button>
     </div>
   </section>
@@ -702,13 +703,13 @@ select.form-input{cursor:pointer}
 
   <div class="mp-price reveal">
     <div class="mp-price-left">
-      <div class="price-big">€85</div>
+      <div class="price-big">€200</div>
       <div class="price-label">Per person · 12 courses</div>
     </div>
     <div class="mp-price-right">
       <div class="mp-wine">
         <p style="font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:22px;color:var(--cream);font-weight:300">Wine pairing</p>
-        <p style="font-size:10px;letter-spacing:0.14em;color:var(--cream-dim);margin:4px 0 16px">Curated by our sommelier · +€50</p>
+        <p style="font-size:10px;letter-spacing:0.14em;color:var(--cream-dim);margin:4px 0 16px">Curated by our sommelier · +€100</p>
       </div>
       <button class="btn-primary" onclick="navigate('reservations')">Reserve your seat</button>
       <button class="btn-ghost" onclick="navigate('chef')">Meet the chef</button>
@@ -1265,7 +1266,7 @@ var I18N = {
   "Between Two Seasons":"Між двома сезонами","Contrast and tension. The moment before something changes.":"Контраст і напруга. Мить перед тим, як щось зміниться.",
   "The Main Thought":"Головна думка","The heart of the evening. Depth, warmth, the chef's signature.":"Серце вечора. Глибина, тепло, почерк шефа.",
   "The Ending":"Завершення","Sweet, quiet, final. Something to carry home.":"Солодко, тихо, остаточно. Те, що заберете з собою.",
-  "Tasting menu — €85 / person":"Дегустаційне меню — €85 / особа","Wine pairing available · +€50":"Винний супровід · +€50",
+  "Tasting menu — €200 / person":"Дегустаційне меню — €200 / особа","Wine pairing available · +€100":"Винний супровід · +€100",
   "Reserve your seat":"Забронювати місце","The chef":"Шеф","Maxim<br>Koval":"Максим<br>Коваль",
   "Once studied physics. Then understood that food is a more precise science. Internship in Copenhagen. Two years in Tokyo. Returned home with a different perspective.":"Колись вивчав фізику. Потім зрозумів, що їжа — точніша наука. Стажування в Копенгагені. Два роки в Токіо. Повернувся додому з іншим поглядом.",
   "\"I don't cook dishes. I capture a moment — this season, this ingredient, this state of mind.\"":"«Я не готую страви. Я ловлю мить — цей сезон, цей інгредієнт, цей стан.»",
@@ -1287,7 +1288,7 @@ var I18N = {
   "2–3 courses · main compositions":"2–3 страви · основні композиції",
   "Sweet, quiet, final. Not a sugar rush — a resolution. Two or three moments of sweetness that echo something from earlier in the evening. The conversation closes on its own terms.":"Солодко, тихо, остаточно. Не цукровий сплеск — а розв'язка. Два-три солодкі моменти, що відлунюють чимось із початку вечора. Розмова завершується на своїх умовах.",
   "2–3 courses · desserts &amp; mignardises":"2–3 страви · десерти та міньярдізи",
-  "Per person · 12 courses":"За особу · 12 страв","Wine pairing":"Винний супровід","Curated by our sommelier · +€50":"Добірка нашого сомельє · +€50",
+  "Per person · 12 courses":"За особу · 12 страв","Wine pairing":"Винний супровід","Curated by our sommelier · +€100":"Добірка нашого сомельє · +€100",
   "Maxim<br><em>Koval</em>":"Максим<br><em>Коваль</em>",
   "Once studied physics. Then understood that food is a more precise science — where every variable matters, and every result is unrepeatable.":"Колись вивчав фізику. Потім зрозумів, що їжа — точніша наука: тут важлива кожна змінна, а кожен результат неповторний.",
   "A path without a fixed destination":"Шлях без визначеного пункту призначення","The journey":"Шлях",
