@@ -3,32 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOIR — Fine Dining Restaurant, Kyiv</title>
-<meta name="description" content="NOIR — author's cuisine in Kyiv. One tasting menu of 12 courses that changes every evening, one seating per night. Reserve your table.">
+<title>NAYA — Fine Dining Restaurant, Kyiv</title>
+<meta name="description" content="NAYA — author's cuisine in Kyiv. One tasting menu of 12 courses that changes every evening, one seating per night. Reserve your table.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0A0A09">
-<!-- TODO: домен. Замінити «https://noir.kyiv/» на реальний — зустрічається 6 разів (canonical, og:url, og:image, twitter:image, JSON-LD url, і сам цей коментар). Find & Replace по файлу -->
-<link rel="canonical" href="https://noir.kyiv/">
+<!-- TODO: домен. Замінити «https://naya.kyiv/» на реальний — зустрічається 6 разів (canonical, og:url, og:image, twitter:image, JSON-LD url, і сам цей коментар). Find & Replace по файлу -->
+<link rel="canonical" href="https://naya.kyiv/">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="NOIR">
-<meta property="og:title" content="NOIR — Fine Dining Restaurant, Kyiv">
+<meta property="og:site_name" content="NAYA">
+<meta property="og:title" content="NAYA — Fine Dining Restaurant, Kyiv">
 <meta property="og:description" content="Author's cuisine in Kyiv. One tasting menu of 12 courses that changes every evening, one seating per night. Reserve your table.">
-<meta property="og:url" content="https://noir.kyiv/">
+<meta property="og:url" content="https://naya.kyiv/">
 <!-- og:image: файл og-image.jpg (1200×630) лежить поряд з index.html; URL має бути абсолютним, тому домен нижче — замінити -->
-<meta property="og:image" content="https://noir.kyiv/og-image.jpg">
+<meta property="og:image" content="https://naya.kyiv/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="NOIR — fine dining restaurant, Kyiv">
+<meta property="og:image:alt" content="NAYA — fine dining restaurant, Kyiv">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="uk_UA">
 
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="NOIR — Fine Dining Restaurant, Kyiv">
+<meta name="twitter:title" content="NAYA — Fine Dining Restaurant, Kyiv">
 <meta name="twitter:description" content="Author's cuisine in Kyiv. One tasting menu of 12 courses that changes every evening, one seating per night.">
-<meta name="twitter:image" content="https://noir.kyiv/og-image.jpg">
+<meta name="twitter:image" content="https://naya.kyiv/og-image.jpg">
 
 <!-- Favicons: файли лежать у папці /favicon поряд з index.html -->
 <link rel="icon" href="favicon/favicon.ico" sizes="16x16 32x32 48x48">
@@ -61,12 +61,13 @@ html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%}
 body{background:var(--noir);color:var(--cream);font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-weight:300;overflow-x:hidden;max-width:100%;position:relative}
 
 /* ─── NAV ─── */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:24px 48px;transition:background 0.4s,padding 0.4s;background:transparent}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:24px 48px;transition:background 0.4s,padding 0.4s;background:transparent}
 nav.scrolled{background:rgba(10,10,9,0.96);padding:16px 48px;backdrop-filter:blur(8px)}
 .nav-logo{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:20px;font-weight:400;letter-spacing:0.28em;color:var(--cream);text-decoration:none;cursor:pointer}
-.nav-links{display:flex;gap:36px;list-style:none}
+.nav-logo{grid-column:1;justify-self:start}
+.nav-links{grid-column:2;display:flex;gap:36px;list-style:none}
 .nav-links a{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--cream-dim);text-decoration:none;transition:color 0.3s;cursor:pointer}
-.nav-right{display:flex;align-items:center;gap:24px}
+.nav-right{grid-column:3;justify-self:end;display:flex;align-items:center;gap:24px}
 .lang{font-size:10px;letter-spacing:0.12em;color:var(--cream-dim);cursor:pointer;user-select:none}
 .lang .on{color:var(--cream)}
 .lang .sep{margin:0 5px;color:var(--smoke)}
@@ -121,9 +122,10 @@ nav.scrolled{background:rgba(10,10,9,0.96);padding:16px 48px;backdrop-filter:blu
 .hero-title{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:clamp(80px,14vw,160px);font-weight:300;letter-spacing:0.1em;line-height:0.88;color:var(--white);margin-bottom:28px}
 .hero-sub{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:48px;line-height:2}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
-.scroll-ind{position:absolute;z-index:3;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px}
-.scroll-ind span{font-size:8px;letter-spacing:0.28em;text-transform:uppercase;color:var(--cream-dim)}
-.scroll-line{width:0.5px;height:36px;background:var(--gold);animation:pulse 2s ease-in-out infinite}
+/* letter-spacing leaves an empty gap after the last glyph, so centred text looks shifted left — compensate */
+.hero-content .eyebrow{padding-left:0.3em}
+.hero-content .hero-title{padding-left:0.1em}
+.hero-content .hero-sub{padding-left:0.18em}
 @keyframes pulse{0%,100%{opacity:0.2}50%{opacity:1}}
 
 .stats-row{display:grid;grid-template-columns:repeat(3,1fr);border-top:0.5px solid var(--graphite);border-bottom:0.5px solid var(--graphite)}
@@ -145,6 +147,7 @@ nav.scrolled{background:rgba(10,10,9,0.96);padding:16px 48px;backdrop-filter:blu
 .act{background:var(--carbon);padding:44px 28px;position:relative;overflow:hidden;cursor:default;transition:background 0.3s}
 .act-n{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:72px;font-weight:300;color:var(--graphite);line-height:1;margin-bottom:20px;transition:color 0.3s}
 .act-t{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:20px;font-weight:400;color:var(--cream);margin-bottom:12px}
+.act-time{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin:-4px 0 14px}
 .act-b{font-size:11px;line-height:1.8;color:var(--cream-dim)}
 .act-bar{position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width 0.45s ease}
 .price-blk{text-align:center;margin-top:52px;padding-top:44px;border-top:0.5px solid var(--graphite)}
@@ -164,7 +167,7 @@ blockquote{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',s
 cite{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-style:normal}
 
 .cta-band{text-align:center;padding:100px 48px;background:var(--graphite);position:relative;overflow:hidden}
-.cta-band::before{content:'NOIR';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:240px;font-weight:300;color:rgba(255,255,255,0.025);white-space:nowrap;pointer-events:none;letter-spacing:0.12em}
+.cta-band::before{content:'NAYA';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:240px;font-weight:300;color:rgba(255,255,255,0.025);white-space:nowrap;pointer-events:none;letter-spacing:0.12em}
 .cta-band .sec-body{max-width:420px;margin:0 auto 44px}
 
 footer{padding:64px 48px 32px;border-top:0.5px solid var(--graphite);background:var(--noir)}
@@ -191,18 +194,20 @@ footer{padding:64px 48px 32px;border-top:0.5px solid var(--graphite);background:
 .mp-acts{padding:0 48px 88px}
 .mp-act{display:grid;grid-template-columns:120px 1fr;gap:48px;padding:64px 0;border-bottom:0.5px solid var(--graphite);align-items:start}
 .mp-act:last-child{border-bottom:none}
-.mp-act-left{text-align:right;padding-top:6px}
+.mp-act-left{text-align:center;padding-top:6px}
 .mp-act-num{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:88px;font-weight:300;line-height:0.85;color:var(--graphite)}
-.mp-act-label{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-top:12px}
+.mp-act-label{padding-left:0.2em;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-top:12px}
 .mp-act-right .act-title{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:32px;font-weight:400;color:var(--cream);margin-bottom:16px}
 .mp-act-right .act-body{font-size:13px;line-height:1.9;color:var(--cream-dim);margin-bottom:24px}
+.mp-time-note{font-size:10px;letter-spacing:0.12em;color:var(--smoke);font-style:italic;text-align:center;padding-top:36px;border-top:0.5px solid var(--graphite)}
+.mp-act-time{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
 .mp-act-hint{font-size:10px;letter-spacing:0.12em;color:var(--smoke);font-style:italic}
 
 .mp-price{background:var(--carbon);padding:72px 64px;display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap}
 .mp-price-left .price-big{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:56px;font-weight:300;color:var(--gold);line-height:1}
 .mp-price-left .price-label{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream-dim);margin-top:8px}
-.mp-price-right{display:flex;flex-direction:column;gap:16px;align-items:flex-end}
-.mp-wine{text-align:right}
+.mp-price-right{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.mp-wine{text-align:left}
 .mp-price-right .btn-primary,.mp-price-right .btn-ghost{width:240px;padding:15px 0;text-align:center;box-sizing:border-box;line-height:1.4}
 .mp-price-right .btn-primary{border:0.5px solid var(--gold)}
 
@@ -348,15 +353,12 @@ button,a,.table-item,.lang span,.mm-lang span{touch-action:manipulation;-webkit-
 
 /* ─── RESERVATIONS PAGE ─── */
 .rp-hero{padding:120px 64px 56px;background:var(--noir);text-align:center;position:relative;overflow:hidden}
-.rp-hero::before{content:'NOIR';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:220px;font-weight:300;color:rgba(255,255,255,0.02);white-space:nowrap;pointer-events:none;letter-spacing:0.12em}
+.rp-hero::before{content:'NAYA';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:220px;font-weight:300;color:rgba(255,255,255,0.02);white-space:nowrap;pointer-events:none;letter-spacing:0.12em}
 .rp-hero .sec-title{font-size:clamp(44px,6vw,80px);margin-bottom:16px}
 .rp-hero .sec-body{max-width:480px;margin:0 auto}
 
-.rp-main{display:grid;grid-template-columns:1fr 400px;gap:0;background:var(--carbon);align-items:stretch}
 
 /* Floor plan */
-.rp-plan{padding:40px 36px 32px;border-right:0.5px solid var(--graphite);display:flex;flex-direction:column;gap:16px}
-.rp-plan-title{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0}
 .floor-plan{position:relative;width:100%;aspect-ratio:4/3;background:var(--graphite);border:0.5px solid var(--smoke);border-radius:4px;overflow:hidden}
 
 /* Room elements */
@@ -391,8 +393,6 @@ button,a,.table-item,.lang span,.mm-lang span{touch-action:manipulation;-webkit-
 .legend-dot.occ{background:rgba(20,20,18,0.5);border-color:rgba(51,51,48,0.4)}
 
 /* Booking panel */
-.rp-form-panel{padding:40px 36px;display:flex;flex-direction:column;background:var(--carbon);position:sticky;top:64px;max-height:calc(100vh - 64px);overflow-y:auto}
-.rp-form-panel .sec-title{font-size:28px;margin-bottom:6px}
 
 .table-selected-info{background:var(--graphite);border:0.5px solid var(--smoke);padding:16px 20px;margin:20px 0;min-height:64px;display:flex;align-items:center;gap:16px;transition:border-color 0.3s}
 .table-selected-info.has-table{border-color:var(--gold)}
@@ -426,6 +426,82 @@ select.form-input{cursor:pointer}
 .rp-submit .btn-primary{width:100%;padding:16px;font-size:10px;letter-spacing:0.22em;text-align:center;border:none;cursor:pointer}
 .rp-submit .btn-primary:disabled{background:var(--smoke);color:var(--graphite);cursor:not-allowed}
 
+
+/* ─── Reservation wizard ─── */
+.wz{background:var(--carbon);padding:56px 24px 104px;border-top:0.5px solid var(--graphite)}
+.wz-card{max-width:880px;margin:0 auto;scroll-margin-top:90px}
+.wz-head{max-width:520px;margin:0 auto 52px;text-align:center}
+.wz-progress{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.wz-progress span{height:2px;background:var(--graphite);transition:background 0.4s}
+.wz-progress span.done{background:rgba(196,151,90,0.5)}
+.wz-progress span.active{background:var(--gold)}
+.wz-count{margin-top:14px;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--cream-dim)}
+
+.wz-step{display:none;text-align:center}
+.wz-step.active{display:block;animation:wzIn 0.5s cubic-bezier(0.16,1,0.3,1)}
+@keyframes wzIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.wz-step.active{animation:none}}
+.wz-q{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:clamp(34px,5vw,52px);font-weight:300;color:var(--cream);line-height:1.1;margin:10px 0 40px;outline:none}
+.wz-sub{font-size:12px;color:var(--cream-dim);margin:-24px 0 28px;min-height:1.6em}
+.wz-body{max-width:460px;margin:0 auto;text-align:left}
+.wz-body--wide{max-width:760px}
+.wz-stack{display:flex;flex-direction:column;gap:20px}
+.wz-body .form-input{padding:16px 18px;font-size:15px}
+.wz-body .form-row{gap:16px}
+.wz-body .date-wrap .form-input{padding-right:48px}
+.wz-hint{font-size:11px;letter-spacing:0.08em;color:var(--cream-dim);line-height:1.9;text-align:center;margin-top:18px;min-height:1.9em}
+.wz-note,.wz-body .form-note{text-align:center}
+
+.wz-nav{max-width:460px;margin:48px auto 0;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.wz-nav .btn-primary{margin-left:auto;cursor:pointer}
+.wz-nav--center{justify-content:center}
+.wz-step[data-step="3"] .wz-nav{max-width:760px}
+.wz-nav .btn-primary:disabled{background:var(--smoke);color:var(--graphite);cursor:not-allowed}
+.wz-nav .btn-primary:disabled:hover{background:var(--smoke)}
+
+/* chips */
+.chip{background:var(--graphite);border:0.5px solid var(--smoke);color:var(--cream);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;transition:border-color 0.25s,background 0.25s}
+.chip.on{border-color:var(--gold);background:rgba(196,151,90,0.12)}
+.date-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:28px}
+.chip-date{padding:14px 8px}
+.chip-top{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream-dim)}
+.chip-bot{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:20px;font-weight:400}
+.chip.on .chip-top{color:var(--gold)}
+.guest-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.chip-num{min-width:46px;height:46px;padding:0 10px;font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:20px}
+
+/* stepper */
+.stepper{display:flex;align-items:center;justify-content:center;gap:28px}
+.stepper-btn{width:52px;height:52px;border-radius:50%;border:0.5px solid var(--smoke);background:transparent;color:var(--cream);font-size:22px;line-height:1;cursor:pointer;transition:border-color 0.25s,color 0.25s;flex-shrink:0}
+.stepper-val{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:46px;font-weight:300;min-width:200px;text-align:center;color:var(--cream);white-space:nowrap}
+
+/* large party → phone */
+.g-call{display:none}
+.wz-step.is-call .g-normal{display:none}
+.wz-step.is-call .g-call{display:block}
+.wz-callp{font-size:13px;line-height:1.9;color:var(--cream-dim);max-width:440px;margin:-12px auto 20px}
+.wz-tel{font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:clamp(32px,6vw,48px);color:var(--gold);text-decoration:none;display:inline-block;margin:8px 0 16px}
+
+/* floor plan inside the wizard */
+.plan-wrap{background:#1E1E1C;border:0.5px solid var(--graphite)}
+.plan-legend{justify-content:center;margin-top:20px}
+.legend-dot.small{background:rgba(30,30,28,0.8);border-color:var(--smoke);opacity:0.3}
+.t-node[data-fit="no"]{opacity:0.25 !important;pointer-events:none}
+.wz-body--wide .table-selected-info{max-width:420px;margin:24px auto 0;text-align:left}
+
+/* review */
+.wz-summary{border:0.5px solid var(--graphite);background:var(--noir);margin-bottom:28px}
+.wz-summary>div{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:13px 18px;border-bottom:0.5px solid var(--graphite)}
+.wz-summary>div:last-child{border-bottom:none}
+.wz-summary dt{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);flex-shrink:0}
+.wz-summary dd{font-size:13px;color:var(--cream);text-align:right;word-break:break-word}
+
+.rp-success{padding:64px 20px}
+@media (hover:hover) and (pointer:fine){
+.chip:hover{border-color:var(--gold)}
+.stepper-btn:hover{border-color:var(--gold);color:var(--gold)}
+}
+
 /* Success state */
 .rp-success{display:none;text-align:center;padding:40px 20px;flex:1;flex-direction:column;align-items:center;justify-content:center}
 .rp-success.show{display:flex}
@@ -437,23 +513,26 @@ select.form-input{cursor:pointer}
 
 @media(max-width:900px){
   .rp-hero{padding:120px 28px 60px}
-  .rp-main{grid-template-columns:1fr}
-  .rp-plan{padding:40px 24px;border-right:none;border-bottom:0.5px solid var(--graphite)}
-  /* On phones the panel must flow with the page — sticky + max-height turned it into
-     an inner scroll box, so the submit button ended up clipped behind the footer. */
-  .rp-form-panel{padding:40px 24px;position:static;max-height:none;overflow:visible}
   .form-row{grid-template-columns:1fr}
+  .wz{padding:32px 20px 72px}
+  .wz-head{margin-bottom:36px}
+  .wz-q{margin-bottom:28px}
+  .wz-nav{flex-direction:column-reverse;align-items:center;gap:12px;margin-top:32px}
+  .wz-nav .btn-primary{margin-left:0}
+  .stepper{gap:14px}
+  .stepper-val{font-size:34px;min-width:130px}
+  .date-chips{gap:8px}
 }
 </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Restaurant",
-  "name": "NOIR",
+  "name": "NAYA",
   "description": "Author's cuisine in Kyiv. One tasting menu of 12 courses that changes every evening, one seating per night.",
-  "url": "https://noir.kyiv/",
+  "url": "https://naya.kyiv/",
   "telephone": "+380440000000",
-  "email": "hello@noir.kyiv",
+  "email": "hello@naya.kyiv",
   "servesCuisine": "Author's cuisine",
   "priceRange": "€€€",
   "address": {"@type": "PostalAddress", "streetAddress": "32 Saksahanskoho St", "addressLocality": "Kyiv", "postalCode": "01033", "addressCountry": "UA"},
@@ -478,7 +557,7 @@ select.form-input{cursor:pointer}
 
 <!-- NAV -->
 <nav id="mainNav">
-  <span class="nav-logo" onclick="navigate('home')">NOIR</span>
+  <span class="nav-logo" onclick="navigate('home')">NAYA</span>
   <ul class="nav-links">
     <li><a onclick="navigate('home','concept')">Concept</a></li>
     <li><a onclick="navigate('menu')">Menu</a></li>
@@ -504,16 +583,12 @@ select.form-input{cursor:pointer}
     <div class="hero-grad"></div>
     <div class="hero-content">
       <p class="eyebrow" style="margin-bottom:24px">Author's cuisine · Kyiv</p>
-      <h1 class="hero-title">NOIR</h1>
+      <h1 class="hero-title">NAYA</h1>
       <p class="hero-sub">One menu. One evening.<br>No boundaries.</p>
       <div class="hero-btns">
         <button class="btn-primary" onclick="navigate('reservations')">Reserve a table</button>
         <button class="btn-ghost" onclick="navigate('menu')">Explore menu</button>
       </div>
-    </div>
-    <div class="scroll-ind">
-      <div class="scroll-line"></div>
-      <span>Scroll</span>
     </div>
   </section>
 
@@ -525,15 +600,14 @@ select.form-input{cursor:pointer}
 
   <section class="concept" id="concept">
     <div class="concept-img-wrap reveal-left">
-      <img loading="lazy" decoding="async" class="concept-img" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395191/magnific_interior-of-a-luxury-fine_PiL6cJL42C_iqaeuu.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395191/magnific_interior-of-a-luxury-fine_PiL6cJL42C_iqaeuu.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395191/magnific_interior-of-a-luxury-fine_PiL6cJL42C_iqaeuu.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395191/magnific_interior-of-a-luxury-fine_PiL6cJL42C_iqaeuu.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395191/magnific_interior-of-a-luxury-fine_PiL6cJL42C_iqaeuu.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395191/magnific_interior-of-a-luxury-fine_PiL6cJL42C_iqaeuu.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="NOIR dining room — dark interior with warm light">
+      <img loading="lazy" decoding="async" class="concept-img" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395191/magnific_interior-of-a-luxury-fine_PiL6cJL42C_iqaeuu.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395191/magnific_interior-of-a-luxury-fine_PiL6cJL42C_iqaeuu.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395191/magnific_interior-of-a-luxury-fine_PiL6cJL42C_iqaeuu.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395191/magnific_interior-of-a-luxury-fine_PiL6cJL42C_iqaeuu.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395191/magnific_interior-of-a-luxury-fine_PiL6cJL42C_iqaeuu.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395191/magnific_interior-of-a-luxury-fine_PiL6cJL42C_iqaeuu.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="NAYA dining room — dark interior with warm light">
     </div>
     <div class="concept-text reveal-right">
       <p class="eyebrow">Our philosophy</p>
       <h2 class="sec-title" style="font-size:clamp(30px,3.2vw,46px)">We don't serve food.<br>We tell <em>stories.</em></h2>
       <div class="gold-line"></div>
-      <p class="sec-body" style="margin-bottom:36px">Noir was born from a single conviction: the most powerful experience is the one you cannot predict. There is no fixed menu — only the chef, the season, and the moment of inspiration.</p>
+      <p class="sec-body" style="margin-bottom:36px">Naya was born from a single conviction: the most powerful experience is the one you cannot predict. There is no fixed menu — only the chef, the season, and the moment of inspiration.</p>
       <div class="btn-row">
-        <button class="btn-primary" onclick="navigate('menu')">Explore menu</button>
         <button class="btn-ghost" onclick="navigate('chef')">Meet the chef</button>
       </div>
     </div>
@@ -545,23 +619,23 @@ select.form-input{cursor:pointer}
       <h2 class="sec-title" style="font-size:clamp(36px,4.5vw,58px)">The menu changes<br><em>every evening</em></h2>
     </div>
     <div class="acts">
-      <div class="act reveal delay-1"><div class="act-n">I</div><div class="act-t">Cold Opening</div><div class="act-b">Lightness, acidity, first contact. The conversation begins.</div><div class="act-bar"></div></div>
-      <div class="act reveal delay-2"><div class="act-n">II</div><div class="act-t">Between Two Seasons</div><div class="act-b">Contrast and tension. The moment before something changes.</div><div class="act-bar"></div></div>
-      <div class="act reveal delay-3"><div class="act-n">III</div><div class="act-t">The Main Thought</div><div class="act-b">The heart of the evening. Depth, warmth, the chef's signature.</div><div class="act-bar"></div></div>
-      <div class="act reveal delay-4"><div class="act-n">IV</div><div class="act-t">The Ending</div><div class="act-b">Sweet, quiet, final. Something to carry home.</div><div class="act-bar"></div></div>
+      <div class="act reveal delay-1"><div class="act-n">I</div><div class="act-t">Cold Opening</div><div class="act-time">7:00 – 7:30 PM · 30 min</div><div class="act-b">Lightness, acidity, first contact. The conversation begins.</div><div class="act-bar"></div></div>
+      <div class="act reveal delay-2"><div class="act-n">II</div><div class="act-t">Between Two Seasons</div><div class="act-time">7:30 – 8:00 PM · 30 min</div><div class="act-b">Contrast and tension. The moment before something changes.</div><div class="act-bar"></div></div>
+      <div class="act reveal delay-3"><div class="act-n">III</div><div class="act-t">The Main Thought</div><div class="act-time">8:00 – 9:00 PM · 60 min</div><div class="act-b">The heart of the evening. Depth, warmth, the chef's signature.</div><div class="act-bar"></div></div>
+      <div class="act reveal delay-4"><div class="act-n">IV</div><div class="act-t">The Ending</div><div class="act-time">9:00 – 9:30 PM · 30 min</div><div class="act-b">Sweet, quiet, final. Something to carry home.</div><div class="act-bar"></div></div>
     </div>
     <div class="price-blk reveal">
-      <p class="price-main">Tasting menu — €200 / person</p>
-      <p class="price-sub">Wine pairing available · +€100</p>
+      <p class="price-main">Tasting menu — €85 / person</p>
+      <p class="price-sub">Wine pairing available · +€50</p>
       <button class="btn-primary" onclick="navigate('reservations')">Reserve your seat</button>
     </div>
   </section>
 
   <div class="gallery">
-    <div class="gi reveal-scale"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Fine dining dish from the NOIR tasting menu"></div>
+    <div class="gi reveal-scale"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Fine dining dish from the NAYA tasting menu"></div>
     <div class="gi reveal-scale delay-1"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Glass of red wine on a dark table"></div>
     <div class="gi reveal-scale delay-2"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395189/magnific_closeup-of-chef-hands-usi_62SZIb9iJO_sureec.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395189/magnific_closeup-of-chef-hands-usi_62SZIb9iJO_sureec.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395189/magnific_closeup-of-chef-hands-usi_62SZIb9iJO_sureec.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395189/magnific_closeup-of-chef-hands-usi_62SZIb9iJO_sureec.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395189/magnific_closeup-of-chef-hands-usi_62SZIb9iJO_sureec.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395189/magnific_closeup-of-chef-hands-usi_62SZIb9iJO_sureec.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Chef's hands plating a dish"></div>
-    <div class="gi reveal-scale delay-3"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Dark restaurant interior at NOIR"></div>
+    <div class="gi reveal-scale delay-3"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Dark restaurant interior at NAYA"></div>
     <div class="gi reveal-scale delay-4"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Overhead view of a plated course"></div>
   </div>
 
@@ -572,7 +646,7 @@ select.form-input{cursor:pointer}
       <div class="gold-line"></div>
       <p class="sec-body" style="margin-bottom:0">Once studied physics. Then understood that food is a more precise science. Internship in Copenhagen. Two years in Tokyo. Returned home with a different perspective.</p>
       <blockquote>"I don't cook dishes. I capture a moment — this season, this ingredient, this state of mind."</blockquote>
-      <cite>— Chef, Noir</cite>
+      <cite>— Chef, Naya</cite>
       <div class="btn-row" style="margin-top:36px"><button class="btn-ghost" onclick="navigate('chef')">About the chef</button></div>
     </div>
     <div class="chef-home-img reveal-right">
@@ -590,7 +664,7 @@ select.form-input{cursor:pointer}
   <footer>
     <div class="f-top">
       <div class="f-col">
-        <div class="f-logo">NOIR</div>
+        <div class="f-logo">NAYA</div>
         <p class="f-tag">One menu. One evening.<br>No boundaries.</p>
       </div>
       <div class="f-col">
@@ -603,7 +677,7 @@ select.form-input{cursor:pointer}
       </div>
       <div class="f-col">
         <p class="f-head">Contact</p>
-        <p class="f-txt"><a href="tel:+380440000000">+380 44 000 0000</a><br><a href="mailto:hello@noir.kyiv">hello@noir.kyiv</a></p>
+        <p class="f-txt"><a href="tel:+380440000000">+380 44 000 0000</a><br><a href="mailto:hello@naya.kyiv">hello@naya.kyiv</a></p>
       </div>
       <div class="f-col">
         <p class="f-head">Follow</p>
@@ -619,7 +693,7 @@ select.form-input{cursor:pointer}
         <a onclick="navigate('chef')">Chef</a>
         <a onclick="navigate('reservations')">Reservations</a>
       </div>
-      <p class="f-copy">© 2026 NOIR · Kyiv</p>
+      <p class="f-copy">© 2026 NAYA · Kyiv</p>
     </div>
   </footer>
 </div>
@@ -628,7 +702,7 @@ select.form-input{cursor:pointer}
 <div class="page" id="page-menu">
 
   <div class="mp-hero">
-    <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Fine dining dish — NOIR tasting menu">
+    <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395190/magnific_side-angle-fine-dining-di_UyKOe0Vwny_mebwhm.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Fine dining dish — NAYA tasting menu">
     <div class="mp-hero-grad"></div>
     <div class="mp-hero-content">
       <p class="eyebrow">Tasting menu</p>
@@ -642,7 +716,7 @@ select.form-input{cursor:pointer}
       <h2 class="sec-title" style="font-size:clamp(28px,3vw,40px)">Below — the feelings<br>that stay.</h2>
     </div>
     <div class="reveal-right">
-      <p class="sec-body">There is no fixed menu at Noir. Each evening, the chef composes a new sequence of twelve courses built entirely around what the season offers and what the moment demands. No two evenings are the same.</p>
+      <p class="sec-body">There is no fixed menu at Naya. Each evening, the chef composes a new sequence of twelve courses built entirely around what the season offers and what the moment demands. No two evenings are the same.</p>
     </div>
   </div>
 
@@ -654,6 +728,7 @@ select.form-input{cursor:pointer}
           <div class="mp-act-label">Act one</div>
         </div>
         <div class="mp-act-right">
+          <div class="mp-act-time">7:00 – 7:30 PM · 30 min</div>
           <div class="act-title">Cold Opening</div>
           <div class="act-body">Lightness, acidity, first contact. Three or four small forms arrive in quick succession — the palate waking up, the evening beginning. No introductions. Just presence.</div>
           <div class="mp-act-hint">3–4 courses · cold preparations</div>
@@ -665,6 +740,7 @@ select.form-input{cursor:pointer}
           <div class="mp-act-label">Act two</div>
         </div>
         <div class="mp-act-right">
+          <div class="mp-act-time">7:30 – 8:00 PM · 30 min</div>
           <div class="act-title">Between Two Seasons</div>
           <div class="act-body">Contrast and tension. This is the most unpredictable part of the evening — where the kitchen plays with temperature, texture, and expectation. Something familiar arriving in an unfamiliar form.</div>
           <div class="mp-act-hint">2–3 courses · warm and cold</div>
@@ -676,6 +752,7 @@ select.form-input{cursor:pointer}
           <div class="mp-act-label">Act three</div>
         </div>
         <div class="mp-act-right">
+          <div class="mp-act-time">8:00 – 9:00 PM · 60 min</div>
           <div class="act-title">The Main Thought</div>
           <div class="act-body">The heart of the evening. Depth, warmth, the chef's signature. This is where a single ingredient — a root, a fish, a cut of meat — is given its full say. Nothing ornamental. Only essence.</div>
           <div class="mp-act-hint">2–3 courses · main compositions</div>
@@ -687,29 +764,31 @@ select.form-input{cursor:pointer}
           <div class="mp-act-label">Act four</div>
         </div>
         <div class="mp-act-right">
+          <div class="mp-act-time">9:00 – 9:30 PM · 30 min</div>
           <div class="act-title">The Ending</div>
           <div class="act-body">Sweet, quiet, final. Not a sugar rush — a resolution. Two or three moments of sweetness that echo something from earlier in the evening. The conversation closes on its own terms.</div>
           <div class="mp-act-hint">2–3 courses · desserts &amp; mignardises</div>
         </div>
       </div>
+      <p class="mp-time-note">Tue – Fri seating begins at 7 PM. On Sat – Sun it starts at 6 PM, so every act begins an hour earlier.</p>
     </div>
   </section>
 
   <div class="mp-gallery">
-    <div class="mp-gi reveal-scale"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Glass of red wine — wine pairing at NOIR"></div>
+    <div class="mp-gi reveal-scale"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395188/magnific_closeup-of-a-red-wine-gla_SO5JDo5Ub8_jmdfzz.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Glass of red wine — wine pairing at NAYA"></div>
     <div class="mp-gi reveal-scale delay-1"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Overhead view of a plated dessert course"></div>
-    <div class="mp-gi reveal-scale delay-2"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Dark dining room interior at NOIR"></div>
+    <div class="mp-gi reveal-scale delay-2"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789395189/magnific_dark-restaurant-interior-_ONx9ddSynm_zyjn5i.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Dark dining room interior at NAYA"></div>
   </div>
 
   <div class="mp-price reveal">
     <div class="mp-price-left">
-      <div class="price-big">€200</div>
+      <div class="price-big">€85</div>
       <div class="price-label">Per person · 12 courses</div>
     </div>
     <div class="mp-price-right">
       <div class="mp-wine">
         <p style="font-family:'Cormorant Garamond','Apple Garamond','Times New Roman',serif;font-size:22px;color:var(--cream);font-weight:300">Wine pairing</p>
-        <p style="font-size:10px;letter-spacing:0.14em;color:var(--cream-dim);margin:4px 0 16px">Curated by our sommelier · +€100</p>
+        <p style="font-size:10px;letter-spacing:0.14em;color:var(--cream-dim);margin:4px 0 16px">Curated by our sommelier · +€50</p>
       </div>
       <button class="btn-primary" onclick="navigate('reservations')">Reserve your seat</button>
       <button class="btn-ghost" onclick="navigate('chef')">Meet the chef</button>
@@ -719,7 +798,7 @@ select.form-input{cursor:pointer}
   <footer>
     <div class="f-top">
       <div class="f-col">
-        <div class="f-logo">NOIR</div>
+        <div class="f-logo">NAYA</div>
         <p class="f-tag">One menu. One evening.<br>No boundaries.</p>
       </div>
       <div class="f-col">
@@ -732,7 +811,7 @@ select.form-input{cursor:pointer}
       </div>
       <div class="f-col">
         <p class="f-head">Contact</p>
-        <p class="f-txt"><a href="tel:+380440000000">+380 44 000 0000</a><br><a href="mailto:hello@noir.kyiv">hello@noir.kyiv</a></p>
+        <p class="f-txt"><a href="tel:+380440000000">+380 44 000 0000</a><br><a href="mailto:hello@naya.kyiv">hello@naya.kyiv</a></p>
       </div>
       <div class="f-col">
         <p class="f-head">Follow</p>
@@ -748,7 +827,7 @@ select.form-input{cursor:pointer}
         <a onclick="navigate('chef')">Chef</a>
         <a onclick="navigate('reservations')">Reservations</a>
       </div>
-      <p class="f-copy">© 2026 NOIR · Kyiv</p>
+      <p class="f-copy">© 2026 NAYA · Kyiv</p>
     </div>
   </footer>
 </div>
@@ -758,7 +837,7 @@ select.form-input{cursor:pointer}
 
   <div class="cp-hero">
     <div class="cp-hero-img">
-      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Chef Maxim Koval in the NOIR kitchen">
+      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789399049/magnific_expand_4RTY6gO9Aa_gfotwd.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Chef Maxim Koval in the NAYA kitchen">
     </div>
     <div class="cp-hero-content">
       <p class="eyebrow">The chef</p>
@@ -792,37 +871,37 @@ select.form-input{cursor:pointer}
       <div class="cp-event reveal delay-3">
         <div class="cp-event-date"><span>Kyiv</span><p>Now</p></div>
         <div class="cp-line-wrap"><div class="cp-dot"></div></div>
-        <div class="cp-event-text"><h3>Noir</h3><p>Returned with no interest in a fixed menu or a national cuisine. Built Noir around a single question: what can this ingredient say, today, in this season?</p></div>
+        <div class="cp-event-text"><h3>Naya</h3><p>Returned with no interest in a fixed menu or a national cuisine. Built Naya around a single question: what can this ingredient say, today, in this season?</p></div>
       </div>
     </div>
   </section>
 
   <section class="cp-philosophy">
     <div class="cp-phil-img reveal-left">
-      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Plated course from the NOIR tasting menu">
+      <img loading="lazy" decoding="async" src="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg" srcset="https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_640/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 640w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_960/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 960w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1280/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1280w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1600/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1600w, https://res.cloudinary.com/dcwwjvlcv/image/upload/f_auto,q_auto,c_limit,w_1920/v1789396222/magnific_img1-img2_ks4JcuS16B_jkg0od.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw" alt="Plated course from the NAYA tasting menu">
     </div>
     <div class="cp-phil-text reveal-right">
       <p class="eyebrow">Philosophy</p>
       <h2 class="sec-title" style="font-size:clamp(28px,3vw,40px)">Building menus<br>around questions.</h2>
       <div class="gold-line"></div>
       <p class="sec-body" style="margin-bottom:28px">I don't build menus around a country or an era. I build them around a question: what can this ingredient say today? The answer changes with the season, the market, the mood — and that's the point.</p>
-      <p class="sec-body">No two evenings at Noir are the same. That's not a limitation. That's the entire idea.</p>
+      <p class="sec-body">No two evenings at Naya are the same. That's not a limitation. That's the entire idea.</p>
     </div>
   </section>
 
   <section class="cp-quote-band">
     <p class="eyebrow reveal" style="margin-bottom:36px">In his own words</p>
     <p class="cp-big-quote reveal">"I don't cook dishes. I capture a moment — this season, this ingredient, this state of mind."</p>
-    <cite class="reveal">— Maxim Koval, Chef and founder, Noir</cite>
+    <cite class="reveal">— Maxim Koval, Chef and founder, Naya</cite>
     <div style="margin-top:52px" class="reveal">
-      <button class="btn-primary btn-lg" onclick="navigate('reservations')">Experience Noir</button>
+      <button class="btn-primary btn-lg" onclick="navigate('reservations')">Experience Naya</button>
     </div>
   </section>
 
   <footer>
     <div class="f-top">
       <div class="f-col">
-        <div class="f-logo">NOIR</div>
+        <div class="f-logo">NAYA</div>
         <p class="f-tag">One menu. One evening.<br>No boundaries.</p>
       </div>
       <div class="f-col">
@@ -835,7 +914,7 @@ select.form-input{cursor:pointer}
       </div>
       <div class="f-col">
         <p class="f-head">Contact</p>
-        <p class="f-txt"><a href="tel:+380440000000">+380 44 000 0000</a><br><a href="mailto:hello@noir.kyiv">hello@noir.kyiv</a></p>
+        <p class="f-txt"><a href="tel:+380440000000">+380 44 000 0000</a><br><a href="mailto:hello@naya.kyiv">hello@naya.kyiv</a></p>
       </div>
       <div class="f-col">
         <p class="f-head">Follow</p>
@@ -851,7 +930,7 @@ select.form-input{cursor:pointer}
         <a onclick="navigate('chef')">Chef</a>
         <a onclick="navigate('reservations')">Reservations</a>
       </div>
-      <p class="f-copy">© 2026 NOIR · Kyiv</p>
+      <p class="f-copy">© 2026 NAYA · Kyiv</p>
     </div>
   </footer>
 </div>
@@ -1020,29 +1099,26 @@ function initTables() {
       styleTable(g, 'selected');
       selectedTable = { id: g.dataset.id, seats: g.dataset.seats, zone: g.dataset.zone };
       updateTableInfo();
-      if(document.getElementById('fieldGuests').value) validateField('fieldGuests');
-      // scroll to form on mobile
-      if (window.innerWidth < 900) {
-        setTimeout(function(){
-          var panel = document.querySelector('.rp-form-panel');
-          if(panel) panel.scrollIntoView({behavior:'smooth', block:'start'});
-        }, 100);
-      }
     });
   });
 }
 
 function updateTableInfo(){
-  if(!selectedTable) return;
   var info = document.getElementById('tableInfo');
   var icon = document.getElementById('tsiIcon');
   var text = document.getElementById('tsiText');
-  var btn  = document.getElementById('submitBtn');
-  info.classList.add('has-table');
-  icon.textContent = selectedTable.id;
-  text.innerHTML = '<strong>' + t('Table') + ' ' + selectedTable.id + ' — ' + t(selectedTable.zone) + '</strong>' + t('Up to {n} guests', {n: selectedTable.seats});
-  btn.disabled = false;
-  btn.textContent = t('Request reservation');
+  var next = document.getElementById('tableNext');
+  if(selectedTable){
+    info.classList.add('has-table');
+    icon.textContent = selectedTable.id;
+    text.innerHTML = '<strong>' + t('Table') + ' ' + selectedTable.id + ' — ' + t(selectedTable.zone) + '</strong>' + t('Up to {n} guests', {n: selectedTable.seats});
+    if(next) next.disabled = false;
+  } else {
+    info.classList.remove('has-table');
+    icon.textContent = '—';
+    text.innerHTML = t('<strong>No table selected</strong> Choose a table on the floor plan');
+    if(next) next.disabled = true;
+  }
 }
 
 /* ─── Form validation ─── */
@@ -1084,7 +1160,6 @@ function validateField(id){
       break;
     case 'fieldGuests':
       if(!v) err = t('Select number of guests');
-      else if(selectedTable && +v > +selectedTable.seats) err = t('Table {id} seats up to {n}', {id: selectedTable.id, n: selectedTable.seats});
       break;
   }
   setFieldState(el, err);
@@ -1106,13 +1181,14 @@ function clearFieldState(el){
   if(group){ group.classList.remove('has-error'); var m = group.querySelector('.form-error'); if(m) m.textContent=''; }
 }
 
+var WZ_STEP_OF = {fieldDate:1, fieldGuests:2, fieldName:4, fieldLastname:4, fieldPhone:5, fieldEmail:5};
 function validateForm(){
   var ok = true, first = null;
   REQUIRED_FIELDS.forEach(function(id){
     touched[id] = true;
-    if(!validateField(id)){ ok = false; if(!first) first = document.getElementById(id); }
+    if(!validateField(id)){ ok = false; if(!first) first = id; }
   });
-  if(first){ first.focus(); first.scrollIntoView({behavior:'smooth', block:'center'}); }
+  if(first){ wzGo(WZ_STEP_OF[first]); }
   return ok;
 }
 
@@ -1148,17 +1224,18 @@ var RESERVATION_ACCESS_KEY = '';
 function collectReservation(){
   var g = function(id){ return (document.getElementById(id).value || '').trim(); };
   return {
-    subject: 'NOIR — table reservation request',
+    subject: 'NAYA — table reservation request',
     table: selectedTable ? ('Table ' + selectedTable.id + ' (' + selectedTable.zone + ', up to ' + selectedTable.seats + ')') : '',
     first_name: g('fieldName'), last_name: g('fieldLastname'),
     phone: g('fieldPhone'), email: g('fieldEmail'),
-    date: g('fieldDate'), guests: g('fieldGuests'), comment: g('fieldComment'),
+    date: g('fieldDate'), seating: wzSeatingLabel(g('fieldDate'), 'en'), guests: g('fieldGuests'), comment: g('fieldComment'),
     language: LANG
   };
 }
 
 function submitReservation(){
   if(!validateForm()) return;
+  if(!selectedTable){ wzGo(3); return; }
   var btn = document.getElementById('submitBtn');
   if(!RESERVATION_ENDPOINT){ showReservationSuccess(); return; }   // prototype mode
   var payload = collectReservation();
@@ -1173,7 +1250,7 @@ function submitReservation(){
     showReservationSuccess();
   }).catch(function(){
     btn.disabled = false; btn.textContent = t('Request reservation');
-    var note = document.querySelector('#rpForm .form-note');
+    var note = document.getElementById('wzNote');
     if(note){ note.style.color = '#C86A52'; note.textContent = LANG === 'uk'
       ? 'Не вдалося надіслати запит. Спробуйте ще раз або зателефонуйте нам.'
       : 'Could not send the request. Please try again or call us.'; }
@@ -1182,35 +1259,212 @@ function submitReservation(){
 
 function showReservationSuccess(){
   document.getElementById('rpForm').style.display = 'none';
-  document.getElementById('tableInfo').style.display = 'none';
+  document.getElementById('wzHead').style.display = 'none';
   document.getElementById('rpSuccess').classList.add('show');
+  wzScrollTop();
 }
 
 function resetReservation(){
-  var note = document.querySelector('#rpForm .form-note'); if(note) note.style.color = '';
-  var sb = document.getElementById('submitBtn'); if(sb) sb.disabled = false;
   selectedTable = null;
-  document.querySelectorAll('.table-item.selected').forEach(function(t){
-    t.classList.remove('selected');
-    t.classList.add('available');
+  document.querySelectorAll('.t-node').forEach(function(g){
+    if(g.dataset.status === 'selected'){ g.dataset.status = 'available'; styleTable(g, 'available'); }
   });
-  var info = document.getElementById('tableInfo');
-  info.classList.remove('has-table');
-  document.getElementById('tsiIcon').textContent = '—';
-  document.getElementById('tsiText').innerHTML = t('<strong>No table selected</strong> Choose a table on the floor plan');
-  var btn = document.getElementById('submitBtn');
-  btn.disabled = true;
-  btn.textContent = t('Select a table first');
-  ['fieldName','fieldLastname','fieldPhone','fieldEmail','fieldDate','fieldGuests','fieldComment'].forEach(function(id){
+  ['fieldName','fieldLastname','fieldPhone','fieldEmail','fieldDate','fieldComment'].forEach(function(id){
     var el = document.getElementById(id);
     if(el){ el.value = ''; clearFieldState(el); }
   });
   touched = {};
-  if(I18N_NODES) setLang(LANG);
+  document.getElementById('fieldGuests').value = 2;
+  var btn = document.getElementById('submitBtn'); btn.disabled = false; btn.textContent = t('Request reservation');
+  var note = document.getElementById('wzNote'); note.style.color = ''; note.textContent = t("We'll confirm within 2 hours by phone or email.");
   document.getElementById('rpForm').style.display = '';
-  document.getElementById('tableInfo').style.display = '';
+  document.getElementById('wzHead').style.display = '';
   document.getElementById('rpSuccess').classList.remove('show');
+  wzSetGuests(2);
+  wzOnDateChange();
+  updateTableInfo();
+  wzGo(1);
 }
+
+/* ─── Wizard: step navigation, date/guests widgets, summary ─── */
+var WZ_TOTAL = 6, wzStep = 1, WZ_BIG_PARTY = 7;
+var WZ_FIELDS = {1:['fieldDate'], 2:['fieldGuests'], 4:['fieldName','fieldLastname'], 5:['fieldPhone','fieldEmail']};
+function $id(x){ return document.getElementById(x); }
+function wzLocale(){ return LANG === 'uk' ? 'uk-UA' : 'en-GB'; }
+function wzIso(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function wzGuests(){ return parseInt($id('fieldGuests').value,10) || 0; }
+
+function guestsLabel(n){
+  if(LANG === 'uk'){
+    var a = n % 10, b = n % 100;
+    return n + ' ' + ((a === 1 && b !== 11) ? 'гість' : (a >= 2 && a <= 4 && (b < 12 || b > 14)) ? 'гості' : 'гостей');
+  }
+  return n + (n === 1 ? ' guest' : ' guests');
+}
+function wzSeatingLabel(iso, lang){
+  if(!iso) return '';
+  var wk = new Date(iso + 'T12:00:00').getDay();
+  var weekend = (wk === 0 || wk === 6);
+  if((lang || LANG) === 'uk') return weekend ? '18:00' : '19:00';
+  return weekend ? '6:00 PM' : '7:00 PM';
+}
+
+function wzValidateStep(n){
+  var ok = true, first = null;
+  (WZ_FIELDS[n] || []).forEach(function(id){
+    touched[id] = true;
+    if(!validateField(id)){ ok = false; if(!first) first = $id(id); }
+  });
+  if(first && first.type !== 'hidden') first.focus();
+  return ok;
+}
+
+function wzUpdateProgress(){
+  var bars = document.querySelectorAll('#wzProgress span');
+  bars.forEach(function(b, i){ b.classList.toggle('done', i < wzStep - 1); b.classList.toggle('active', i === wzStep - 1); });
+  $id('wzCount').textContent = t('Step {n} of {total}', {n: wzStep, total: WZ_TOTAL});
+  $id('wzHead').setAttribute('aria-valuenow', wzStep);
+}
+
+function wzScrollTop(){
+  var card = $id('wzCard'); if(!card) return;
+  var r = card.getBoundingClientRect();
+  if(r.top < 80) window.scrollTo({top: r.top + window.scrollY - 90, behavior: 'smooth'});
+}
+
+function wzGo(n){
+  wzStep = Math.max(1, Math.min(WZ_TOTAL, n));
+  document.querySelectorAll('.wz-step').forEach(function(el){ el.classList.toggle('active', +el.dataset.step === wzStep); });
+  wzUpdateProgress();
+  if(wzStep === 3) wzRefreshTables();
+  if(wzStep === 6) wzRenderSummary();
+  wzScrollTop();
+  var active = document.querySelector('.wz-step.active');
+  var firstInput = active && active.querySelector('input[type="text"], input[type="tel"], input[type="email"]');
+  var isTouch = window.matchMedia && window.matchMedia('(pointer:coarse)').matches;
+  if(firstInput && wzStep !== 6 && !isTouch){ setTimeout(function(){ firstInput.focus({preventScroll:true}); }, 60); }
+  else { var h = active && active.querySelector('.wz-q'); if(h) h.focus({preventScroll:true}); }
+}
+
+function wzNext(){
+  if(!wzValidateStep(wzStep)) return;
+  if(wzStep === 2 && wzGuests() >= WZ_BIG_PARTY) return;
+  if(wzStep === 3 && !selectedTable) return;
+  wzGo(wzStep + 1);
+}
+function wzPrev(){ wzGo(wzStep - 1); }
+
+/* date */
+function wzRenderDateChips(){
+  var box = $id('dateChips'); if(!box) return;
+  var cur = $id('fieldDate').value;
+  var today = new Date(); today.setHours(0,0,0,0);
+  var tomorrow = new Date(today); tomorrow.setDate(tomorrow.getDate() + 1);
+  var days = [], d = new Date(today);
+  while(days.length < 6){ if(d.getDay() !== 1) days.push(new Date(d)); d.setDate(d.getDate() + 1); }   // closed on Mondays
+  box.innerHTML = '';
+  days.forEach(function(day){
+    var iso = wzIso(day);
+    var top = iso === wzIso(today) ? t('Today') : iso === wzIso(tomorrow) ? t('Tomorrow') : day.toLocaleDateString(wzLocale(), {weekday:'short'});
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'chip chip-date' + (iso === cur ? ' on' : ''); b.dataset.iso = iso;
+    var a = document.createElement('span'); a.className = 'chip-top'; a.textContent = top;
+    var c = document.createElement('span'); c.className = 'chip-bot'; c.textContent = day.toLocaleDateString(wzLocale(), {day:'numeric', month:'short'});
+    b.appendChild(a); b.appendChild(c);
+    b.addEventListener('click', function(){
+      var el = $id('fieldDate'); el.value = iso;
+      el.dispatchEvent(new Event('change', {bubbles:true}));
+    });
+    box.appendChild(b);
+  });
+}
+function wzOnDateChange(){
+  var el = $id('fieldDate'), v = el.value;
+  document.querySelectorAll('#dateChips .chip').forEach(function(c){ c.classList.toggle('on', c.dataset.iso === v); });
+  var ok = v && v >= todayISO() && new Date(v + 'T12:00:00').getDay() !== 1;
+  $id('dateHint').textContent = ok ? t('One seating that evening, starting at {time}.', {time: wzSeatingLabel(v)}) : '';
+}
+
+/* guests */
+function wzSetGuests(n){
+  n = Math.max(1, Math.min(12, n));
+  $id('fieldGuests').value = n;
+  $id('gVal').textContent = guestsLabel(n);
+  document.querySelectorAll('#guestChips .chip').forEach(function(c){ c.classList.toggle('on', +c.dataset.n === n || (c.dataset.n === '7' && n >= 7)); });
+  $id('stepGuests').classList.toggle('is-call', n >= WZ_BIG_PARTY);
+  if(selectedTable && +selectedTable.seats < n){
+    document.querySelectorAll('.t-node').forEach(function(g){
+      if(g.dataset.status === 'selected'){ g.dataset.status = 'available'; styleTable(g, 'available'); }
+    });
+    selectedTable = null; updateTableInfo();
+  }
+  wzRefreshTables();
+}
+function wzRenderGuestChips(){
+  var box = $id('guestChips'); if(!box) return;
+  box.innerHTML = '';
+  for(var i = 1; i <= 7; i++){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'chip chip-num'; b.dataset.n = i; b.textContent = i === 7 ? '7+' : i;
+    (function(k){ b.addEventListener('click', function(){ wzSetGuests(k); }); })(i);
+    box.appendChild(b);
+  }
+}
+
+/* tables */
+function wzRefreshTables(){
+  var n = wzGuests();
+  document.querySelectorAll('.t-node').forEach(function(g){
+    var small = g.dataset.status !== 'occupied' && +g.dataset.seats < n;
+    g.setAttribute('data-fit', small ? 'no' : 'yes');
+  });
+  var sub = $id('tableSub'); if(sub) sub.textContent = t('Tables for {guests} — the rest are dimmed.', {guests: guestsLabel(n)});
+}
+
+/* review */
+function wzRenderSummary(){
+  var box = $id('wzSummary'); if(!box) return;
+  var iso = $id('fieldDate').value;
+  var dateStr = iso ? new Date(iso + 'T12:00:00').toLocaleDateString(wzLocale(), {weekday:'long', day:'numeric', month:'long'}) : '';
+  var rows = [
+    [t('Date'), dateStr],
+    [t('Seating'), wzSeatingLabel(iso)],
+    [t('Guests'), guestsLabel(wzGuests())],
+    [t('Table'), selectedTable ? (selectedTable.id + ' · ' + t(selectedTable.zone)) : '—'],
+    [t('Name'), ($id('fieldName').value + ' ' + $id('fieldLastname').value).trim()],
+    [t('Phone'), $id('fieldPhone').value.trim()],
+    [t('Email'), $id('fieldEmail').value.trim()]
+  ];
+  box.innerHTML = '';
+  rows.forEach(function(r){
+    var row = document.createElement('div'), dt = document.createElement('dt'), dd = document.createElement('dd');
+    dt.textContent = r[0]; dd.textContent = r[1];
+    row.appendChild(dt); row.appendChild(dd); box.appendChild(row);
+  });
+}
+
+/* re-render everything language-dependent */
+function wzRefresh(){
+  wzRenderDateChips(); wzOnDateChange();
+  wzRenderGuestChips(); wzSetGuests(wzGuests() || 2);
+  wzUpdateProgress(); updateTableInfo();
+  if(wzStep === 6) wzRenderSummary();
+  var note = $id('wzNote'); if(note && !note.style.color) note.textContent = t("We'll confirm within 2 hours by phone or email.");
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  var d = $id('fieldDate'); if(!d) return;
+  d.addEventListener('change', wzOnDateChange);
+  d.addEventListener('input', wzOnDateChange);
+  wzRefresh();
+  // Enter = next step (submit on the last one)
+  $id('rpForm').addEventListener('keydown', function(e){
+    if(e.key === 'Enter' && e.target.tagName === 'INPUT'){
+      e.preventDefault();
+      if(wzStep === WZ_TOTAL) submitReservation(); else wzNext();
+    }
+  });
+});
 
 /* ─── Hero video: autoplay + poster until the first frame is actually rendered ─── */
 (function(){
@@ -1255,30 +1509,69 @@ var I18N = {
   "Home":"Головна","Menu":"Меню","Chef":"Шеф","Reservations":"Бронювання","Contact":"Контакти","Concept":"Концепція","Reserve":"Забронювати",
   "Author's cuisine · Kyiv":"Авторська кухня · Київ",
   "One menu. One evening.<br>No boundaries.":"Одне меню. Один вечір.<br>Без меж.",
-  "Reserve a table":"Забронювати столик","Explore menu":"Переглянути меню","Scroll":"Гортайте",
+  "Reserve a table":"Забронювати столик","Explore menu":"Переглянути меню",
   "Courses per evening":"страв за вечір","Seating per night":"посадка за вечір","Seasonal ingredients":"сезонних інгредієнтів",
   "Our philosophy":"Наша філософія",
   "We don't serve food.<br>We tell <em>stories.</em>":"Ми не подаємо їжу.<br>Ми розповідаємо <em>історії.</em>",
-  "Noir was born from a single conviction: the most powerful experience is the one you cannot predict. There is no fixed menu — only the chef, the season, and the moment of inspiration.":"Noir народився з одного переконання: найсильніше враження — те, яке неможливо передбачити. Тут немає сталого меню — лише шеф, сезон і мить натхнення.",
+  "Naya was born from a single conviction: the most powerful experience is the one you cannot predict. There is no fixed menu — only the chef, the season, and the moment of inspiration.":"Naya народився з одного переконання: найсильніше враження — те, яке неможливо передбачити. Тут немає сталого меню — лише шеф, сезон і мить натхнення.",
   "Meet the chef":"Познайомитися з шефом","Tasting experience":"Дегустаційний досвід",
   "The menu changes<br><em>every evening</em>":"Меню змінюється<br><em>щовечора</em>",
   "Cold Opening":"Холодний початок","Lightness, acidity, first contact. The conversation begins.":"Легкість, кислинка, перший дотик. Розмова починається.",
   "Between Two Seasons":"Між двома сезонами","Contrast and tension. The moment before something changes.":"Контраст і напруга. Мить перед тим, як щось зміниться.",
   "The Main Thought":"Головна думка","The heart of the evening. Depth, warmth, the chef's signature.":"Серце вечора. Глибина, тепло, почерк шефа.",
   "The Ending":"Завершення","Sweet, quiet, final. Something to carry home.":"Солодко, тихо, остаточно. Те, що заберете з собою.",
-  "Tasting menu — €200 / person":"Дегустаційне меню — €200 / особа","Wine pairing available · +€100":"Винний супровід · +€100",
+  "Tasting menu — €85 / person":"Дегустаційне меню — €85 / особа","Wine pairing available · +€50":"Винний супровід · +€50",
   "Reserve your seat":"Забронювати місце","The chef":"Шеф","Maxim<br>Koval":"Максим<br>Коваль",
   "Once studied physics. Then understood that food is a more precise science. Internship in Copenhagen. Two years in Tokyo. Returned home with a different perspective.":"Колись вивчав фізику. Потім зрозумів, що їжа — точніша наука. Стажування в Копенгагені. Два роки в Токіо. Повернувся додому з іншим поглядом.",
   "\"I don't cook dishes. I capture a moment — this season, this ingredient, this state of mind.\"":"«Я не готую страви. Я ловлю мить — цей сезон, цей інгредієнт, цей стан.»",
-  "— Chef, Noir":"— Шеф, Noir","About the chef":"Про шефа","Limited seats":"Обмежена кількість місць",
+  "— Chef, Naya":"— Шеф, Naya","About the chef":"Про шефа","Limited seats":"Обмежена кількість місць",
   "Reserve your evening.":"Забронюйте свій вечір.",
   "Open Tue–Sun from 7 PM. Seats are limited. Confirmation within 2 hours.":"Працюємо вт–нд з 19:00. Кількість місць обмежена. Підтвердження протягом 2 годин.",
   "Visit":"Адреса","32 Saksahanskoho St<br>Kyiv, 01033":"вул. Саксаганського, 32<br>Київ, 01033",
   "Hours":"Години роботи","Tue – Fri · 7 PM – 11 PM<br>Sat – Sun · 6 PM – 11 PM":"Вт – Пт · 19:00 – 23:00<br>Сб – Нд · 18:00 – 23:00",
-  "Follow":"Соцмережі","© 2026 NOIR · Kyiv":"© 2026 NOIR · Київ",
+  "Follow":"Соцмережі","© 2026 NAYA · Kyiv":"© 2026 NAYA · Київ",
   "Tasting menu":"Дегустаційне меню","The menu<br>changes <em>nightly.</em>":"Меню<br>змінюється <em>щовечора.</em>",
   "Our approach":"Наш підхід","Below — the feelings<br>that stay.":"Нижче — відчуття,<br>які залишаються.",
-  "There is no fixed menu at Noir. Each evening, the chef composes a new sequence of twelve courses built entirely around what the season offers and what the moment demands. No two evenings are the same.":"У Noir немає сталого меню. Щовечора шеф складає нову послідовність із дванадцяти страв — навколо того, що дає сезон і чого вимагає момент. Двох однакових вечорів не буває.",
+  "There is no fixed menu at Naya. Each evening, the chef composes a new sequence of twelve courses built entirely around what the season offers and what the moment demands. No two evenings are the same.":"У Naya немає сталого меню. Щовечора шеф складає нову послідовність із дванадцяти страв — навколо того, що дає сезон і чого вимагає момент. Двох однакових вечорів не буває.",
+  "7:00 – 7:30 PM · 30 min":"19:00 – 19:30 · 30 хв",
+  "7:30 – 8:00 PM · 30 min":"19:30 – 20:00 · 30 хв",
+  "8:00 – 9:00 PM · 60 min":"20:00 – 21:00 · 60 хв",
+  "9:00 – 9:30 PM · 30 min":"21:00 – 21:30 · 30 хв",
+  "Tue – Fri seating begins at 7 PM. On Sat – Sun it starts at 6 PM, so every act begins an hour earlier.":"Вт – Пт посадка о 19:00. У Сб – Нд вона починається о 18:00, тож кожна дія стартує на годину раніше.",
+  "Six short steps: date, guests, table, details. We'll confirm within 2 hours.":"Шість коротких кроків: дата, гості, столик, контакти. Підтвердимо протягом 2 годин.",
+  "Let's begin":"Почнімо",
+  "Pick your day":"Оберіть день",
+  "Or choose another date<span class=\"req\">*</span>":"Або оберіть іншу дату<span class=\"req\">*</span>",
+  "Who's joining?":"Хто приєднається?",
+  "How many guests?":"Скільки гостей?",
+  "Large party":"Велика компанія",
+  "Let's sort this one by phone":"Давайте владнаємо це по телефону",
+  "For groups of 7 or more we arrange the details personally — seating, timing and anything special you need. Give us a call and we'll get you booked in.":"Для компаній від 7 осіб ми узгоджуємо деталі особисто — розсадку, час і все, що потрібно. Зателефонуйте нам, і ми все організуємо.",
+  "← Change party size":"← Змінити кількість гостей",
+  "Your spot in the room":"Ваше місце в залі",
+  "Choose your table":"Оберіть столик",
+  "Too small":"Замалий",
+  "A little about you":"Трохи про вас",
+  "What's your name?":"Як вас звати?",
+  "How we reach you":"Як з вами зв'язатися",
+  "Phone and email":"Телефон і email",
+  "One last look":"Останній погляд",
+  "Review and confirm":"Перевірте й підтвердіть",
+  "Any special wishes? (optional)":"Особливі побажання? (необов'язково)",
+  "We'll confirm within 2 hours by phone or email.":"Підтвердимо протягом 2 годин телефоном або email.",
+  "← Back":"← Назад",
+  "Next →":"Далі →",
+  "Step {n} of {total}":"Крок {n} з {total}",
+  "Today":"Сьогодні",
+  "Tomorrow":"Завтра",
+  "One seating that evening, starting at {time}.":"Одна посадка за вечір, початок о {time}.",
+  "Tables for {guests} — the rest are dimmed.":"Столики для {guests} — решта затемнені.",
+  "Date":"Дата",
+  "Seating":"Посадка",
+  "Guests":"Гості",
+  "Name":"Ім'я",
+  "Phone":"Телефон",
+  "Email":"Email",
   "Act one":"Дія перша","Act two":"Дія друга","Act three":"Дія третя","Act four":"Дія четверта",
   "Lightness, acidity, first contact. Three or four small forms arrive in quick succession — the palate waking up, the evening beginning. No introductions. Just presence.":"Легкість, кислинка, перший дотик. Три-чотири невеликі форми з'являються одна за одною — смак прокидається, вечір починається. Без передмов. Лише присутність.",
   "3–4 courses · cold preparations":"3–4 страви · холодні",
@@ -1288,7 +1581,7 @@ var I18N = {
   "2–3 courses · main compositions":"2–3 страви · основні композиції",
   "Sweet, quiet, final. Not a sugar rush — a resolution. Two or three moments of sweetness that echo something from earlier in the evening. The conversation closes on its own terms.":"Солодко, тихо, остаточно. Не цукровий сплеск — а розв'язка. Два-три солодкі моменти, що відлунюють чимось із початку вечора. Розмова завершується на своїх умовах.",
   "2–3 courses · desserts &amp; mignardises":"2–3 страви · десерти та міньярдізи",
-  "Per person · 12 courses":"За особу · 12 страв","Wine pairing":"Винний супровід","Curated by our sommelier · +€100":"Добірка нашого сомельє · +€100",
+  "Per person · 12 courses":"За особу · 12 страв","Wine pairing":"Винний супровід","Curated by our sommelier · +€50":"Добірка нашого сомельє · +€50",
   "Maxim<br><em>Koval</em>":"Максим<br><em>Коваль</em>",
   "Once studied physics. Then understood that food is a more precise science — where every variable matters, and every result is unrepeatable.":"Колись вивчав фізику. Потім зрозумів, що їжа — точніша наука: тут важлива кожна змінна, а кожен результат неповторний.",
   "A path without a fixed destination":"Шлях без визначеного пункту призначення","The journey":"Шлях",
@@ -1299,13 +1592,12 @@ var I18N = {
   "Tokyo":"Токіо","Two years":"Два роки","A different relationship with ingredients":"Інші стосунки з інгредієнтами",
   "Japan changed everything about how he saw a product. Not as raw material to transform, but as something with its own voice — worth listening to before deciding anything.":"Японія змінила все в тому, як він бачив продукт. Не як сировину для перетворення, а як щось із власним голосом — який варто почути, перш ніж щось вирішувати.",
   "Now":"Сьогодні",
-  "Returned with no interest in a fixed menu or a national cuisine. Built Noir around a single question: what can this ingredient say, today, in this season?":"Повернувся без інтересу до сталого меню чи національної кухні. Побудував Noir навколо одного питання: що цей інгредієнт може сказати сьогодні, у цей сезон?",
+  "Returned with no interest in a fixed menu or a national cuisine. Built Naya around a single question: what can this ingredient say, today, in this season?":"Повернувся без інтересу до сталого меню чи національної кухні. Побудував Naya навколо одного питання: що цей інгредієнт може сказати сьогодні, у цей сезон?",
   "Philosophy":"Філософія","Building menus<br>around questions.":"Меню, побудоване<br>навколо питань.",
   "I don't build menus around a country or an era. I build them around a question: what can this ingredient say today? The answer changes with the season, the market, the mood — and that's the point.":"Я не будую меню навколо країни чи епохи. Я будую його навколо питання: що цей інгредієнт може сказати сьогодні? Відповідь змінюється разом із сезоном, ринком, настроєм — і в цьому суть.",
-  "No two evenings at Noir are the same. That's not a limitation. That's the entire idea.":"Двох однакових вечорів у Noir не буває. Це не обмеження. Це і є вся ідея.",
-  "In his own words":"Його словами","— Maxim Koval, Chef and founder, Noir":"— Максим Коваль, шеф і засновник Noir","Experience Noir":"Відчути Noir",
+  "No two evenings at Naya are the same. That's not a limitation. That's the entire idea.":"Двох однакових вечорів у Naya не буває. Це не обмеження. Це і є вся ідея.",
+  "In his own words":"Його словами","— Maxim Koval, Chef and founder, Naya":"— Максим Коваль, шеф і засновник Naya","Experience Naya":"Відчути Naya",
   "Table reservations":"Бронювання столиків",
-  "Select a table on the floor plan, fill in your details, and we'll confirm within 2 hours.":"Оберіть столик на плані залу, заповніть дані — і ми підтвердимо бронювання протягом 2 годин.",
   "Select a table — floor plan":"Оберіть столик — план залу","Available":"Доступний","Selected":"Обрано","Reserved":"Зайнято",
   "Booking details":"Деталі бронювання","Your table":"Ваш столик",
   "<strong>No table selected</strong> Choose a table on the floor plan":"<strong>Столик не обрано</strong> Оберіть столик на плані залу",
@@ -1339,7 +1631,7 @@ function collectI18nNodes(){
   var INLINE = {BR:1,EM:1,STRONG:1,SPAN:1,I:1,B:1,A:1};
   var nodes = [];
   document.querySelectorAll('body *').forEach(function(el){
-    if(el.closest('script,style,select,.lang,.mm-lang')) return;
+    if(el.closest('script,style,select,.lang,.mm-lang,.wz-dyn')) return;
     var isSvgText = el.tagName.toLowerCase() === 'text';
     if(el.closest('svg') && !isSvgText) return;
     var own = '', ok = true;
@@ -1373,20 +1665,16 @@ function setLang(lang){
     if(!el.dataset.phEn) el.dataset.phEn = el.getAttribute('placeholder');
     el.setAttribute('placeholder', t(el.dataset.phEn));
   });
-  var opt = document.querySelector('#fieldGuests option[value=""]');
-  if(opt) opt.textContent = t('— select —');
   document.querySelectorAll('.lang span[data-lang], .mm-lang span[data-lang]').forEach(function(sp){
     sp.classList.toggle('on', sp.dataset.lang === lang);
   });
   // refresh dynamic texts
-  var btn = document.getElementById('submitBtn');
-  if(btn) btn.textContent = selectedTable ? t('Request reservation') : t('Select a table first');
-  if(selectedTable) updateTableInfo();
+  if(typeof wzRefresh === 'function') wzRefresh();
   REQUIRED_FIELDS.forEach(function(id){ var el = document.getElementById(id); if(el && el.classList.contains('is-invalid')) validateField(id); });
-  try{ localStorage.setItem('noir-lang', lang); }catch(e){}
+  try{ localStorage.setItem('naya-lang', lang); }catch(e){}
 }
 document.addEventListener('DOMContentLoaded', function(){
-  var saved = null; try{ saved = localStorage.getItem('noir-lang'); }catch(e){}
+  var saved = null; try{ saved = localStorage.getItem('naya-lang'); }catch(e){}
   if(saved === 'uk') setLang('uk');
 });
 
@@ -1398,18 +1686,72 @@ document.addEventListener('DOMContentLoaded', function(){
   <div class="rp-hero">
     <p class="eyebrow reveal">Table reservations</p>
     <h2 class="sec-title reveal">Reserve your evening.</h2>
-    <p class="sec-body reveal">Select a table on the floor plan, fill in your details, and we'll confirm within 2 hours.</p>
+    <p class="sec-body reveal">Six short steps: date, guests, table, details. We'll confirm within 2 hours.</p>
   </div>
 
-  <div class="rp-main">
+  <section class="wz" id="wz">
+    <div class="wz-card" id="wzCard">
 
-    <!-- FLOOR PLAN -->
-    <div class="rp-plan">
-      <div class="rp-plan-title">Select a table — floor plan</div>
+      <div class="wz-head" id="wzHead" role="progressbar" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1">
+        <div class="wz-progress" id="wzProgress" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="wz-count wz-dyn" id="wzCount">Step 1 of 6</p>
+      </div>
 
-      <!-- SVG Floor Plan -->
-      <div style="width:100%;flex:1">
-      <svg id="floorPlan" viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;min-height:480px;display:block;cursor:default">
+      <div class="wz-steps" id="rpForm">
+
+        <!-- STEP 1 · DATE -->
+        <div class="wz-step active" data-step="1">
+          <p class="eyebrow">Let's begin</p>
+          <h3 class="wz-q" tabindex="-1">Pick your day</h3>
+          <div class="wz-body">
+            <div class="date-chips wz-dyn" id="dateChips" role="group" aria-label="Upcoming dates"></div>
+            <div class="form-group">
+              <label class="form-label" for="fieldDate">Or choose another date<span class="req">*</span></label>
+              <div class="date-wrap">
+                <input class="form-input" type="date" id="fieldDate">
+                <svg class="date-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="12" rx="1"/><path d="M1.5 6h13M5 1v3M11 1v3"/></svg>
+              </div>
+              <p class="form-error"></p>
+            </div>
+            <p class="wz-hint wz-dyn" id="dateHint" aria-live="polite"></p>
+          </div>
+          <div class="wz-nav"><button type="button" class="btn-primary wz-next" onclick="wzNext()">Next →</button></div>
+        </div>
+
+        <!-- STEP 2 · GUESTS -->
+        <div class="wz-step" data-step="2" id="stepGuests">
+          <div class="g-normal">
+            <p class="eyebrow">Who's joining?</p>
+            <h3 class="wz-q" tabindex="-1">How many guests?</h3>
+            <div class="wz-body">
+              <div class="stepper">
+                <button type="button" class="stepper-btn" aria-label="Fewer guests" onclick="wzSetGuests(wzGuests()-1)">−</button>
+                <div class="stepper-val wz-dyn" id="gVal" aria-live="polite">2 guests</div>
+                <button type="button" class="stepper-btn" aria-label="More guests" onclick="wzSetGuests(wzGuests()+1)">+</button>
+              </div>
+              <input type="hidden" id="fieldGuests" value="2">
+              <div class="guest-chips wz-dyn" id="guestChips" role="group" aria-label="Quick pick"></div>
+            </div>
+            <div class="wz-nav"><button type="button" class="btn-ghost wz-back" onclick="wzPrev()">← Back</button><button type="button" class="btn-primary wz-next" onclick="wzNext()">Next →</button></div>
+          </div>
+          <div class="g-call">
+            <p class="eyebrow">Large party</p>
+            <h3 class="wz-q" tabindex="-1">Let's sort this one by phone</h3>
+            <p class="wz-callp">For groups of 7 or more we arrange the details personally — seating, timing and anything special you need. Give us a call and we'll get you booked in.</p>
+            <a class="wz-tel" href="tel:+380440000000">+380 44 000 0000</a>
+            <p class="wz-hint">Tue – Fri · 7 PM – 11 PM<br>Sat – Sun · 6 PM – 11 PM</p>
+            <div class="wz-nav wz-nav--center"><button type="button" class="btn-ghost" onclick="wzSetGuests(6)">← Change party size</button></div>
+          </div>
+        </div>
+
+        <!-- STEP 3 · TABLE -->
+        <div class="wz-step" data-step="3">
+          <p class="eyebrow">Your spot in the room</p>
+          <h3 class="wz-q" tabindex="-1">Choose your table</h3>
+          <p class="wz-sub wz-dyn" id="tableSub"></p>
+          <div class="wz-body wz-body--wide">
+            <div class="plan-wrap">
+              <svg id="floorPlan" viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;cursor:default">
         <defs>
           <filter id="glow">
             <feGaussianBlur stdDeviation="3" result="blur"/>
@@ -1568,83 +1910,82 @@ document.addEventListener('DOMContentLoaded', function(){
         </g>
 
       </svg>
-      </div>
-
-      <div class="plan-legend">
-        <div class="legend-item"><div class="legend-dot avail"></div>Available</div>
-        <div class="legend-item"><div class="legend-dot sel"></div>Selected</div>
-        <div class="legend-item"><div class="legend-dot occ"></div>Reserved</div>
-      </div>
-    </div><!-- /rp-plan -->
-
-    <!-- BOOKING FORM -->
-    <div class="rp-form-panel">
-      <p class="eyebrow">Booking details</p>
-      <h2 class="sec-title">Your table</h2>
-
-      <div class="table-selected-info" id="tableInfo">
-        <div class="tsi-icon" id="tsiIcon">—</div>
-        <div class="tsi-text" id="tsiText">
-          <strong>No table selected</strong>
-          Choose a table on the floor plan
-        </div>
-      </div>
-
-      <!-- Form -->
-      <div class="rp-form" id="rpForm">
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="fieldName">First name<span class="req">*</span></label>
-            <input class="form-input" type="text" placeholder="Maxim" id="fieldName" autocomplete="given-name">
-            <p class="form-error"></p>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="fieldLastname">Last name<span class="req">*</span></label>
-            <input class="form-input" type="text" placeholder="Koval" id="fieldLastname" autocomplete="family-name">
-            <p class="form-error"></p>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="fieldPhone">Phone<span class="req">*</span></label>
-          <input class="form-input" type="tel" placeholder="+380 XX XXX XX XX" id="fieldPhone" autocomplete="tel" inputmode="tel">
-          <p class="form-error"></p>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="fieldEmail">Email<span class="req">*</span></label>
-          <input class="form-input" type="email" placeholder="your@email.com" id="fieldEmail" autocomplete="email" inputmode="email">
-          <p class="form-error"></p>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="fieldDate">Date<span class="req">*</span></label>
-            <div class="date-wrap">
-              <input class="form-input" type="date" id="fieldDate">
-              <svg class="date-ico" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="12" rx="1"/><path d="M1.5 6h13M5 1v3M11 1v3"/></svg>
             </div>
-            <p class="form-error"></p>
+            <div class="plan-legend">
+              <div class="legend-item"><div class="legend-dot avail"></div>Available</div>
+              <div class="legend-item"><div class="legend-dot sel"></div>Selected</div>
+              <div class="legend-item"><div class="legend-dot occ"></div>Reserved</div>
+              <div class="legend-item"><div class="legend-dot small"></div>Too small</div>
+            </div>
+            <div class="table-selected-info" id="tableInfo" aria-live="polite">
+              <div class="tsi-icon" id="tsiIcon">—</div>
+              <div class="tsi-text" id="tsiText">
+                <strong>No table selected</strong>
+                Choose a table on the floor plan
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="fieldGuests">Guests<span class="req">*</span></label>
-            <select class="form-input" id="fieldGuests">
-              <option value="">— select —</option>
-              <option>1</option><option>2</option><option>3</option>
-              <option>4</option><option>5</option><option>6</option>
-              <option>7</option><option>8</option>
-            </select>
-            <p class="form-error"></p>
-          </div>
+          <div class="wz-nav"><button type="button" class="btn-ghost wz-back" onclick="wzPrev()">← Back</button><button type="button" class="btn-primary wz-next" id="tableNext" disabled onclick="wzNext()">Next →</button></div>
         </div>
-        <div class="form-group">
-          <label class="form-label">Comment (optional)</label>
-          <input class="form-input" type="text" placeholder="Allergies, special occasion..." id="fieldComment">
-        </div>
-        <p class="form-note"><span class="req" style="color:var(--gold)">*</span> Required fields. Confirmation within 2 hours. For groups of 6+ please contact us directly.</p>
-        <div class="rp-submit">
-          <button class="btn-primary" id="submitBtn" disabled onclick="submitReservation()">Select a table first</button>
-        </div>
-      </div>
 
-      <!-- Success -->
+        <!-- STEP 4 · NAME -->
+        <div class="wz-step" data-step="4">
+          <p class="eyebrow">A little about you</p>
+          <h3 class="wz-q" tabindex="-1">What's your name?</h3>
+          <div class="wz-body">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="fieldName">First name<span class="req">*</span></label>
+                <input class="form-input" type="text" placeholder="Maxim" id="fieldName" autocomplete="given-name">
+                <p class="form-error"></p>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="fieldLastname">Last name<span class="req">*</span></label>
+                <input class="form-input" type="text" placeholder="Koval" id="fieldLastname" autocomplete="family-name">
+                <p class="form-error"></p>
+              </div>
+            </div>
+          </div>
+          <div class="wz-nav"><button type="button" class="btn-ghost wz-back" onclick="wzPrev()">← Back</button><button type="button" class="btn-primary wz-next" onclick="wzNext()">Next →</button></div>
+        </div>
+
+        <!-- STEP 5 · CONTACTS -->
+        <div class="wz-step" data-step="5">
+          <p class="eyebrow">How we reach you</p>
+          <h3 class="wz-q" tabindex="-1">Phone and email</h3>
+          <div class="wz-body wz-stack">
+            <div class="form-group">
+              <label class="form-label" for="fieldPhone">Phone<span class="req">*</span></label>
+              <input class="form-input" type="tel" placeholder="+380 XX XXX XX XX" id="fieldPhone" autocomplete="tel" inputmode="tel">
+              <p class="form-error"></p>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="fieldEmail">Email<span class="req">*</span></label>
+              <input class="form-input" type="email" placeholder="your@email.com" id="fieldEmail" autocomplete="email" inputmode="email">
+              <p class="form-error"></p>
+            </div>
+          </div>
+          <div class="wz-nav"><button type="button" class="btn-ghost wz-back" onclick="wzPrev()">← Back</button><button type="button" class="btn-primary wz-next" onclick="wzNext()">Next →</button></div>
+        </div>
+
+        <!-- STEP 6 · REVIEW -->
+        <div class="wz-step" data-step="6">
+          <p class="eyebrow">One last look</p>
+          <h3 class="wz-q" tabindex="-1">Review and confirm</h3>
+          <div class="wz-body">
+            <dl class="wz-summary wz-dyn" id="wzSummary"></dl>
+            <div class="form-group">
+              <label class="form-label" for="fieldComment">Any special wishes? (optional)</label>
+              <input class="form-input" type="text" placeholder="Allergies, special occasion..." id="fieldComment">
+            </div>
+            <p class="form-note" id="wzNote">We'll confirm within 2 hours by phone or email.</p>
+          </div>
+          <div class="wz-nav"><button type="button" class="btn-ghost wz-back" onclick="wzPrev()">← Back</button><button type="button" class="btn-primary wz-next" id="submitBtn" onclick="submitReservation()">Request reservation</button></div>
+        </div>
+
+      </div><!-- /wz-steps -->
+
+      <!-- SUCCESS -->
       <div class="rp-success" id="rpSuccess">
         <div class="success-icon">✓</div>
         <h2 class="sec-title">Request sent.</h2>
@@ -1652,13 +1993,13 @@ document.addEventListener('DOMContentLoaded', function(){
         <button class="btn-ghost" onclick="resetReservation()">Make another reservation</button>
       </div>
 
-    </div><!-- /rp-form-panel -->
-  </div><!-- /rp-main -->
+    </div>
+  </section><!-- /wz -->
 
   <footer>
     <div class="f-top">
       <div class="f-col">
-        <div class="f-logo">NOIR</div>
+        <div class="f-logo">NAYA</div>
         <p class="f-tag">One menu. One evening.<br>No boundaries.</p>
       </div>
       <div class="f-col">
@@ -1671,7 +2012,7 @@ document.addEventListener('DOMContentLoaded', function(){
       </div>
       <div class="f-col">
         <p class="f-head">Contact</p>
-        <p class="f-txt"><a href="tel:+380440000000">+380 44 000 0000</a><br><a href="mailto:hello@noir.kyiv">hello@noir.kyiv</a></p>
+        <p class="f-txt"><a href="tel:+380440000000">+380 44 000 0000</a><br><a href="mailto:hello@naya.kyiv">hello@naya.kyiv</a></p>
       </div>
       <div class="f-col">
         <p class="f-head">Follow</p>
@@ -1687,7 +2028,7 @@ document.addEventListener('DOMContentLoaded', function(){
         <a onclick="navigate('chef')">Chef</a>
         <a onclick="navigate('reservations')">Reservations</a>
       </div>
-      <p class="f-copy">© 2026 NOIR · Kyiv</p>
+      <p class="f-copy">© 2026 NAYA · Kyiv</p>
     </div>
   </footer>
 
